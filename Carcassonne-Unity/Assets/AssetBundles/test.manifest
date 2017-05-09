@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+CRC: 956189617
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 222ccab58788db35ca0516a1f77392c3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7359aa217bf390c1a210f1e734c4fdaf
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6b3863d82ce45964bbadf21993ccbab1, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Lib/Arcolib/Prefabs/Checker.prefab
+Dependencies: []
