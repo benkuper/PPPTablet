@@ -5,17 +5,18 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
-public class QuizzGame : 
+public class QuizzGame :
     Game,
-    ITextureReceiver
+    ITextureReceiver,
+    IMediaListener
 {
-
     public float tempsReponse;
     public float tempsExplication;
     public List<TextQuestion> questions;
 
     protected float timeAtQuestionLaunch;
 
+    protected Canvas canvas;
 
     protected TextQuestion currentQuestion;
     protected RawImage questionImage;
@@ -33,8 +34,12 @@ public class QuizzGame :
     protected Vector2 answerPos;
     protected Vector2 initExplicationsPos;
 
-    void Awake()
+    override public void Awake()
     {
+        base.Awake();
+
+        canvas = transform.FindChild("Canvas").GetComponent<Canvas>();
+
         questions = new List<TextQuestion>();
         questionText = transform.Find("Canvas/QuestionPanel/Question").GetComponent<Text>();
         questionImagePanel = transform.Find("Canvas/QuestionImagePanel").GetComponent<RectTransform>();
@@ -56,7 +61,7 @@ public class QuizzGame :
         answerPos = answers[0].GetComponent<RectTransform>().anchoredPosition;
         initExplicationsPos = explicationsPanel.GetComponent<RectTransform>().anchoredPosition;
     }
-   
+
     public override void Update()
     {
         base.Update();
@@ -81,22 +86,39 @@ public class QuizzGame :
     }
 
 
-    public override void launchGame()
+    public override void startGame()
     {
-        base.launchGame();
         nextQuestion();
     }
 
     public void nextQuestion()
     {
+        nextQuestion(false);
+    }
+
+    public void nextQuestion(bool videoAlreadyPlayed)
+    {
         if (currentQuestion == null) setQuestion(0);
-        else if (questions.IndexOf(currentQuestion) < questions.Count - 1)
-        {
-            setQuestion(questions.IndexOf(currentQuestion) + 1);
-        }
         else
         {
-            endGame();
+            string outroPath = getOutroVideoPath(questions.IndexOf(currentQuestion)+1);
+            if (outroPath != "" && !videoAlreadyPlayed)
+            {
+                canvas.enabled = false;
+                MediaPlayer.play(outroPath, false, this, "outro");
+                return;
+            }
+
+            canvas.enabled = true;
+
+            if (questions.IndexOf(currentQuestion) < questions.Count - 1)
+            {
+                setQuestion(questions.IndexOf(currentQuestion) + 1);
+            }
+            else
+            {
+                endGame();
+            }
         }
     }
 
@@ -117,16 +139,26 @@ public class QuizzGame :
         }
     }
 
-    public void loadCurrentQuestion()
+    public void loadCurrentQuestion(bool videoAlreadyPlayed = false)
     {
 
         if (currentQuestion == null) return;
 
-        explicationsPanel.SetActive(false);
 
-
-        questionText.text = currentQuestion.question;
         int qNum = questions.IndexOf(currentQuestion) + 1;
+
+        string introPath = getIntroVideoPath(qNum);
+        if (introPath != "" && !videoAlreadyPlayed)
+        {
+            canvas.enabled = false;
+            MediaPlayer.play(introPath, false, this, "intro");
+            return;
+        }
+
+        canvas.enabled = true;
+
+        explicationsPanel.SetActive(false);
+        questionText.text = currentQuestion.question;
 
         for (int i = 0; i < answers.Length; i++)
         {
@@ -143,7 +175,7 @@ public class QuizzGame :
         currentAnswer = null;
         timeAtQuestionLaunch = Time.time + .001f;//force if Time.time == 0 here
 
-        
+
         questionImage.color = Color.black;
         StartCoroutine(AssetManager.loadGameTexture(id, "question" + qNum + ".jpg", "questionImage", this));
 
@@ -152,14 +184,27 @@ public class QuizzGame :
     void showAnswer()
     {
         countDownText.text = "Fini !";
-        foreach (QuizzAnswer a in answers) a.showAnswer();
+
+        bool isGood = false;
+        foreach (QuizzAnswer a in answers)
+        {
+            if (a.showAnswer()) isGood = true;
+        }
+        if (isGood) score++;
         Invoke("showExplications", 1);
     }
 
     public virtual void showExplications()
     {
-        
+
         Invoke("nextQuestion", tempsExplication + 1);
+    }
+
+
+    [OSCMethod("selectReponse")]
+    public void selectAnswer(int answerIndex)
+    {
+        answerSelected(answers[answerIndex]);
     }
 
     public void answerSelected(QuizzAnswer a)
@@ -204,5 +249,25 @@ public class QuizzGame :
         questionImage.texture = tex;
     }
 
+    public string getIntroVideoPath(int index)
+    {
+        return AssetManager.getGameMediaFile(id, "question" + index + "_intro.mp4");
+    }
 
+    public string getOutroVideoPath(int index)
+    {
+        return AssetManager.getGameMediaFile(id, "question" + index + "_outro.mp4");
+    }
+
+    void IMediaListener.mediaFinished(string id)
+    {
+        if (id == "intro")
+        {
+            loadCurrentQuestion(true);
+        }
+        else if (id == "outro")
+        {
+            nextQuestion(true);
+        }
+    }
 }

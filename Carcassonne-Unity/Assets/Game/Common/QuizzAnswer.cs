@@ -53,10 +53,11 @@ public class QuizzAnswer : MonoBehaviour
         GetComponent<RectTransform>().DOAnchorPos(initPos, .3f);
     }
 
-    public void showAnswer()
+    public bool showAnswer()
     {
         if (isGood || isSelected) bgImage.DOColor(isGood ? Color.green : Color.red, .3f);
         canBeClicked = false;
+        return isGood && isSelected;
     }
 
     public void OnPointerClick(PointerEventData eventData)

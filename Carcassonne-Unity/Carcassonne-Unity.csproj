@@ -90,22 +90,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Background.cs" />
     <Compile Include="Assets\Game\Common\QuizzAnswer.cs" />
     <Compile Include="Assets\Game\Common\QuizzGame.cs" />
     <Compile Include="Assets\Game\Game.cs" />
     <Compile Include="Assets\Game\GameMaster.cs" />
-    <Compile Include="Assets\Game\Jeu1 Quizz Texte\Jeu1QuizzTexte.cs" />
-    <Compile Include="Assets\Game\Jeu1 Quizz Texte\TextAnswer.cs" />
-    <Compile Include="Assets\Game\Jeu1 Quizz Texte\TextQuestion.cs" />
-    <Compile Include="Assets\Game\Jeu2 Quizz Image\ImageAnswer.cs" />
-    <Compile Include="Assets\Game\Jeu2 Quizz Image\Jeu2QuizzImages.cs" />
-    <Compile Include="Assets\Game\Jeu3 Candy\CandyDechet.cs" />
-    <Compile Include="Assets\Game\Jeu3 Candy\DechetData.cs" />
-    <Compile Include="Assets\Game\Jeu3 Candy\Jeu3Candy.cs" />
-    <Compile Include="Assets\Game\Jeu4 Laser\Jeu4Laser.cs" />
-    <Compile Include="Assets\Game\Jeu5 Code16\Jeu5Code16.cs" />
-    <Compile Include="Assets\Game\Jeu6 Code2D\Jeu6Code2D.cs" />
-    <Compile Include="Assets\Game\Jeu7 Code2D Poubelle\Jeu7Code2DPoubelle.cs" />
+    <Compile Include="Assets\Game\code2D\Code2D.cs" />
+    <Compile Include="Assets\Game\dechetcrush\CandyDechet.cs" />
+    <Compile Include="Assets\Game\dechetcrush\DechetCrush.cs" />
+    <Compile Include="Assets\Game\dechetcrush\DechetData.cs" />
+    <Compile Include="Assets\Game\quizzimages\ImageAnswer.cs" />
+    <Compile Include="Assets\Game\quizzimages\QuizzImages.cs" />
+    <Compile Include="Assets\Game\quizztexte\QuizzTextes.cs" />
+    <Compile Include="Assets\Game\quizztexte\TextAnswer.cs" />
+    <Compile Include="Assets\Game\quizztexte\TextQuestion.cs" />
+    <Compile Include="Assets\Game\reportage\Reportage.cs" />
     <Compile Include="Assets\Lib\Arcolib\Samples\SimpleBarcodeSetup.cs" />
     <Compile Include="Assets\Lib\Arcolib\Samples\SimpleFeaturesSetup.cs" />
     <Compile Include="Assets\Lib\Arcolib\Samples\SimpleImageInput.cs" />
@@ -126,9 +125,23 @@
     <Compile Include="Assets\Lib\Arcolib\Scripts\Integration\WebcamTextureInput.cs" />
     <Compile Include="Assets\Lib\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Lib\Demigiant\DOTween\Examples\Sequences.cs" />
+    <Compile Include="Assets\Lib\OSCMaster\OSCControllable.cs" />
+    <Compile Include="Assets\Lib\OSCMaster\OSCMaster.cs" />
+    <Compile Include="Assets\Lib\OSCMaster\OSCMetadata.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSC\OSCBundle.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSC\OSCClient.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSC\OSCMessage.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSC\OSCPacket.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSC\OSCServer.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSC\OSCThreadServer.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\OSCHandler.cs" />
+    <Compile Include="Assets\MediaPlayer\IMediaListener.cs" />
+    <Compile Include="Assets\MediaPlayer\MediaPlayer.cs" />
+    <Compile Include="Assets\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\AssetManager.cs" />
     <Compile Include="Assets\Scripts\RotateAuto.cs" />
     <Compile Include="Assets\Scripts\TextureReceiver.cs" />
+    <Compile Include="Assets\TabletIDManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Lib\Arcolib\Prefabs\Shaders\MatteShadow.shader" />

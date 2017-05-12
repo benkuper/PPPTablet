@@ -121,17 +121,17 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Lib\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween43">
       <HintPath>Assets\Lib\Demigiant\DOTween\DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>Assets\Lib\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\Lib\Demigiant\DOTween\DOTween46.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Lib\Demigiant\DOTween\DOTween.dll</HintPath>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Lib\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenEditor">
       <HintPath>Assets\Lib\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
@@ -150,6 +150,7 @@
     <Compile Include="Assets\Lib\Arcolib\Scripts\Editor\FeaturesModelGeneratorWindow.cs" />
     <Compile Include="Assets\Lib\Arcolib\Scripts\Editor\FeaturesTrackerInspectorEditor.cs" />
     <Compile Include="Assets\Lib\Arcolib\Scripts\Editor\InputSourceControllerEditor.cs" />
+    <Compile Include="Assets\Lib\UnityOSC\Editor\OSCHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Lib\Arcolib\Prefabs\Shaders\MatteShadow.shader" />
