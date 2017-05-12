@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Background.cs" />
+    <Compile Include="Assets\CamCapture.cs" />
     <Compile Include="Assets\Game\Common\QuizzAnswer.cs" />
     <Compile Include="Assets\Game\Common\QuizzGame.cs" />
     <Compile Include="Assets\Game\Game.cs" />
@@ -152,6 +153,8 @@
     <None Include="Assets\Lib\Demigiant\DOTween\DOTween50.xml" />
     <None Include="Assets\Lib\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
     <None Include="Assets\Lib\Demigiant\DOTween\readme.txt" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\build.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

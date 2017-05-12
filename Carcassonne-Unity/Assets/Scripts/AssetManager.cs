@@ -100,6 +100,7 @@ public class AssetManager : MonoBehaviour {
 
     public static string getGameMediaFile(string gameID, string mediaFile)
     {
+        if (!isInit) init();
         string path = basePath + "jeux/" + gameID + "/" + mediaFile;
         if (!File.Exists(path))
         {
@@ -111,7 +112,14 @@ public class AssetManager : MonoBehaviour {
 
     public static string getMediaPath(string mediaFile)
     {
+        if (!isInit) init();
         if (!File.Exists(basePath + "medias/" + mediaFile)) return "";
         return "file:///" + basePath + "medias/" + mediaFile;
+    }
+
+    public static string getFolderPath(string path)
+    {
+        if (!isInit) init();
+        return basePath + path;
     }
 }
