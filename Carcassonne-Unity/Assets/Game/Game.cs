@@ -12,7 +12,9 @@ public class Game : OSCControllable {
     public delegate void GameEndEvent(Game g);
     public GameEndEvent gameEndEvent;
 
-    Canvas _canvas;
+    protected Canvas _canvas;
+
+    public bool isPlaying;
 
     public void setID(string _id)
     {
@@ -51,11 +53,17 @@ public class Game : OSCControllable {
 
     public virtual void startGame()
     {
+
         //start really here
+        isPlaying = true;
     }
 
     public virtual void endGame()
     {
+        isPlaying = false;
+
+        DOTween.KillAll();
+
         ScoreManager.saveScore(this);
 
         if (_canvas != null)

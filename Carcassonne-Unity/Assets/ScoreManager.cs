@@ -131,6 +131,7 @@ public class ScoreManager : OSCControllable {
         CancelInvoke("hideCanvas");
 
         GameMaster.instance.setCurrentGame(null);
+        MediaPlayer.instance.stop();
 
         canvas.gameObject.SetActive(true);
         loadScores();
@@ -167,6 +168,7 @@ public class ScoreManager : OSCControllable {
         for (int i = 0; i < canvas.transform.childCount; i++)
         {
             Transform t = canvas.transform.GetChild(i);
+            t.DOKill();
             t.DOScale(Vector3.zero, .2f + i * .01f).SetDelay(i * .01f);
         }
 

@@ -103,9 +103,9 @@
     <Compile Include="Assets\Game\quizzimages\ImageAnswer.cs" />
     <Compile Include="Assets\Game\quizzimages\QuizzImages.cs" />
     <Compile Include="Assets\Game\quizztexte\QuizzTextes.cs" />
+    <Compile Include="Assets\Game\quizztexte\Reportage.cs" />
     <Compile Include="Assets\Game\quizztexte\TextAnswer.cs" />
     <Compile Include="Assets\Game\quizztexte\TextQuestion.cs" />
-    <Compile Include="Assets\Game\reportage\Reportage.cs" />
     <Compile Include="Assets\Lib\Arcolib\Samples\SimpleBarcodeSetup.cs" />
     <Compile Include="Assets\Lib\Arcolib\Samples\SimpleFeaturesSetup.cs" />
     <Compile Include="Assets\Lib\Arcolib\Samples\SimpleImageInput.cs" />
@@ -145,6 +145,7 @@
     <Compile Include="Assets\TabletIDManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Game\reportage\UnlitTextureColor.shader" />
     <None Include="Assets\Lib\Arcolib\Prefabs\Shaders\MatteShadow.shader" />
     <None Include="Assets\Lib\Arcolib\Prefabs\Shaders\OcclusionMask.shader" />
     <None Include="Assets\Lib\Demigiant\DOTween\DOTween.XML" />

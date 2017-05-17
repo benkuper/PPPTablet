@@ -19,6 +19,10 @@ public class DechetCrush : Game, ITextureReceiver,
     public float swipeDistance;
     public float swipeTime;
     public int maxAssociationParDechet;
+    public float tempsVidageRessources;	
+	public float pourcentGagneParAssociation;
+    
+    float ressourceCurrentValue;
 
     public GameObject candyPrefab;
     public GameObject associationPrefab;
@@ -36,24 +40,31 @@ public class DechetCrush : Game, ITextureReceiver,
 
     public CandyDechet[] candies;
     public Dictionary<string,Image> associationBars;
-
+    
     public Dictionary<string, int> associations;
 
     public Texture[] dechetTextures;
 
-    RawImage background;
     RawImage messageImage;
     Text timeText;
     Text ressourcesText;
     Text associationsText;
     Image ressourceValueBar;
     Transform associationPanel;
-
+    Text scoreText;
+     
     CandyDechet currentCandy;
     Vector3 screenPosAtDown;
 
-
     public bool animating;
+
+    public bool messageIsLocked;
+    public string[] associationMessageImages;
+
+    bool ressourceUnder20;
+    bool ressourceAt0;
+
+    public float minAssociationBarHeight;
 
     // Use this for initialization
     override public void Awake()
@@ -61,17 +72,24 @@ public class DechetCrush : Game, ITextureReceiver,
         base.Awake();
 
         candyContainer = transform.FindChild("Canvas/Candies");
-        background = transform.FindChild("Canvas/Background").GetComponent<RawImage>();
         messageImage = transform.FindChild("Canvas/MessagePanel/MessageImage").GetComponent<RawImage>();
         timeText = transform.FindChild("Canvas/TimePanel/Text").GetComponent<Text>();
         ressourcesText = transform.FindChild("Canvas/RessourcesPanel/Text").GetComponent<Text>();
         associationsText = transform.FindChild("Canvas/AssociationsPanel/Text").GetComponent<Text>();
         ressourceValueBar = transform.FindChild("Canvas/RessourcesBar/Value").GetComponent<Image>();
         associationPanel = transform.FindChild("Canvas/AssociationsBar");
+        scoreText = transform.FindChild("Canvas/ScorePanel/Text").GetComponent<Text>();
+
+        messageImage.transform.localScale = Vector3.zero;
     }
 
     public override void startGame()
     {
+        base.startGame();
+
+        associationMessageImages = AssetManager.getImagesInGameFolder(id, "messages/association");
+
+        ressourceCurrentValue = 1;
         timeAtLaunch = Time.time;
 
         numItems = tailleGrille * tailleGrille;
@@ -91,9 +109,19 @@ public class DechetCrush : Game, ITextureReceiver,
 
             Color c;
             ColorUtility.TryParseHtmlString(dechets[i].couleur, out c);
-            associationBars[dechets[i].id] = Instantiate(associationPrefab).GetComponent<Image>();
-            associationBars[dechets[i].id].transform.SetParent(associationPanel.transform, false);
-            associationBars[dechets[i].id].color = c;
+
+                
+            Image bar = Instantiate(associationPrefab).GetComponent<Image>();
+            associationBars[dechets[i].id] = bar;
+            float parentWidth = associationPanel.transform.GetComponent<RectTransform>().rect.width;
+            float parentHeight = associationPanel.transform.GetComponent<RectTransform>().rect.height;
+            bar.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, parentWidth / numDechets);
+            bar.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, minAssociationBarHeight);
+            bar.transform.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(i * parentWidth / numDechets, 0, 0),Quaternion.identity);
+            bar.transform.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(i * parentWidth / numDechets, 0, 0), Quaternion.identity);
+            bar.transform.FindChild("DechetImage").GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, bar.transform.FindChild("DechetImage").GetComponent<RectTransform>().rect.width);
+            bar.transform.SetParent(associationPanel.transform, false);
+            bar.color = c;
         }
 
         fillGrid();
@@ -128,6 +156,76 @@ public class DechetCrush : Game, ITextureReceiver,
             }
         }
     }
+
+
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (!isPlaying) return;
+
+        if (Input.GetMouseButton(0))
+        {
+            if (currentCandy != null)
+            {
+                Vector2 d = Input.mousePosition - screenPosAtDown;
+                if (Mathf.Abs(d.x) > swipeDistance)
+                {
+                    swipeCandy(currentCandy, d.x > 0 ? Direction.RIGHT : Direction.LEFT);
+                    setCurrentCandy(null);
+                }
+                else if (Mathf.Abs(d.y) > swipeDistance)
+                {
+                    swipeCandy(currentCandy, d.y > 0 ? Direction.UP : Direction.DOWN);
+                    setCurrentCandy(null);
+                }
+            }
+        }
+
+
+        float timeLeft = timeAtLaunch + tempsJeu - Time.time;
+
+        if (timeLeft <= 0) endGame();
+
+        int secondsLeft = (int)timeLeft % 60;
+        int minutesLeft = Mathf.FloorToInt(timeLeft / 60);
+        timeText.text = string.Format("{0,2}:{1,2}", minutesLeft, secondsLeft);
+
+        ressourceCurrentValue -= Time.deltaTime / tempsVidageRessources;
+        ressourceCurrentValue = Mathf.Max(ressourceCurrentValue, 0);
+
+        if (ressourceCurrentValue == 0)
+        {
+            if (!ressourceAt0)
+            {
+                showMessage("ressources/0", 2);
+                ressourceAt0 = true;
+            }
+        }
+        else
+        {
+            ressourceAt0 = false;
+            if (ressourceCurrentValue < .2f)
+            {
+                if (!ressourceUnder20)
+                {
+                    showMessage("ressources/20", 2);
+                    ressourceUnder20 = true;
+                }
+            }
+            else
+            {
+                ressourceUnder20 = false;
+            }
+        }
+
+        int p100 = (int)(ressourceCurrentValue * 100);
+        ressourcesText.text = p100 + "%";
+        ressourceValueBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, ressourceCurrentValue * ressourceValueBar.transform.parent.GetComponentInParent<RectTransform>().rect.height);
+    }
+
+
 
     public CandyDechet getCandy(int tx, int ty)
     {
@@ -306,8 +404,23 @@ public class DechetCrush : Game, ITextureReceiver,
 
     public void incrementAssociation(string tid)
     {
-        setAssociation(tid, associations[tid] + 1);
-      
+        float targetVal = Mathf.Min(ressourceCurrentValue + pourcentGagneParAssociation / 100, 1);
+        DOTween.To(() => ressourceCurrentValue, x => ressourceCurrentValue = x, targetVal, .3f);
+
+        if(associations[tid]+1 == maxAssociationParDechet)
+        {
+            showMessage("recyclage/" + tid);
+            score++;
+            scoreText.text = score.ToString();
+            setAssociation(tid, 0);
+        }
+        else
+        {
+            showMessage("association/" + associationMessageImages[UnityEngine.Random.Range(0, associationMessageImages.Length)]);
+            setAssociation(tid, associations[tid] + 1);
+        }
+
+
     }
 
     public void setAssociation(string id, int value)
@@ -324,43 +437,11 @@ public class DechetCrush : Game, ITextureReceiver,
         associationsText.text = associationsScore.ToString();
         float p = value * 1f / maxAssociationParDechet;
 
-        associationBars[id].transform.DOLocalMoveY(associationBars[id].transform.parent.GetComponent<RectTransform>().rect.height * p, .5f);
+        RectTransform parentRect = associationBars[id].transform.parent.GetComponent<RectTransform>();
+        RectTransform barRect = associationBars[id].GetComponent<RectTransform>();
+        DOTween.To(()=> barRect.rect.height,x=> barRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x), minAssociationBarHeight + (parentRect.rect.height - minAssociationBarHeight) * p,.5f);
     }
-
-
-
-    public override void Update()
-    {
-        base.Update();
-
-        if (Input.GetMouseButton(0))
-        {
-            if (currentCandy != null)
-            {
-                Vector2 d = Input.mousePosition - screenPosAtDown;
-                if (Mathf.Abs(d.x) > swipeDistance)
-                {
-                    swipeCandy(currentCandy, d.x > 0 ? Direction.RIGHT : Direction.LEFT);
-                    setCurrentCandy(null);
-                }
-                else if (Mathf.Abs(d.y) > swipeDistance)
-                {
-                    swipeCandy(currentCandy, d.y > 0 ? Direction.UP : Direction.DOWN);
-                    setCurrentCandy(null);
-                }
-            }
-        }
-
-        float timeLeft = timeAtLaunch + tempsJeu - Time.time;
-        int secondsLeft = (int)timeLeft % 60;
-        int minutesLeft = Mathf.FloorToInt(timeLeft / 60);
-        timeText.text = string.Format("{0,2}:{1,2}", minutesLeft, secondsLeft);
-
-        float percent = timeLeft / tempsJeu;
-        int p100 = (int)(percent * 100);
-        ressourcesText.text = p100 + "%";
-        ressourceValueBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, percent*ressourceValueBar.transform.parent.GetComponentInParent<RectTransform>().rect.height);
-    }
+    
 
 
 
@@ -394,6 +475,8 @@ public class DechetCrush : Game, ITextureReceiver,
             int.TryParse(texSplit[1], out tid);
             if (tid >= 0) dechetTextures[tid] = tex;
 
+            associationBars[dechets[tid].id].GetComponentInChildren<RawImage>().texture = tex;
+
             //fill already assign candies
             for (int i = 0; i < numItems; i++)
             {
@@ -405,7 +488,15 @@ public class DechetCrush : Game, ITextureReceiver,
                     }
                 }
             }
+        }else if(textureID == "message")
+        {
+            messageImage.texture = tex;
+            messageImage.transform.DOKill();
+            messageImage.transform.localScale = Vector3.zero;
+            messageImage.transform.DOScale(1, .6f).SetEase(Ease.OutElastic);
+            messageImage.transform.DOScale(0, .3f).SetDelay(2f);
         }
+              
 
     }
 
@@ -425,4 +516,23 @@ public class DechetCrush : Game, ITextureReceiver,
         screenPosAtDown = eventData.position;
 
     }
+
+    public void showMessage(string path, float lockTime = 0)
+    {
+        if (messageIsLocked) return;
+
+        StartCoroutine(AssetManager.loadGameTexture(id, "messages/"+path + ".png", "message", this));
+        if(lockTime > 0)
+        {
+            messageIsLocked = true;
+            Invoke("unlockMessage", lockTime);
+        }
+
+    }
+
+    public void unlockMessage()
+    {
+        messageIsLocked = false;
+    }
+   
 }

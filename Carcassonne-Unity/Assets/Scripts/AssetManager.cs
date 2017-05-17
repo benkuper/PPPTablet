@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AssetManager : MonoBehaviour {
 
@@ -75,7 +76,10 @@ public class AssetManager : MonoBehaviour {
         string path = basePath + "jeux/" + gameID + "/" + assetPath;
         WWW www = null;
         if (File.Exists(path)) www = new WWW("file:///" + path);
-
+        else
+        {
+            Debug.Log("File not found : " + path);
+        }
         yield return www;
 
         if (www != null) receiver.textureReady(texID, www.texture);
@@ -89,7 +93,10 @@ public class AssetManager : MonoBehaviour {
         string path = basePath + assetPath;
         WWW www = null;
         if (File.Exists(path)) www = new WWW("file:///" + path);
-
+        else
+        {
+            Debug.Log("File not found : " + path);
+        }
         yield return www;
 
         if (www != null) receiver.textureReady(texID, www.texture);
@@ -121,5 +128,19 @@ public class AssetManager : MonoBehaviour {
     {
         if (!isInit) init();
         return basePath + path;
+    }
+
+    public static string[] getImagesInGameFolder(string gameID, string folderPath)
+    {
+        string path = basePath + "jeux/" + gameID + "/" + folderPath;
+        string[] files = Directory.GetFiles(path);
+        List<string> imageFiles = new List<string>();
+        foreach(string f in files)
+        {
+            
+            if(Path.GetExtension(f).ToLower() == ".png") imageFiles.Add(Path.GetFileNameWithoutExtension(f));
+        }
+
+        return imageFiles.ToArray();
     }
 }

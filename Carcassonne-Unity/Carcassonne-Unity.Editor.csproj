@@ -153,6 +153,7 @@
     <Compile Include="Assets\Lib\UnityOSC\Editor\OSCHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Game\reportage\UnlitTextureColor.shader" />
     <None Include="Assets\Lib\Arcolib\Prefabs\Shaders\MatteShadow.shader" />
     <None Include="Assets\Lib\Arcolib\Prefabs\Shaders\OcclusionMask.shader" />
     <None Include="Assets\Lib\Demigiant\DOTween\DOTween.XML" />
