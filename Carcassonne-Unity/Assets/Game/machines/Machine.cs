@@ -4,32 +4,26 @@ using UnityEngine;
 
 public class Machine : MonoBehaviour
 {
-    public Transform[] outsideObjects;
     public Transform[] dechets;
+    
+    Transform transformer;
 
-
-    public float rotationX;
-    public float rotationY;
-    public float positionX;
-    public float positionY;
-    public float positionZ;
-    public float scale;
-
-    // Use this for initialization
-    void Start () {
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void loadMachineSettings()
+    private void Awake()
     {
-        transform.Find("transformer").localRotation = Quaternion.Euler(rotationX, rotationY, 0);
-        transform.Find("transformer").localPosition = new Vector3(positionX, positionY, positionZ);
-        transform.Find("transformer").localScale = Vector3.one * scale;
+        setDechets(false);
+
+    }
+
+
+    public void loadMachineSettings(MachineData data)
+    {
+
+        transformer = transform.Find("transformer");
+        Debug.Log("Transformer " + (transformer != null) + "/" + (data != null));
+        Debug.Log(" > " +data.nom);
+        transformer.localRotation = Quaternion.Euler(data.rotationX, data.rotationY, 0);
+        transformer.localPosition = new Vector3(data.positionX, data.positionY, data.positionZ);
+        transformer.localScale = Vector3.one * data.scale;
     }
 
     public void setDechets(bool value)
@@ -39,12 +33,5 @@ public class Machine : MonoBehaviour
             d.gameObject.SetActive(value);
         }
     }
-
-    public void setOutside(bool value)
-    {
-        foreach(Transform d in outsideObjects)
-        {
-            d.gameObject.SetActive(value);
-        }
-    }
+   
 }

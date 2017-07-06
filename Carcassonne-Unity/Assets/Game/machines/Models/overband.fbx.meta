@@ -59,6 +59,7 @@ ModelImporter:
     100102: pCube18
     100104: pCube19
     100106: pCube20
+    100108: cubes
     400000: _Documents_Pro_Projects_PPP_PPPTablet_Resources_2f27bec377875a3e381345eea1d40f19_stl
     400002: back
     400004: //RootNode
@@ -113,6 +114,7 @@ ModelImporter:
     400102: pCube18
     400104: pCube19
     400106: pCube20
+    400108: cubes
     2300000: pCube1
     2300002: pCube10
     2300004: pCube2
@@ -275,7 +277,115 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: back
+        weight: 1
+      - path: cubes
+        weight: 1
+      - path: cubes/pCube13
+        weight: 1
+      - path: cubes/pCube14
+        weight: 1
+      - path: cubes/pCube15
+        weight: 1
+      - path: cubes/pCube16
+        weight: 1
+      - path: cubes/pCube17
+        weight: 1
+      - path: cubes/pCube18
+        weight: 1
+      - path: cubes/pCube19
+        weight: 1
+      - path: cubes/pCube20
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube2
+        weight: 1
+      - path: pCube3
+        weight: 1
+      - path: pCube4
+        weight: 1
+      - path: pCube12
+        weight: 1
+      - path: pCube12/polySurface4
+        weight: 1
+      - path: pCube12/polySurface5
+        weight: 1
+      - path: pCylinder1
+        weight: 1
+      - path: pCylinder1/pCube5
+        weight: 1
+      - path: pCylinder1/pCube6
+        weight: 1
+      - path: pCylinder1/pCube7
+        weight: 1
+      - path: pCylinder1/pCube8
+        weight: 1
+      - path: pCylinder1/pCube9
+        weight: 1
+      - path: pCylinder1/pCube10
+        weight: 1
+      - path: pCylinder1/pTorus1
+        weight: 1
+      - path: pCylinder1/pTorus1/pCylinder5
+        weight: 1
+      - path: pCylinder1/pTorus2
+        weight: 1
+      - path: pCylinder1/pTorus2/pCylinder4
+        weight: 1
+      - path: pCylinder1/pTorus3
+        weight: 1
+      - path: pCylinder1/pTorus3/pCylinder3
+        weight: 1
+      - path: pCylinder1/pTorus4
+        weight: 1
+      - path: pCylinder1/pTorus4/pCylinder2
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface1/pCylinder6
+        weight: 1
+      - path: polySurface1/polySurface2
+        weight: 1
+      - path: polySurface3
+        weight: 1
+      - path: polySurface3/pCylinder6 1
+        weight: 1
+      - path: polySurface3/polySurface2 1
+        weight: 1
+      - path: pPlane1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

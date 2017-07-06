@@ -22,6 +22,18 @@ ModelImporter:
     100028: pCylinder6
     100030: polySurface2
     100032: separateur
+    100034: cubes
+    100036: pCube1
+    100038: pCube10
+    100040: pCube11
+    100042: pCube2
+    100044: pCube3
+    100046: pCube4
+    100048: pCube5
+    100050: pCube6
+    100052: pCube7
+    100054: pCube8
+    100056: pCube9
     400000: barres
     400002: base
     400004: cam_derriere
@@ -39,6 +51,18 @@ ModelImporter:
     400028: pCylinder6
     400030: polySurface2
     400032: separateur
+    400034: cubes
+    400036: pCube1
+    400038: pCube10
+    400040: pCube11
+    400042: pCube2
+    400044: pCube3
+    400046: pCube4
+    400048: pCube5
+    400050: pCube6
+    400052: pCube7
+    400054: pCube8
+    400056: pCube9
     2300000: base
     2300002: cam_derriere
     2300004: cam_devant
@@ -51,6 +75,17 @@ ModelImporter:
     2300018: pCylinder6
     2300020: polySurface2
     2300022: separateur
+    2300024: pCube1
+    2300026: pCube10
+    2300028: pCube11
+    2300030: pCube2
+    2300032: pCube3
+    2300034: pCube4
+    2300036: pCube5
+    2300038: pCube6
+    2300040: pCube7
+    2300042: pCube8
+    2300044: pCube9
     3300000: base
     3300002: cam_derriere
     3300004: cam_devant
@@ -63,6 +98,17 @@ ModelImporter:
     3300018: pCylinder6
     3300020: polySurface2
     3300022: separateur
+    3300024: pCube1
+    3300026: pCube10
+    3300028: pCube11
+    3300030: pCube2
+    3300032: pCube3
+    3300034: pCube4
+    3300036: pCube5
+    3300038: pCube6
+    3300040: pCube7
+    3300042: pCube8
+    3300044: pCube9
     4300000: convoyeur
     4300002: overband:polySurface2
     4300004: overband:pCylinder6
@@ -75,6 +121,17 @@ ModelImporter:
     4300018: pCylinder6
     4300020: cam_devant
     4300022: cam_derriere
+    4300024: pCube1
+    4300026: pCube2
+    4300028: pCube3
+    4300030: pCube4
+    4300032: pCube5
+    4300034: pCube6
+    4300036: pCube7
+    4300038: pCube8
+    4300040: pCube9
+    4300042: pCube10
+    4300044: pCube11
     7400000: Take 001
     9500000: //RootNode
   materials:
@@ -104,7 +161,7 @@ ModelImporter:
       name: Take 001
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 133
+      lastFrame: 115
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -151,6 +208,30 @@ ModelImporter:
         weight: 1
       - path: convoyeur_trioptique/polySurface2
         weight: 1
+      - path: cubes
+        weight: 1
+      - path: cubes/pCube1
+        weight: 1
+      - path: cubes/pCube2
+        weight: 1
+      - path: cubes/pCube3
+        weight: 1
+      - path: cubes/pCube4
+        weight: 1
+      - path: cubes/pCube5
+        weight: 1
+      - path: cubes/pCube6
+        weight: 1
+      - path: cubes/pCube7
+        weight: 1
+      - path: cubes/pCube8
+        weight: 1
+      - path: cubes/pCube9
+        weight: 1
+      - path: cubes/pCube10
+        weight: 1
+      - path: cubes/pCube11
+        weight: 1
       - path: mur_fond
         weight: 1
       - path: mur_fond/mur_derriere
@@ -165,7 +246,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.8
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

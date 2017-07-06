@@ -21,6 +21,28 @@ ModelImporter:
     100026: tube1
     100028: tube2
     100030: tube3
+    100032: back
+    100034: group
+    100036: pasted__cubes
+    100038: pasted__pCube10
+    100040: pasted__pCube11
+    100042: pasted__pCube12
+    100044: pasted__pCube13
+    100046: pasted__pCube14
+    100048: pasted__pCube15
+    100050: pasted__pCube16
+    100052: pasted__pCube17
+    100054: pasted__pCube18
+    100056: pasted__pCube19
+    100058: pasted__pCube20
+    100060: pasted__pCube21
+    100062: pasted__pCube22
+    100064: pasted__pCube23
+    100066: pasted__pCube24
+    100068: pasted__pCube7
+    100070: pasted__pCube8
+    100072: pasted__pCube9
+    100074: cubes
     400000: _Documents_Pro_Projects_PPP_PPPTablet_Resources_197cb3f971587b74324b26c711d3ce64_stl
     400002: //RootNode
     400004: boite_derriere
@@ -37,6 +59,28 @@ ModelImporter:
     400026: tube1
     400028: tube2
     400030: tube3
+    400032: back
+    400034: group
+    400036: pasted__cubes
+    400038: pasted__pCube10
+    400040: pasted__pCube11
+    400042: pasted__pCube12
+    400044: pasted__pCube13
+    400046: pasted__pCube14
+    400048: pasted__pCube15
+    400050: pasted__pCube16
+    400052: pasted__pCube17
+    400054: pasted__pCube18
+    400056: pasted__pCube19
+    400058: pasted__pCube20
+    400060: pasted__pCube21
+    400062: pasted__pCube22
+    400064: pasted__pCube23
+    400066: pasted__pCube24
+    400068: pasted__pCube7
+    400070: pasted__pCube8
+    400072: pasted__pCube9
+    400074: cubes
     2300000: boite_derriere
     2300002: boite_devant
     2300004: convoyeur1
@@ -51,6 +95,24 @@ ModelImporter:
     2300022: tube1
     2300024: tube2
     2300026: tube3
+    2300028: pasted__pCube10
+    2300030: pasted__pCube11
+    2300032: pasted__pCube12
+    2300034: pasted__pCube13
+    2300036: pasted__pCube14
+    2300038: pasted__pCube15
+    2300040: pasted__pCube16
+    2300042: pasted__pCube17
+    2300044: pasted__pCube18
+    2300046: pasted__pCube19
+    2300048: pasted__pCube20
+    2300050: pasted__pCube21
+    2300052: pasted__pCube22
+    2300054: pasted__pCube23
+    2300056: pasted__pCube24
+    2300058: pasted__pCube7
+    2300060: pasted__pCube8
+    2300062: pasted__pCube9
     3300000: boite_derriere
     3300002: boite_devant
     3300004: convoyeur1
@@ -65,6 +127,24 @@ ModelImporter:
     3300022: tube1
     3300024: tube2
     3300026: tube3
+    3300028: pasted__pCube10
+    3300030: pasted__pCube11
+    3300032: pasted__pCube12
+    3300034: pasted__pCube13
+    3300036: pasted__pCube14
+    3300038: pasted__pCube15
+    3300040: pasted__pCube16
+    3300042: pasted__pCube17
+    3300044: pasted__pCube18
+    3300046: pasted__pCube19
+    3300048: pasted__pCube20
+    3300050: pasted__pCube21
+    3300052: pasted__pCube22
+    3300054: pasted__pCube23
+    3300056: pasted__pCube24
+    3300058: pasted__pCube7
+    3300060: pasted__pCube8
+    3300062: pasted__pCube9
     4300000: convoyeur1
     4300002: polySurface2
     4300004: pCylinder6
@@ -79,6 +159,25 @@ ModelImporter:
     4300022: boite_derriere
     4300024: boite_devant
     4300026: pCylinder14
+    4300028: pasted__pCube7
+    4300030: pasted__pCube8
+    4300032: pasted__pCube9
+    4300034: pasted__pCube10
+    4300036: pasted__pCube11
+    4300038: pasted__pCube12
+    4300040: pasted__pCube13
+    4300042: pasted__pCube14
+    4300044: pasted__pCube15
+    4300046: pasted__pCube16
+    4300048: pasted__pCube17
+    4300050: pasted__pCube18
+    4300052: pasted__pCube19
+    4300054: pasted__pCube20
+    4300056: pasted__pCube21
+    4300058: pasted__pCube22
+    4300060: pasted__pCube23
+    4300062: pasted__pCube24
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -102,7 +201,107 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: _Documents_Pro_Projects_PPP_PPPTablet_Resources_197cb3f971587b74324b26c711d3ce64_stl
+        weight: 1
+      - path: back
+        weight: 1
+      - path: boite_derriere
+        weight: 1
+      - path: boite_devant
+        weight: 1
+      - path: convoyeur1
+        weight: 1
+      - path: convoyeur1/pCylinder6
+        weight: 1
+      - path: convoyeur1/polySurface2
+        weight: 1
+      - path: convoyeur2
+        weight: 1
+      - path: convoyeur2/convoyeur2_polySurface2
+        weight: 1
+      - path: convoyeur2/pCylinder6 1
+        weight: 1
+      - path: cubes
+        weight: 1
+      - path: cubes/pasted__pCube7
+        weight: 1
+      - path: cubes/pasted__pCube8
+        weight: 1
+      - path: cubes/pasted__pCube9
+        weight: 1
+      - path: cubes/pasted__pCube10
+        weight: 1
+      - path: cubes/pasted__pCube11
+        weight: 1
+      - path: cubes/pasted__pCube12
+        weight: 1
+      - path: cubes/pasted__pCube13
+        weight: 1
+      - path: cubes/pasted__pCube14
+        weight: 1
+      - path: cubes/pasted__pCube15
+        weight: 1
+      - path: cubes/pasted__pCube16
+        weight: 1
+      - path: cubes/pasted__pCube17
+        weight: 1
+      - path: cubes/pasted__pCube18
+        weight: 1
+      - path: cubes/pasted__pCube19
+        weight: 1
+      - path: cubes/pasted__pCube20
+        weight: 1
+      - path: cubes/pasted__pCube21
+        weight: 1
+      - path: cubes/pasted__pCube22
+        weight: 1
+      - path: cubes/pasted__pCube23
+        weight: 1
+      - path: cubes/pasted__pCube24
+        weight: 1
+      - path: pCylinder14
+        weight: 1
+      - path: tambour_derrier
+        weight: 1
+      - path: tambour_devant
+        weight: 1
+      - path: tube1
+        weight: 1
+      - path: tube2
+        weight: 1
+      - path: tube3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

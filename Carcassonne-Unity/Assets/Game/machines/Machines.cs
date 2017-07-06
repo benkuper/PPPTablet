@@ -4,6 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using Vexpot.Arcolib;
 using DG.Tweening;
+using System;
+
+
+[Serializable]
+public class MachineData
+{
+    public string nom;
+    public float positionX;
+    public float positionY;
+    public float positionZ;
+    public float rotationX;
+    public float rotationY;
+    public float scale;
+}
 
 public class Machines : Game {
 
@@ -15,7 +29,9 @@ public class Machines : Game {
     RawImage camImage;
     Text countDown;
 
-    public Machine[] machines;
+    public Machine[] machinePrefabs;
+    public MachineData[] machines;
+
     Machine activeMachine;
 
     public Toggle outside;
@@ -24,10 +40,12 @@ public class Machines : Game {
     public Material[] outsideMats;
     public Material metalMat;
     public Color insideColor;
+    public Color dechetsColor;
 
     public override void Awake()
     {
         base.Awake();
+      
         camImage = _canvas.transform.Find("CamImage").GetComponent<RawImage>();
         countDown = _canvas.transform.Find("Countdown").GetComponent<Text>();
 
@@ -38,12 +56,20 @@ public class Machines : Game {
 
         outside.isOn = true;
         dechetsActive.isOn = false;
+        updateMatColor();
 
-        foreach (Machine m in machines)
+
+        foreach (Machine m in machinePrefabs)
         {
             m.gameObject.SetActive(false);
            
         }
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        
     }
 
     public override void launchGame()
@@ -53,6 +79,8 @@ public class Machines : Game {
 
         bm.init();
         camImage.texture = bm.camInput.texture;
+
+        for (int i = 0; i < machinePrefabs.Length; i++) machinePrefabs[i].loadMachineSettings(machines[i]);
     }
 
     public override void Update()
@@ -73,9 +101,9 @@ public class Machines : Game {
     public void codeDetected(Symbol s)
     {
         AudioPlayer.instance.play("bip.mp3");
-        int targetID = s.id % machines.Length;
-        setActiveMachine(machines[targetID]);
-        
+        int targetID = s.id % machinePrefabs.Length;
+        Debug.Log("Id");
+        setActiveMachine(machinePrefabs[targetID]);
     }
 
     public void codeUndetected(Symbol s)
@@ -86,11 +114,11 @@ public class Machines : Game {
 
     public void codeUpdated(Symbol s)
     {
-        int targetID = s.id % machines.Length;
-        if (machines[targetID] == activeMachine)
+        int targetID = s.id % machinePrefabs.Length;
+        if (machinePrefabs[targetID] == activeMachine)
         {
             s.ApplyTransformMatrixTo(activeMachine.transform);
-            activeMachine.loadMachineSettings();
+            //activeMachine.loadMachineSettings();
         }
     }
 
@@ -114,13 +142,27 @@ public class Machines : Game {
     public void setOutside(bool value)
     {
         foreach (Material m in outsideMats) m.DOFloat(value ?0:1f, "_Cutoff", 1);
-        metalMat.DOColor(value ?Color.black:insideColor, "_EmissionColor", 1);
-        //if (activeMachine != null) activeMachine.setOutside(outside.isOn);
+
+        updateMatColor();
     }
 
     public void setDechets(bool value)
     {
         Debug.Log("Set dechets :" + value + ", machine is active ? " + (activeMachine != null));
-        if (activeMachine != null) activeMachine.setDechets(dechetsActive.isOn);
+       foreach(Machine m in machinePrefabs) m.setDechets(dechetsActive.isOn);
+
+        updateMatColor();
+    }
+
+    public void updateMatColor()
+    {
+        Color tc = Color.black;
+        if(!outside.isOn)
+        {
+            if (dechetsActive.isOn) tc = dechetsColor;
+            else tc = insideColor;            
+        }
+
+        metalMat.DOColor(tc, "_EmissionColor", 1);
     }
 }

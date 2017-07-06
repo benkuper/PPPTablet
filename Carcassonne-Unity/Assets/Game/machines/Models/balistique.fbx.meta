@@ -103,6 +103,27 @@ ModelImporter:
     100190: convoyeur
     100192: overband:pCylinder6
     100194: overband:polySurface2
+    100196: pCube27
+    100198: pCube28
+    100200: pCube29
+    100202: pCube30
+    100204: pCube31
+    100206: pCube32
+    100208: pCube33
+    100210: pCube34
+    100212: pCube35
+    100214: pCube36
+    100216: pCube37
+    100218: pCube38
+    100220: pCube39
+    100222: pCube40
+    100224: pCube41
+    100226: pCube42
+    100228: pCube43
+    100230: pCube44
+    100232: pCube45
+    100234: pCube46
+    100236: cubes
     400000: //RootNode
     400002: group1
     400004: group2
@@ -201,6 +222,27 @@ ModelImporter:
     400190: convoyeur
     400192: overband:pCylinder6
     400194: overband:polySurface2
+    400196: pCube27
+    400198: pCube28
+    400200: pCube29
+    400202: pCube30
+    400204: pCube31
+    400206: pCube32
+    400208: pCube33
+    400210: pCube34
+    400212: pCube35
+    400214: pCube36
+    400216: pCube37
+    400218: pCube38
+    400220: pCube39
+    400222: pCube40
+    400224: pCube41
+    400226: pCube42
+    400228: pCube43
+    400230: pCube44
+    400232: pCube45
+    400234: pCube46
+    400236: cubes
     2300000: pCube10
     2300002: pCube10 1
     2300004: pCube10 2
@@ -293,6 +335,27 @@ ModelImporter:
     2300178: convoyeur
     2300180: overband:pCylinder6
     2300182: overband:polySurface2
+    2300184: pCube27
+    2300186: pCube28
+    2300188: pCube29
+    2300190: pCube30
+    2300192: pCube31
+    2300194: pCube32
+    2300196: pCube33
+    2300198: pCube34
+    2300200: pCube35
+    2300202: pCube36
+    2300204: pCube37
+    2300206: pCube38
+    2300208: pCube39
+    2300210: pCube40
+    2300212: pCube41
+    2300214: pCube42
+    2300216: pCube43
+    2300218: pCube44
+    2300220: pCube45
+    2300222: pCube46
+    2300224: //RootNode
     3300000: pCube10
     3300002: pCube10 1
     3300004: pCube10 2
@@ -385,6 +448,27 @@ ModelImporter:
     3300178: convoyeur
     3300180: overband:pCylinder6
     3300182: overband:polySurface2
+    3300184: pCube27
+    3300186: pCube28
+    3300188: pCube29
+    3300190: pCube30
+    3300192: pCube31
+    3300194: pCube32
+    3300196: pCube33
+    3300198: pCube34
+    3300200: pCube35
+    3300202: pCube36
+    3300204: pCube37
+    3300206: pCube38
+    3300208: pCube39
+    3300210: pCube40
+    3300212: pCube41
+    3300214: pCube42
+    3300216: pCube43
+    3300218: pCube44
+    3300220: pCube45
+    3300222: pCube46
+    3300224: //RootNode
     4300000: polySurface2
     4300002: polySurface3
     4300004: pCube6
@@ -477,7 +561,28 @@ ModelImporter:
     4300178: overband:pCylinder6
     4300180: balistique_derriere
     4300182: balistique_devant
+    4300184: pCube27
+    4300186: pCube28
+    4300188: pCube29
+    4300190: pCube30
+    4300192: pCube31
+    4300194: pCube32
+    4300196: pCube33
+    4300198: pCube34
+    4300200: pCube35
+    4300202: pCube36
+    4300204: pCube37
+    4300206: pCube38
+    4300208: pCube39
+    4300210: pCube40
+    4300212: pCube41
+    4300214: pCube42
+    4300216: pCube43
+    4300218: pCube44
+    4300220: pCube45
+    4300222: pCube46
     7400000: Take 001
+    7400002: Take 001 (1)
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -486,7 +591,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleCurves: 0
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
@@ -495,7 +600,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -506,7 +611,7 @@ ModelImporter:
       name: Take 001
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 133
+      lastFrame: 72
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -529,191 +634,237 @@ ModelImporter:
       transformMask:
       - path: 
         weight: 1
-      - path: group1
+      - path: balistique_derriere
         weight: 1
-      - path: group1/pCube6
+      - path: balistique_derriere/balistique_devant
         weight: 1
-      - path: group1/pCube6/pCube7 2
+      - path: barres
         weight: 1
-      - path: group1/pCube6/pCube8 2
+      - path: barres/group1
         weight: 1
-      - path: group1/pCube6/pCube9 2
+      - path: barres/group1/pCube6
         weight: 1
-      - path: group1/pCube6/pCube10 2
+      - path: barres/group1/pCube6/pCube7 2
         weight: 1
-      - path: group1/pCube6/pCube11 2
+      - path: barres/group1/pCube6/pCube8 2
         weight: 1
-      - path: group1/pCube6/pCube12 2
+      - path: barres/group1/pCube6/pCube9 2
         weight: 1
-      - path: group1/pCube6/pCube13 2
+      - path: barres/group1/pCube6/pCube10 2
         weight: 1
-      - path: group1/pCube6/pCube14 2
+      - path: barres/group1/pCube6/pCube11 2
         weight: 1
-      - path: group1/pCube6/pCube15 2
+      - path: barres/group1/pCube6/pCube12 2
         weight: 1
-      - path: group1/pCube6/pCube16 2
+      - path: barres/group1/pCube6/pCube13 2
         weight: 1
-      - path: group1/pCube6/pCube17 2
+      - path: barres/group1/pCube6/pCube14 2
         weight: 1
-      - path: group1/pCube6/pCube18 2
+      - path: barres/group1/pCube6/pCube15 2
         weight: 1
-      - path: group1/pCube6/pCube19 2
+      - path: barres/group1/pCube6/pCube16 2
         weight: 1
-      - path: group1/pCube6/pCube20 2
+      - path: barres/group1/pCube6/pCube17 2
         weight: 1
-      - path: group1/pCube6/pCube21 2
+      - path: barres/group1/pCube6/pCube18 2
         weight: 1
-      - path: group1/pCube6/pCube22 2
+      - path: barres/group1/pCube6/pCube19 2
         weight: 1
-      - path: group1/pCube24
+      - path: barres/group1/pCube6/pCube20 2
         weight: 1
-      - path: group1/pCube24/pCube7
+      - path: barres/group1/pCube6/pCube21 2
         weight: 1
-      - path: group1/pCube24/pCube8
+      - path: barres/group1/pCube6/pCube22 2
         weight: 1
-      - path: group1/pCube24/pCube9
+      - path: barres/group1/pCube24
         weight: 1
-      - path: group1/pCube24/pCube10
+      - path: barres/group1/pCube24/pCube7
         weight: 1
-      - path: group1/pCube24/pCube11
+      - path: barres/group1/pCube24/pCube8
         weight: 1
-      - path: group1/pCube24/pCube12
+      - path: barres/group1/pCube24/pCube9
         weight: 1
-      - path: group1/pCube24/pCube13
+      - path: barres/group1/pCube24/pCube10
         weight: 1
-      - path: group1/pCube24/pCube14
+      - path: barres/group1/pCube24/pCube11
         weight: 1
-      - path: group1/pCube24/pCube15
+      - path: barres/group1/pCube24/pCube12
         weight: 1
-      - path: group1/pCube24/pCube16
+      - path: barres/group1/pCube24/pCube13
         weight: 1
-      - path: group1/pCube24/pCube17
+      - path: barres/group1/pCube24/pCube14
         weight: 1
-      - path: group1/pCube24/pCube18
+      - path: barres/group1/pCube24/pCube15
         weight: 1
-      - path: group1/pCube24/pCube19
+      - path: barres/group1/pCube24/pCube16
         weight: 1
-      - path: group1/pCube24/pCube20
+      - path: barres/group1/pCube24/pCube17
         weight: 1
-      - path: group1/pCube24/pCube21
+      - path: barres/group1/pCube24/pCube18
         weight: 1
-      - path: group1/pCube24/pCube22
+      - path: barres/group1/pCube24/pCube19
         weight: 1
-      - path: group1/pCube26
+      - path: barres/group1/pCube24/pCube20
         weight: 1
-      - path: group1/pCube26/pCube7 1
+      - path: barres/group1/pCube24/pCube21
         weight: 1
-      - path: group1/pCube26/pCube8 1
+      - path: barres/group1/pCube24/pCube22
         weight: 1
-      - path: group1/pCube26/pCube9 1
+      - path: barres/group1/pCube26
         weight: 1
-      - path: group1/pCube26/pCube10 1
+      - path: barres/group1/pCube26/pCube7 1
         weight: 1
-      - path: group1/pCube26/pCube11 1
+      - path: barres/group1/pCube26/pCube8 1
         weight: 1
-      - path: group1/pCube26/pCube12 1
+      - path: barres/group1/pCube26/pCube9 1
         weight: 1
-      - path: group1/pCube26/pCube13 1
+      - path: barres/group1/pCube26/pCube10 1
         weight: 1
-      - path: group1/pCube26/pCube14 1
+      - path: barres/group1/pCube26/pCube11 1
         weight: 1
-      - path: group1/pCube26/pCube15 1
+      - path: barres/group1/pCube26/pCube12 1
         weight: 1
-      - path: group1/pCube26/pCube16 1
+      - path: barres/group1/pCube26/pCube13 1
         weight: 1
-      - path: group1/pCube26/pCube17 1
+      - path: barres/group1/pCube26/pCube14 1
         weight: 1
-      - path: group1/pCube26/pCube18 1
+      - path: barres/group1/pCube26/pCube15 1
         weight: 1
-      - path: group1/pCube26/pCube19 1
+      - path: barres/group1/pCube26/pCube16 1
         weight: 1
-      - path: group1/pCube26/pCube20 1
+      - path: barres/group1/pCube26/pCube17 1
         weight: 1
-      - path: group1/pCube26/pCube21 1
+      - path: barres/group1/pCube26/pCube18 1
         weight: 1
-      - path: group1/pCube26/pCube22 1
+      - path: barres/group1/pCube26/pCube19 1
         weight: 1
-      - path: group2
+      - path: barres/group1/pCube26/pCube20 1
         weight: 1
-      - path: group2/pCube23
+      - path: barres/group1/pCube26/pCube21 1
         weight: 1
-      - path: group2/pCube23/pCube7 3
+      - path: barres/group1/pCube26/pCube22 1
         weight: 1
-      - path: group2/pCube23/pCube8 3
+      - path: barres/group2
         weight: 1
-      - path: group2/pCube23/pCube9 3
+      - path: barres/group2/pCube23
         weight: 1
-      - path: group2/pCube23/pCube10 3
+      - path: barres/group2/pCube23/pCube7 3
         weight: 1
-      - path: group2/pCube23/pCube11 3
+      - path: barres/group2/pCube23/pCube8 3
         weight: 1
-      - path: group2/pCube23/pCube12 3
+      - path: barres/group2/pCube23/pCube9 3
         weight: 1
-      - path: group2/pCube23/pCube13 3
+      - path: barres/group2/pCube23/pCube10 3
         weight: 1
-      - path: group2/pCube23/pCube14 3
+      - path: barres/group2/pCube23/pCube11 3
         weight: 1
-      - path: group2/pCube23/pCube15 3
+      - path: barres/group2/pCube23/pCube12 3
         weight: 1
-      - path: group2/pCube23/pCube16 3
+      - path: barres/group2/pCube23/pCube13 3
         weight: 1
-      - path: group2/pCube23/pCube17 3
+      - path: barres/group2/pCube23/pCube14 3
         weight: 1
-      - path: group2/pCube23/pCube18 3
+      - path: barres/group2/pCube23/pCube15 3
         weight: 1
-      - path: group2/pCube23/pCube19 3
+      - path: barres/group2/pCube23/pCube16 3
         weight: 1
-      - path: group2/pCube23/pCube20 3
+      - path: barres/group2/pCube23/pCube17 3
         weight: 1
-      - path: group2/pCube23/pCube21 3
+      - path: barres/group2/pCube23/pCube18 3
         weight: 1
-      - path: group2/pCube23/pCube22 3
+      - path: barres/group2/pCube23/pCube19 3
         weight: 1
-      - path: group2/pCube25
+      - path: barres/group2/pCube23/pCube20 3
         weight: 1
-      - path: group2/pCube25/pCube7 4
+      - path: barres/group2/pCube23/pCube21 3
         weight: 1
-      - path: group2/pCube25/pCube8 4
+      - path: barres/group2/pCube23/pCube22 3
         weight: 1
-      - path: group2/pCube25/pCube9 4
+      - path: barres/group2/pCube25
         weight: 1
-      - path: group2/pCube25/pCube10 4
+      - path: barres/group2/pCube25/pCube7 4
         weight: 1
-      - path: group2/pCube25/pCube11 4
+      - path: barres/group2/pCube25/pCube8 4
         weight: 1
-      - path: group2/pCube25/pCube12 4
+      - path: barres/group2/pCube25/pCube9 4
         weight: 1
-      - path: group2/pCube25/pCube13 4
+      - path: barres/group2/pCube25/pCube10 4
         weight: 1
-      - path: group2/pCube25/pCube14 4
+      - path: barres/group2/pCube25/pCube11 4
         weight: 1
-      - path: group2/pCube25/pCube15 4
+      - path: barres/group2/pCube25/pCube12 4
         weight: 1
-      - path: group2/pCube25/pCube16 4
+      - path: barres/group2/pCube25/pCube13 4
         weight: 1
-      - path: group2/pCube25/pCube17 4
+      - path: barres/group2/pCube25/pCube14 4
         weight: 1
-      - path: group2/pCube25/pCube18 4
+      - path: barres/group2/pCube25/pCube15 4
         weight: 1
-      - path: group2/pCube25/pCube19 4
+      - path: barres/group2/pCube25/pCube16 4
         weight: 1
-      - path: group2/pCube25/pCube20 4
+      - path: barres/group2/pCube25/pCube17 4
         weight: 1
-      - path: group2/pCube25/pCube21 4
+      - path: barres/group2/pCube25/pCube18 4
         weight: 1
-      - path: group2/pCube25/pCube22 4
+      - path: barres/group2/pCube25/pCube19 4
         weight: 1
-      - path: pCube5
+      - path: barres/group2/pCube25/pCube20 4
         weight: 1
-      - path: pCube5/polySurface2
+      - path: barres/group2/pCube25/pCube21 4
         weight: 1
-      - path: pCube5/polySurface3
+      - path: barres/group2/pCube25/pCube22 4
         weight: 1
-      - path: pCube5/transform1
+      - path: convoyeur
+        weight: 1
+      - path: convoyeur/overband:pCylinder6
+        weight: 1
+      - path: convoyeur/overband:polySurface2
+        weight: 1
+      - path: cubes
+        weight: 1
+      - path: cubes/pCube27
+        weight: 1
+      - path: cubes/pCube28
+        weight: 1
+      - path: cubes/pCube29
+        weight: 1
+      - path: cubes/pCube30
+        weight: 1
+      - path: cubes/pCube31
+        weight: 1
+      - path: cubes/pCube32
+        weight: 1
+      - path: cubes/pCube33
+        weight: 1
+      - path: cubes/pCube34
+        weight: 1
+      - path: cubes/pCube35
+        weight: 1
+      - path: cubes/pCube36
+        weight: 1
+      - path: cubes/pCube37
+        weight: 1
+      - path: cubes/pCube38
+        weight: 1
+      - path: cubes/pCube39
+        weight: 1
+      - path: cubes/pCube40
+        weight: 1
+      - path: cubes/pCube41
+        weight: 1
+      - path: cubes/pCube42
+        weight: 1
+      - path: cubes/pCube43
+        weight: 1
+      - path: cubes/pCube44
+        weight: 1
+      - path: cubes/pCube45
+        weight: 1
+      - path: cubes/pCube46
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

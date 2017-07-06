@@ -246,6 +246,10 @@ public class ScoreManager : OSCControllable {
             Text t = canvasVisite.transform.Find("Module" + (i + 1) + "/Score" + (tabID + 1)).GetComponent<Text>();
             t.text = visiteScores[tabID][i].ToString();
         }
+
+        Text tt = canvasVisite.transform.Find("Total/Score" + (tabID + 1)).GetComponent<Text>();
+        tt.text = (score1 + score2 + score3).ToString();
+
     }
 
     [OSCMethod("sendVisiteScore")]
@@ -263,6 +267,8 @@ public class ScoreManager : OSCControllable {
         m.Append(scoreModule2);
         m.Append(scoreModule3);
         OSCMaster.sendScoreMessage(m);
+
+        Debug.Log("Visite score sent for tablet " + TabletIDManager.getTabletID());
     }
 
     [OSCMethod("hide")]
