@@ -1,0 +1,763 @@
+fileFormatVersion: 2
+guid: 4a20b971988c56c4a94f551092f549b1
+timeCreated: 1496266098
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group1
+    100004: group2
+    100006: pCube10
+    100008: pCube10 1
+    100010: pCube10 2
+    100012: pCube10 3
+    100014: pCube10 4
+    100016: pCube11
+    100018: pCube11 1
+    100020: pCube11 2
+    100022: pCube11 3
+    100024: pCube11 4
+    100026: pCube12
+    100028: pCube12 1
+    100030: pCube12 2
+    100032: pCube12 3
+    100034: pCube12 4
+    100036: pCube13
+    100038: pCube13 1
+    100040: pCube13 2
+    100042: pCube13 3
+    100044: pCube13 4
+    100046: pCube14
+    100048: pCube14 1
+    100050: pCube14 2
+    100052: pCube14 3
+    100054: pCube14 4
+    100056: pCube15
+    100058: pCube15 1
+    100060: pCube15 2
+    100062: pCube15 3
+    100064: pCube15 4
+    100066: pCube16
+    100068: pCube16 1
+    100070: pCube16 2
+    100072: pCube16 3
+    100074: pCube16 4
+    100076: pCube17
+    100078: pCube17 1
+    100080: pCube17 2
+    100082: pCube17 3
+    100084: pCube17 4
+    100086: pCube18
+    100088: pCube18 1
+    100090: pCube18 2
+    100092: pCube18 3
+    100094: pCube18 4
+    100096: pCube19
+    100098: pCube19 1
+    100100: pCube19 2
+    100102: pCube19 3
+    100104: pCube19 4
+    100106: pCube20
+    100108: pCube20 1
+    100110: pCube20 2
+    100112: pCube20 3
+    100114: pCube20 4
+    100116: pCube21
+    100118: pCube21 1
+    100120: pCube21 2
+    100122: pCube21 3
+    100124: pCube21 4
+    100126: pCube22
+    100128: pCube22 1
+    100130: pCube22 2
+    100132: pCube22 3
+    100134: pCube22 4
+    100136: pCube23
+    100138: pCube24
+    100140: pCube25
+    100142: pCube26
+    100144: pCube5
+    100146: pCube6
+    100148: pCube7
+    100150: pCube7 1
+    100152: pCube7 2
+    100154: pCube7 3
+    100156: pCube7 4
+    100158: pCube8
+    100160: pCube8 1
+    100162: pCube8 2
+    100164: pCube8 3
+    100166: pCube8 4
+    100168: pCube9
+    100170: pCube9 1
+    100172: pCube9 2
+    100174: pCube9 3
+    100176: pCube9 4
+    100178: polySurface2
+    100180: polySurface3
+    100182: transform1
+    100184: balistique_derriere
+    100186: balistique_devant
+    100188: barres
+    100190: convoyeur
+    100192: overband:pCylinder6
+    100194: overband:polySurface2
+    400000: //RootNode
+    400002: group1
+    400004: group2
+    400006: pCube10
+    400008: pCube10 1
+    400010: pCube10 2
+    400012: pCube10 3
+    400014: pCube10 4
+    400016: pCube11
+    400018: pCube11 1
+    400020: pCube11 2
+    400022: pCube11 3
+    400024: pCube11 4
+    400026: pCube12
+    400028: pCube12 1
+    400030: pCube12 2
+    400032: pCube12 3
+    400034: pCube12 4
+    400036: pCube13
+    400038: pCube13 1
+    400040: pCube13 2
+    400042: pCube13 3
+    400044: pCube13 4
+    400046: pCube14
+    400048: pCube14 1
+    400050: pCube14 2
+    400052: pCube14 3
+    400054: pCube14 4
+    400056: pCube15
+    400058: pCube15 1
+    400060: pCube15 2
+    400062: pCube15 3
+    400064: pCube15 4
+    400066: pCube16
+    400068: pCube16 1
+    400070: pCube16 2
+    400072: pCube16 3
+    400074: pCube16 4
+    400076: pCube17
+    400078: pCube17 1
+    400080: pCube17 2
+    400082: pCube17 3
+    400084: pCube17 4
+    400086: pCube18
+    400088: pCube18 1
+    400090: pCube18 2
+    400092: pCube18 3
+    400094: pCube18 4
+    400096: pCube19
+    400098: pCube19 1
+    400100: pCube19 2
+    400102: pCube19 3
+    400104: pCube19 4
+    400106: pCube20
+    400108: pCube20 1
+    400110: pCube20 2
+    400112: pCube20 3
+    400114: pCube20 4
+    400116: pCube21
+    400118: pCube21 1
+    400120: pCube21 2
+    400122: pCube21 3
+    400124: pCube21 4
+    400126: pCube22
+    400128: pCube22 1
+    400130: pCube22 2
+    400132: pCube22 3
+    400134: pCube22 4
+    400136: pCube23
+    400138: pCube24
+    400140: pCube25
+    400142: pCube26
+    400144: pCube5
+    400146: pCube6
+    400148: pCube7
+    400150: pCube7 1
+    400152: pCube7 2
+    400154: pCube7 3
+    400156: pCube7 4
+    400158: pCube8
+    400160: pCube8 1
+    400162: pCube8 2
+    400164: pCube8 3
+    400166: pCube8 4
+    400168: pCube9
+    400170: pCube9 1
+    400172: pCube9 2
+    400174: pCube9 3
+    400176: pCube9 4
+    400178: polySurface2
+    400180: polySurface3
+    400182: transform1
+    400184: balistique_derriere
+    400186: balistique_devant
+    400188: barres
+    400190: convoyeur
+    400192: overband:pCylinder6
+    400194: overband:polySurface2
+    2300000: pCube10
+    2300002: pCube10 1
+    2300004: pCube10 2
+    2300006: pCube10 3
+    2300008: pCube10 4
+    2300010: pCube11
+    2300012: pCube11 1
+    2300014: pCube11 2
+    2300016: pCube11 3
+    2300018: pCube11 4
+    2300020: pCube12
+    2300022: pCube12 1
+    2300024: pCube12 2
+    2300026: pCube12 3
+    2300028: pCube12 4
+    2300030: pCube13
+    2300032: pCube13 1
+    2300034: pCube13 2
+    2300036: pCube13 3
+    2300038: pCube13 4
+    2300040: pCube14
+    2300042: pCube14 1
+    2300044: pCube14 2
+    2300046: pCube14 3
+    2300048: pCube14 4
+    2300050: pCube15
+    2300052: pCube15 1
+    2300054: pCube15 2
+    2300056: pCube15 3
+    2300058: pCube15 4
+    2300060: pCube16
+    2300062: pCube16 1
+    2300064: pCube16 2
+    2300066: pCube16 3
+    2300068: pCube16 4
+    2300070: pCube17
+    2300072: pCube17 1
+    2300074: pCube17 2
+    2300076: pCube17 3
+    2300078: pCube17 4
+    2300080: pCube18
+    2300082: pCube18 1
+    2300084: pCube18 2
+    2300086: pCube18 3
+    2300088: pCube18 4
+    2300090: pCube19
+    2300092: pCube19 1
+    2300094: pCube19 2
+    2300096: pCube19 3
+    2300098: pCube19 4
+    2300100: pCube20
+    2300102: pCube20 1
+    2300104: pCube20 2
+    2300106: pCube20 3
+    2300108: pCube20 4
+    2300110: pCube21
+    2300112: pCube21 1
+    2300114: pCube21 2
+    2300116: pCube21 3
+    2300118: pCube21 4
+    2300120: pCube22
+    2300122: pCube22 1
+    2300124: pCube22 2
+    2300126: pCube22 3
+    2300128: pCube22 4
+    2300130: pCube23
+    2300132: pCube24
+    2300134: pCube25
+    2300136: pCube26
+    2300138: pCube6
+    2300140: pCube7
+    2300142: pCube7 1
+    2300144: pCube7 2
+    2300146: pCube7 3
+    2300148: pCube7 4
+    2300150: pCube8
+    2300152: pCube8 1
+    2300154: pCube8 2
+    2300156: pCube8 3
+    2300158: pCube8 4
+    2300160: pCube9
+    2300162: pCube9 1
+    2300164: pCube9 2
+    2300166: pCube9 3
+    2300168: pCube9 4
+    2300170: polySurface2
+    2300172: polySurface3
+    2300174: balistique_derriere
+    2300176: balistique_devant
+    2300178: convoyeur
+    2300180: overband:pCylinder6
+    2300182: overband:polySurface2
+    3300000: pCube10
+    3300002: pCube10 1
+    3300004: pCube10 2
+    3300006: pCube10 3
+    3300008: pCube10 4
+    3300010: pCube11
+    3300012: pCube11 1
+    3300014: pCube11 2
+    3300016: pCube11 3
+    3300018: pCube11 4
+    3300020: pCube12
+    3300022: pCube12 1
+    3300024: pCube12 2
+    3300026: pCube12 3
+    3300028: pCube12 4
+    3300030: pCube13
+    3300032: pCube13 1
+    3300034: pCube13 2
+    3300036: pCube13 3
+    3300038: pCube13 4
+    3300040: pCube14
+    3300042: pCube14 1
+    3300044: pCube14 2
+    3300046: pCube14 3
+    3300048: pCube14 4
+    3300050: pCube15
+    3300052: pCube15 1
+    3300054: pCube15 2
+    3300056: pCube15 3
+    3300058: pCube15 4
+    3300060: pCube16
+    3300062: pCube16 1
+    3300064: pCube16 2
+    3300066: pCube16 3
+    3300068: pCube16 4
+    3300070: pCube17
+    3300072: pCube17 1
+    3300074: pCube17 2
+    3300076: pCube17 3
+    3300078: pCube17 4
+    3300080: pCube18
+    3300082: pCube18 1
+    3300084: pCube18 2
+    3300086: pCube18 3
+    3300088: pCube18 4
+    3300090: pCube19
+    3300092: pCube19 1
+    3300094: pCube19 2
+    3300096: pCube19 3
+    3300098: pCube19 4
+    3300100: pCube20
+    3300102: pCube20 1
+    3300104: pCube20 2
+    3300106: pCube20 3
+    3300108: pCube20 4
+    3300110: pCube21
+    3300112: pCube21 1
+    3300114: pCube21 2
+    3300116: pCube21 3
+    3300118: pCube21 4
+    3300120: pCube22
+    3300122: pCube22 1
+    3300124: pCube22 2
+    3300126: pCube22 3
+    3300128: pCube22 4
+    3300130: pCube23
+    3300132: pCube24
+    3300134: pCube25
+    3300136: pCube26
+    3300138: pCube6
+    3300140: pCube7
+    3300142: pCube7 1
+    3300144: pCube7 2
+    3300146: pCube7 3
+    3300148: pCube7 4
+    3300150: pCube8
+    3300152: pCube8 1
+    3300154: pCube8 2
+    3300156: pCube8 3
+    3300158: pCube8 4
+    3300160: pCube9
+    3300162: pCube9 1
+    3300164: pCube9 2
+    3300166: pCube9 3
+    3300168: pCube9 4
+    3300170: polySurface2
+    3300172: polySurface3
+    3300174: balistique_derriere
+    3300176: balistique_devant
+    3300178: convoyeur
+    3300180: overband:pCylinder6
+    3300182: overband:polySurface2
+    4300000: polySurface2
+    4300002: polySurface3
+    4300004: pCube6
+    4300006: pCube7
+    4300008: pCube20
+    4300010: pCube22
+    4300012: pCube13
+    4300014: pCube12
+    4300016: pCube19
+    4300018: pCube18
+    4300020: pCube17
+    4300022: pCube16
+    4300024: pCube15
+    4300026: pCube14
+    4300028: pCube21
+    4300030: pCube11
+    4300032: pCube10
+    4300034: pCube9
+    4300036: pCube8
+    4300038: pCube24
+    4300040: pCube7
+    4300042: pCube20
+    4300044: pCube22
+    4300046: pCube13
+    4300048: pCube12
+    4300050: pCube19
+    4300052: pCube18
+    4300054: pCube17
+    4300056: pCube16
+    4300058: pCube15
+    4300060: pCube14
+    4300062: pCube21
+    4300064: pCube11
+    4300066: pCube10
+    4300068: pCube9
+    4300070: pCube8
+    4300072: pCube26
+    4300074: pCube7
+    4300076: pCube20
+    4300078: pCube22
+    4300080: pCube13
+    4300082: pCube12
+    4300084: pCube19
+    4300086: pCube18
+    4300088: pCube17
+    4300090: pCube16
+    4300092: pCube15
+    4300094: pCube14
+    4300096: pCube21
+    4300098: pCube11
+    4300100: pCube10
+    4300102: pCube9
+    4300104: pCube8
+    4300106: pCube25
+    4300108: pCube7
+    4300110: pCube20
+    4300112: pCube22
+    4300114: pCube13
+    4300116: pCube12
+    4300118: pCube19
+    4300120: pCube18
+    4300122: pCube17
+    4300124: pCube16
+    4300126: pCube15
+    4300128: pCube14
+    4300130: pCube21
+    4300132: pCube11
+    4300134: pCube10
+    4300136: pCube9
+    4300138: pCube8
+    4300140: pCube23
+    4300142: pCube7
+    4300144: pCube20
+    4300146: pCube22
+    4300148: pCube13
+    4300150: pCube12
+    4300152: pCube19
+    4300154: pCube18
+    4300156: pCube17
+    4300158: pCube16
+    4300160: pCube15
+    4300162: pCube14
+    4300164: pCube21
+    4300166: pCube11
+    4300168: pCube10
+    4300170: pCube9
+    4300172: pCube8
+    4300174: convoyeur
+    4300176: overband:polySurface2
+    4300178: overband:pCylinder6
+    4300180: balistique_derriere
+    4300182: balistique_devant
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 133
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pCube6
+        weight: 1
+      - path: group1/pCube6/pCube7 2
+        weight: 1
+      - path: group1/pCube6/pCube8 2
+        weight: 1
+      - path: group1/pCube6/pCube9 2
+        weight: 1
+      - path: group1/pCube6/pCube10 2
+        weight: 1
+      - path: group1/pCube6/pCube11 2
+        weight: 1
+      - path: group1/pCube6/pCube12 2
+        weight: 1
+      - path: group1/pCube6/pCube13 2
+        weight: 1
+      - path: group1/pCube6/pCube14 2
+        weight: 1
+      - path: group1/pCube6/pCube15 2
+        weight: 1
+      - path: group1/pCube6/pCube16 2
+        weight: 1
+      - path: group1/pCube6/pCube17 2
+        weight: 1
+      - path: group1/pCube6/pCube18 2
+        weight: 1
+      - path: group1/pCube6/pCube19 2
+        weight: 1
+      - path: group1/pCube6/pCube20 2
+        weight: 1
+      - path: group1/pCube6/pCube21 2
+        weight: 1
+      - path: group1/pCube6/pCube22 2
+        weight: 1
+      - path: group1/pCube24
+        weight: 1
+      - path: group1/pCube24/pCube7
+        weight: 1
+      - path: group1/pCube24/pCube8
+        weight: 1
+      - path: group1/pCube24/pCube9
+        weight: 1
+      - path: group1/pCube24/pCube10
+        weight: 1
+      - path: group1/pCube24/pCube11
+        weight: 1
+      - path: group1/pCube24/pCube12
+        weight: 1
+      - path: group1/pCube24/pCube13
+        weight: 1
+      - path: group1/pCube24/pCube14
+        weight: 1
+      - path: group1/pCube24/pCube15
+        weight: 1
+      - path: group1/pCube24/pCube16
+        weight: 1
+      - path: group1/pCube24/pCube17
+        weight: 1
+      - path: group1/pCube24/pCube18
+        weight: 1
+      - path: group1/pCube24/pCube19
+        weight: 1
+      - path: group1/pCube24/pCube20
+        weight: 1
+      - path: group1/pCube24/pCube21
+        weight: 1
+      - path: group1/pCube24/pCube22
+        weight: 1
+      - path: group1/pCube26
+        weight: 1
+      - path: group1/pCube26/pCube7 1
+        weight: 1
+      - path: group1/pCube26/pCube8 1
+        weight: 1
+      - path: group1/pCube26/pCube9 1
+        weight: 1
+      - path: group1/pCube26/pCube10 1
+        weight: 1
+      - path: group1/pCube26/pCube11 1
+        weight: 1
+      - path: group1/pCube26/pCube12 1
+        weight: 1
+      - path: group1/pCube26/pCube13 1
+        weight: 1
+      - path: group1/pCube26/pCube14 1
+        weight: 1
+      - path: group1/pCube26/pCube15 1
+        weight: 1
+      - path: group1/pCube26/pCube16 1
+        weight: 1
+      - path: group1/pCube26/pCube17 1
+        weight: 1
+      - path: group1/pCube26/pCube18 1
+        weight: 1
+      - path: group1/pCube26/pCube19 1
+        weight: 1
+      - path: group1/pCube26/pCube20 1
+        weight: 1
+      - path: group1/pCube26/pCube21 1
+        weight: 1
+      - path: group1/pCube26/pCube22 1
+        weight: 1
+      - path: group2
+        weight: 1
+      - path: group2/pCube23
+        weight: 1
+      - path: group2/pCube23/pCube7 3
+        weight: 1
+      - path: group2/pCube23/pCube8 3
+        weight: 1
+      - path: group2/pCube23/pCube9 3
+        weight: 1
+      - path: group2/pCube23/pCube10 3
+        weight: 1
+      - path: group2/pCube23/pCube11 3
+        weight: 1
+      - path: group2/pCube23/pCube12 3
+        weight: 1
+      - path: group2/pCube23/pCube13 3
+        weight: 1
+      - path: group2/pCube23/pCube14 3
+        weight: 1
+      - path: group2/pCube23/pCube15 3
+        weight: 1
+      - path: group2/pCube23/pCube16 3
+        weight: 1
+      - path: group2/pCube23/pCube17 3
+        weight: 1
+      - path: group2/pCube23/pCube18 3
+        weight: 1
+      - path: group2/pCube23/pCube19 3
+        weight: 1
+      - path: group2/pCube23/pCube20 3
+        weight: 1
+      - path: group2/pCube23/pCube21 3
+        weight: 1
+      - path: group2/pCube23/pCube22 3
+        weight: 1
+      - path: group2/pCube25
+        weight: 1
+      - path: group2/pCube25/pCube7 4
+        weight: 1
+      - path: group2/pCube25/pCube8 4
+        weight: 1
+      - path: group2/pCube25/pCube9 4
+        weight: 1
+      - path: group2/pCube25/pCube10 4
+        weight: 1
+      - path: group2/pCube25/pCube11 4
+        weight: 1
+      - path: group2/pCube25/pCube12 4
+        weight: 1
+      - path: group2/pCube25/pCube13 4
+        weight: 1
+      - path: group2/pCube25/pCube14 4
+        weight: 1
+      - path: group2/pCube25/pCube15 4
+        weight: 1
+      - path: group2/pCube25/pCube16 4
+        weight: 1
+      - path: group2/pCube25/pCube17 4
+        weight: 1
+      - path: group2/pCube25/pCube18 4
+        weight: 1
+      - path: group2/pCube25/pCube19 4
+        weight: 1
+      - path: group2/pCube25/pCube20 4
+        weight: 1
+      - path: group2/pCube25/pCube21 4
+        weight: 1
+      - path: group2/pCube25/pCube22 4
+        weight: 1
+      - path: pCube5
+        weight: 1
+      - path: pCube5/polySurface2
+        weight: 1
+      - path: pCube5/polySurface3
+        weight: 1
+      - path: pCube5/transform1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

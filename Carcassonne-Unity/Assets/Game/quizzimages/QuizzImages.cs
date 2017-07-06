@@ -22,11 +22,15 @@ public class QuizzImages :
             index++;
         }
 
+        RectTransform r = explicationsPanel.GetComponent<RectTransform>();
         explicationsPanel.SetActive(true);
         explicationsText.text = currentQuestion.explication;
-        explicationsPanel.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(explicationsPanel.transform.position.x, initExplicationsPos.y - 800, 0), Quaternion.identity);
-        explicationsPanel.GetComponent<RectTransform>().DOAnchorPosY(initExplicationsPos.y, .3f).SetDelay(1);
-        explicationsPanel.GetComponent<RectTransform>().DOAnchorPosY(initExplicationsPos.y - 800, .3f).SetDelay(1 + tempsExplication - .5f);
+        r.SetPositionAndRotation(new Vector3(explicationsPanel.transform.position.x, initExplicationsPos.y - 800, 0), Quaternion.identity);
+
+        r.DOAnchorPosY(initExplicationsPos.y, .3f).SetDelay(1);
+        r.DOLocalRotateQuaternion(initExplicationsRot, .2f).SetDelay(1);
+
+        r.DOAnchorPosY(initExplicationsPos.y - 800, .3f).SetDelay(1 + tempsExplication - .5f);
 
 
         base.showExplications();

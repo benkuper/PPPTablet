@@ -12,8 +12,11 @@ public class ImageAnswer : QuizzAnswer,
     public override void Awake()
     {
         base.Awake();
-        answerImagePanel = transform.FindChild("AnswerImagePanel").GetComponent<RectTransform>();
-        answerImage = transform.FindChild("AnswerImagePanel/Texture").GetComponent<RawImage>();
+        answerImages.Add(transform.Find("AnswerImagePanel").GetComponent<Image>());
+        answerImages.Add(transform.Find("AnswerNumPanel").GetComponent<Image>());
+
+        answerImagePanel = transform.Find("AnswerImagePanel").GetComponent<RectTransform>();
+        answerImage = transform.Find("AnswerImagePanel/Texture").GetComponent<RawImage>();
     }
 
     public override void setData(string gameID, int questionID, string answer, bool isGood)

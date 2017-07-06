@@ -51,7 +51,12 @@ public class GameMaster : OSCControllable {
         if (Input.GetKeyDown(KeyCode.Keypad7)) setCurrentGame(gameData[7]);
         if (Input.GetKeyDown(KeyCode.Keypad8)) setCurrentGame(gameData[8]);
         if (Input.GetKeyDown(KeyCode.Keypad9)) setCurrentGame(gameData[9]);
-        if (Input.GetKeyDown(KeyCode.KeypadPeriod)) setCurrentGame(null);
+        if (Input.GetKeyDown(KeyCode.KeypadMultiply)) setCurrentGame(gameData[11]);
+        if (Input.GetKeyDown(KeyCode.KeypadPeriod))
+        {
+            setCurrentGame(null);
+            if (Input.GetKey(KeyCode.LeftControl)) ScoreManager.instance.showScore();
+        }
     }
 
     public void setCurrentGameID(string gameID)
@@ -77,7 +82,7 @@ public class GameMaster : OSCControllable {
         if (currentGameData != null)
         {
             currentGameInstance = Instantiate(currentGameData.prefab).GetComponent<Game>();
-            currentGameInstance.id = currentGameData.id;
+            currentGameInstance.setID(currentGameData.id);
             currentGameInstance.gameEndEvent += gameEnded;
             currentGameInstance.launchGame();
             if (ScoreManager.instance != null) ScoreManager.instance.hideScore();

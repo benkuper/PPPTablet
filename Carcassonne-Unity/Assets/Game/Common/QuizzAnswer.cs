@@ -17,19 +17,27 @@ public class QuizzAnswer : MonoBehaviour
 
     public bool isGood;
 
-    Image bgImage;
+    protected List<Image> answerImages;
    
     Vector2 initPos;
     bool canBeClicked;
 
     public int answerID;
 
+    Color selectColor;
+    Color goodColor;
+    Color badColor;
+
     // Use this for initialization
     public virtual void Awake()
     {
-        bgImage = GetComponent<Image>();
-       
+
+        selectColor = new Color(.1f,.8f,1);
+        goodColor = new Color(.1f,.9f,.2f);
+        badColor = new Color(.9f,.2f,0);
+
         initPos = GetComponent<RectTransform>().anchoredPosition;
+        answerImages = new List<Image>();
     }
 
     // Update is called once per frame
@@ -42,7 +50,9 @@ public class QuizzAnswer : MonoBehaviour
     public void setSelected(bool value)
     {
         isSelected = value;
-        bgImage.DOColor(isSelected ? new Color(1, .5f, 0, 1) : Color.grey, .3f);
+        if(isSelected) AudioPlayer.instance.play("bip.mp3");
+
+        foreach (Image ai in answerImages) ai.DOColor(isSelected ? selectColor : Color.white, .3f);
     }
 
     public virtual void setData(string gameID, int questionID, string answer, bool isGood)
@@ -55,7 +65,10 @@ public class QuizzAnswer : MonoBehaviour
 
     public bool showAnswer()
     {
-        if (isGood || isSelected) bgImage.DOColor(isGood ? Color.green : Color.red, .3f);
+        if (isGood || isSelected) foreach (Image ai in answerImages) ai.DOColor(isGood ? goodColor : badColor, .3f);
+        if (isGood) transform.DOScale(1.2f, 1).SetEase(Ease.OutElastic);
+        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, isGood? .1f : 0);
+
         canBeClicked = false;
         return isGood && isSelected;
     }

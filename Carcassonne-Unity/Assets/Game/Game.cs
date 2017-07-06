@@ -9,6 +9,8 @@ public class Game : OSCControllable {
 
     public int score;
 
+    public bool autoLaunch;
+
     public delegate void GameEndEvent(Game g);
     public GameEndEvent gameEndEvent;
 
@@ -30,6 +32,7 @@ public class Game : OSCControllable {
     // Use this for initialization
     public virtual void Start () {
         loadSettings();
+        if (autoLaunch) launchGame();
 	}
 
     public virtual void launchGame()
@@ -37,12 +40,14 @@ public class Game : OSCControllable {
         score = 0;
         loadSettings();
         gameObject.SetActive(true);
+        AudioPlayer.instance.stop();
 
-        if(_canvas != null)
+        if (_canvas != null)
         {
             for (int i = 0; i < _canvas.transform.childCount; i++)
             {
                 Transform t = _canvas.transform.GetChild(i);
+                //Vector3 targetScale = t.localScale;
                 t.localScale = Vector3.zero;
                 t.DOScale(Vector3.one, .3f + i * .01f).SetDelay(i * .03f);
             }
@@ -75,6 +80,8 @@ public class Game : OSCControllable {
             }
         }
 
+        AudioPlayer.instance.play("end.mp3");
+
         Invoke("dispatchEnd", 1f);
     }
 
@@ -85,6 +92,8 @@ public class Game : OSCControllable {
 
     public virtual void killGame()
     {
+        AudioPlayer.instance.stop();
+
         gameObject.SetActive(false);
     }
     
@@ -94,9 +103,20 @@ public class Game : OSCControllable {
         JsonUtility.FromJsonOverwrite(gameConfig, this);
     }
 	
+
+    public void triggerAnswer(string answerID, bool isGood)
+    {
+        string file = isGood ? "yes.mp3" : "wrong.mp3";
+        AudioPlayer.instance.play(file);
+
+        UnityOSC.OSCMessage m = new UnityOSC.OSCMessage(OSCMaster.getBaseAddress()+id+"/"+(isGood?"yes":"wrong"));
+        m.Append<float>(1);
+        OSCMaster.sendMessage(m);
+    }
+
 	// Update is called once per frame
 	public virtual void Update () {
-		
+        if (Input.GetKeyDown("e")) endGame();
 	}
 
 

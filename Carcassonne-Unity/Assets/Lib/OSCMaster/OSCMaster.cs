@@ -1,38 +1,85 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityOSC;
-
+using System.Net;
 
 public class OSCMaster : MonoBehaviour {
 
+    public static OSCMaster instance;
+
     OSCThreadServer server;
+    OSCClient client;
+    OSCClient broadcastClient;
+    OSCClient scoreClient;
+
     public int port = 6000;
+    public int remotePort = 6001;
+    public int scorePort = 6950;
+
     public bool debugMessage;
 
     OSCControllable[] controllables;
     
-
     
 	// Use this for initialization
 	void Awake () {
+        instance = this;
+
         server = new OSCThreadServer(port);
         server.PacketReceivedEvent += packetReceived;
         server.Connect();
 
+        if (MainConfig.instance != null) setupClient();
+
         checkControllables();
 	}
+
+    public void setupClient()
+    {
+        if (client != null)
+        {
+            client.Close();
+        }
+
+        if(OSCMaster.instance != null)
+        {
+            IPAddress ip = IPAddress.Loopback;
+
+#if !UNITY_EDITOR
+            ip = IPAddress.Parse(MainConfig.getRemoteIP());    
+#endif
+
+            client = new OSCClient(ip, remotePort);
+            broadcastClient = new OSCClient(ip, port);
+            scoreClient = new OSCClient(ip, scorePort);
+
+            client.Connect();
+            broadcastClient.Connect();
+            scoreClient.Connect();
+
+            Debug.Log("OSCMaster is now sending to : " + client.ClientIPAddress + ":" + client.Port);
+
+        }
+    }
 
     void packetReceived(OSCPacket p)
     {
         if (debugMessage) Debug.Log("Message receive : " + p.Address);
 
         OSCMessage m = (OSCMessage)p;
-        
+
+        if (TabletIDManager.instance.isAdmin)
+        {
+            if (debugMessage) Debug.Log("Tablet is admin, not parsing message");
+            return;
+        }
+
         string[] addSplit = m.Address.Split(new char[] { '/' });
 
         if (addSplit.Length < 4) return;
 
         string tabIDString = addSplit[1].ToLower();
+
 
         if (!tabIDString.Contains("all"))
         {
@@ -43,6 +90,7 @@ public class OSCMaster : MonoBehaviour {
                 int.TryParse(tabIDString, out tabID);
 
                 Debug.Log("Target tablet id " + tabID);
+
                 if (tabID != TabletIDManager.getTabletID())
                 {
                     if (debugMessage) Debug.Log("Not same id (local) " + TabletIDManager.getTabletID() + " <> (target) " + tabID);
@@ -101,5 +149,25 @@ public class OSCMaster : MonoBehaviour {
     void OnDestroy()
     {
         server.Close();
+    }
+
+    public static void sendMessage(OSCMessage m)
+    {
+        instance.client.Send(m);
+    }
+
+    public static void sendMessageToOtherTablets(OSCMessage m)
+    {
+        instance.broadcastClient.Send(m);
+    }
+
+    public static void sendScoreMessage(OSCMessage m)
+    {
+        instance.scoreClient.Send(m);
+    }
+
+    public static string getBaseAddress()
+    {
+        return "/tab" + TabletIDManager.getTabletID()+"/";
     }
 }

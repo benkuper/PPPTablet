@@ -71,14 +71,14 @@ public class DechetCrush : Game, ITextureReceiver,
     {
         base.Awake();
 
-        candyContainer = transform.FindChild("Canvas/Candies");
-        messageImage = transform.FindChild("Canvas/MessagePanel/MessageImage").GetComponent<RawImage>();
-        timeText = transform.FindChild("Canvas/TimePanel/Text").GetComponent<Text>();
-        ressourcesText = transform.FindChild("Canvas/RessourcesPanel/Text").GetComponent<Text>();
-        associationsText = transform.FindChild("Canvas/AssociationsPanel/Text").GetComponent<Text>();
-        ressourceValueBar = transform.FindChild("Canvas/RessourcesBar/Value").GetComponent<Image>();
-        associationPanel = transform.FindChild("Canvas/AssociationsBar");
-        scoreText = transform.FindChild("Canvas/ScorePanel/Text").GetComponent<Text>();
+        candyContainer = transform.Find("Canvas/Candies");
+        messageImage = transform.Find("Canvas/MessagePanel/MessageImage").GetComponent<RawImage>();
+        timeText = transform.Find("Canvas/TimePanel/Text").GetComponent<Text>();
+        ressourcesText = transform.Find("Canvas/RessourcesPanel/Text").GetComponent<Text>();
+        associationsText = transform.Find("Canvas/AssociationsPanel/Text").GetComponent<Text>();
+        ressourceValueBar = transform.Find("Canvas/RessourcesBar/Value").GetComponent<Image>();
+        associationPanel = transform.Find("Canvas/AssociationsBar");
+        scoreText = transform.Find("Canvas/ScorePanel/Text").GetComponent<Text>();
 
         messageImage.transform.localScale = Vector3.zero;
     }
@@ -119,7 +119,7 @@ public class DechetCrush : Game, ITextureReceiver,
             bar.transform.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, minAssociationBarHeight);
             bar.transform.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(i * parentWidth / numDechets, 0, 0),Quaternion.identity);
             bar.transform.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(i * parentWidth / numDechets, 0, 0), Quaternion.identity);
-            bar.transform.FindChild("DechetImage").GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, bar.transform.FindChild("DechetImage").GetComponent<RectTransform>().rect.width);
+            bar.transform.Find("DechetImage").GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, bar.transform.Find("DechetImage").GetComponent<RectTransform>().rect.width);
             bar.transform.SetParent(associationPanel.transform, false);
             bar.color = c;
         }
@@ -187,10 +187,8 @@ public class DechetCrush : Game, ITextureReceiver,
         float timeLeft = timeAtLaunch + tempsJeu - Time.time;
 
         if (timeLeft <= 0) endGame();
-
-        int secondsLeft = (int)timeLeft % 60;
-        int minutesLeft = Mathf.FloorToInt(timeLeft / 60);
-        timeText.text = string.Format("{0,2}:{1,2}", minutesLeft, secondsLeft);
+        
+        timeText.text = StringUtil.timeToCountdownString(timeLeft);
 
         ressourceCurrentValue -= Time.deltaTime / tempsVidageRessources;
         ressourceCurrentValue = Mathf.Max(ressourceCurrentValue, 0);
@@ -201,6 +199,7 @@ public class DechetCrush : Game, ITextureReceiver,
             {
                 showMessage("ressources/0", 2);
                 ressourceAt0 = true;
+                AudioPlayer.instance.play("wrong.mp3");
             }
         }
         else
@@ -212,6 +211,8 @@ public class DechetCrush : Game, ITextureReceiver,
                 {
                     showMessage("ressources/20", 2);
                     ressourceUnder20 = true;
+                    AudioPlayer.instance.play("wrong.mp3");
+
                 }
             }
             else
@@ -256,8 +257,6 @@ public class DechetCrush : Game, ITextureReceiver,
 
     void swipeCandy(CandyDechet c, Direction d)
     {
-        animating = true;
-
         int tx = c.x, ty = c.y;
         switch (d)
         {
@@ -281,6 +280,8 @@ public class DechetCrush : Game, ITextureReceiver,
                 tx++;
                 break;
         }
+
+        animating = true;
 
         CandyDechet tc = getCandy(tx, ty);
         tc.moveToBlock(c.x, c.y, swipeTime);
@@ -407,17 +408,26 @@ public class DechetCrush : Game, ITextureReceiver,
         float targetVal = Mathf.Min(ressourceCurrentValue + pourcentGagneParAssociation / 100, 1);
         DOTween.To(() => ressourceCurrentValue, x => ressourceCurrentValue = x, targetVal, .3f);
 
-        if(associations[tid]+1 == maxAssociationParDechet)
+        
+        if (associations[tid]+1 == maxAssociationParDechet)
         {
             showMessage("recyclage/" + tid);
             score++;
             scoreText.text = score.ToString();
             setAssociation(tid, 0);
+            AudioPlayer.instance.play("yes.mp3");
+
         }
         else
         {
-            showMessage("association/" + associationMessageImages[UnityEngine.Random.Range(0, associationMessageImages.Length)]);
+            //If we want random congrats messages
+            //showMessage("association/" + associationMessageImages[UnityEngine.Random.Range(0, associationMessageImages.Length)]);
+            showMessage("association/" + tid);
+
             setAssociation(tid, associations[tid] + 1);
+
+            AudioPlayer.instance.play("bip.mp3");
+
         }
 
 
@@ -431,15 +441,21 @@ public class DechetCrush : Game, ITextureReceiver,
         associationsScore = 0;
         for(int i=0;i<numDechets;i++)
         {
-            associationsScore += associations[dechets[i].id];
+            associationsScore += associations[dechets[i].id]; 
         }
 
         associationsText.text = associationsScore.ToString();
-        float p = value * 1f / maxAssociationParDechet;
+        float p = value * 1f / (maxAssociationParDechet-1); //-1 pour aller jusqu'en haut à l'avant derniere association
 
         RectTransform parentRect = associationBars[id].transform.parent.GetComponent<RectTransform>();
         RectTransform barRect = associationBars[id].GetComponent<RectTransform>();
+
         DOTween.To(()=> barRect.rect.height,x=> barRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, x), minAssociationBarHeight + (parentRect.rect.height - minAssociationBarHeight) * p,.5f);
+
+        Transform dechetImg = barRect.Find("DechetImage").GetComponent<Transform>();
+        dechetImg.localScale = Vector3.one;
+        dechetImg.DOScale(2, 1).SetEase(Ease.OutElastic);
+        dechetImg.DOScale(1, .5f).SetDelay(1);
     }
     
 

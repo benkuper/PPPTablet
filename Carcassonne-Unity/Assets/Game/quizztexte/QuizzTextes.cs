@@ -25,15 +25,35 @@ public class QuizzTextes :
             index++;
         }
 
+        RectTransform r = explicationsPanel.GetComponent<RectTransform>();
         explicationsPanel.SetActive(true);
         explicationsText.text = currentQuestion.explication;
-        explicationsPanel.GetComponent<RectTransform>().SetPositionAndRotation(new Vector3(explicationsPanel.transform.position.x, initExplicationsPos.y - 800, 0), Quaternion.identity);
-        explicationsPanel.GetComponent<RectTransform>().DOAnchorPosY(initExplicationsPos.y, .3f).SetDelay(1);
-        explicationsPanel.GetComponent<RectTransform>().DOAnchorPosY(initExplicationsPos.y - 800, .3f).SetDelay(1 + tempsExplication - .5f);
 
+        r.SetPositionAndRotation(new Vector3(explicationsPanel.transform.position.x, initExplicationsPos.y - 800, 0), Quaternion.identity);
+
+        r.DOAnchorPosY(initExplicationsPos.y, .3f).SetDelay(1);
+        r.DOLocalRotateQuaternion(initExplicationsRot, .2f).SetDelay(1);
+
+        r.DOAnchorPosY(initExplicationsPos.y - 800, .3f).SetDelay(1 + tempsExplication - .5f);
+        
 
         base.showExplications();
     }
 
+    [OSCMethod("laserSelect")]
+    public void selectAnswerFromLaser(int laserID)
+    {
+        Debug.Log("Laser select ! " + laserID);
+        int groupID = (int)Mathf.Floor(laserID / 3);
+        int modTabletID = (TabletIDManager.getTabletID() - 1) % 3;
 
+        Debug.Log("Laser select : " + laserID + " / groupID = " + groupID + " / modTabletID = " + modTabletID);
+
+        if (groupID == modTabletID)
+        {
+            int targetAnswer = laserID % 3;
+            if (targetAnswer < 0 || targetAnswer > answers.Length) return;
+            answerSelected(answers[targetAnswer]);
+        }
+    }
 }

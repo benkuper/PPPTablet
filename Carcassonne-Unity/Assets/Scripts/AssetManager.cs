@@ -28,6 +28,7 @@ public class AssetManager : MonoBehaviour {
 #endif
         Debug.Log("Base Path :" + basePath + ": exists ? " + Directory.Exists(basePath));
 
+        
         isInit = true;
 	}
 
@@ -58,11 +59,19 @@ public class AssetManager : MonoBehaviour {
         s.Close();
     }
 
+    public static string getConfig()
+    {
+        if (!isInit) init();
+        return getFileData("config.json");
+    }
+
     public static string getGameConfig(string gameID)
     {
         if (!isInit) init();
         return getGameAssetAsText(gameID,"config.json");
     }
+
+   
 
     public static string getGameAssetAsText(string gameID, string assetPath)
     {
@@ -104,6 +113,25 @@ public class AssetManager : MonoBehaviour {
 
     }
 
+    public static IEnumerator loadAudio(string audioFile, string audioID, IAudioReceiver receiver)
+    {
+        Debug.Log("Audio file : " + audioFile);
+        if (!isInit) init();
+        string path = getAudioPath(audioFile);
+
+        WWW www = null;
+        if (File.Exists(path)) www = new WWW("file:///" + path);
+        else
+        {
+            Debug.Log("File not found : " + path);
+        }
+        yield return www;
+
+        if (www != null) receiver.audioReady(audioID, WWWAudioExtensions.GetAudioClip(www));
+        else receiver.audioReady(audioID, null);
+
+    }
+
 
     public static string getGameMediaFile(string gameID, string mediaFile)
     {
@@ -122,6 +150,13 @@ public class AssetManager : MonoBehaviour {
         if (!isInit) init();
         if (!File.Exists(basePath + "medias/" + mediaFile)) return "";
         return "file:///" + basePath + "medias/" + mediaFile;
+    }
+
+    public static string getAudioPath(string mediaFile)
+    {
+        if (!isInit) init();
+        if (!File.Exists(basePath + "audios/" + mediaFile)) return "";
+        return basePath + "audios/" + mediaFile;
     }
 
     public static string getFolderPath(string path)

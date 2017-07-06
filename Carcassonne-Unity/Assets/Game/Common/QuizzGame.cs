@@ -33,12 +33,13 @@ public class QuizzGame :
 
     protected Vector2 answerPos;
     protected Vector2 initExplicationsPos;
+    protected Quaternion initExplicationsRot;
 
     override public void Awake()
     {
         base.Awake();
 
-        canvas = transform.FindChild("Canvas").GetComponent<Canvas>();
+        canvas = transform.Find("Canvas").GetComponent<Canvas>();
 
         questions = new List<TextQuestion>();
         questionText = transform.Find("Canvas/QuestionPanel/Question").GetComponent<Text>();
@@ -60,6 +61,7 @@ public class QuizzGame :
 
         answerPos = answers[0].GetComponent<RectTransform>().anchoredPosition;
         initExplicationsPos = explicationsPanel.GetComponent<RectTransform>().anchoredPosition;
+        initExplicationsRot = explicationsPanel.GetComponent<RectTransform>().localRotation;
     }
 
     public override void Update()
@@ -73,9 +75,7 @@ public class QuizzGame :
             if (timeLeft > 0)
             {
 
-                int secondsLeft = (int)timeLeft % 60;
-                int minutesLeft = Mathf.FloorToInt(timeLeft / 60);
-                countDownText.text = string.Format("{0,2}:{1,2}", minutesLeft, secondsLeft);
+                 countDownText.text = StringUtil.timeToCountdownString(timeLeft);
             }
             else
             {
@@ -179,11 +179,14 @@ public class QuizzGame :
         questionImage.color = Color.black;
         StartCoroutine(AssetManager.loadGameTexture(id, "question" + qNum + ".jpg", "questionImage", this));
 
+        AudioPlayer.instance.play("wait.mp3", AudioPlayer.SourceType.BG);
     }
 
     void showAnswer()
     {
         countDownText.text = "Fini !";
+
+        AudioPlayer.instance.stop();
 
         bool isGood = false;
         foreach (QuizzAnswer a in answers)
@@ -191,11 +194,18 @@ public class QuizzGame :
             if (a.showAnswer()) isGood = true;
         }
         if (isGood) score++;
+
+        string tid = currentAnswer != null ? currentAnswer.answerID.ToString() : "none";
+        triggerAnswer(tid, isGood);
         Invoke("showExplications", 1);
     }
 
     public virtual void showExplications()
     {
+        foreach (QuizzAnswer a in answers)
+        {
+            a.transform.DOScale(Vector3.one,.5f);
+        }
 
         Invoke("nextQuestion", tempsExplication + 1);
     }

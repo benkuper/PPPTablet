@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 81aa744843fc36041853e33fc7bee710
+timeCreated: 1496314767
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: barres
+    100002: base
+    100004: cam_derriere
+    100006: cam_devant
+    100008: convoyeur
+    100010: convoyeur_trioptique
+    100012: group1
+    100014: group2
+    100016: mur_derriere
+    100018: mur_devant
+    100020: mur_fond
+    100022: //RootNode
+    100024: overband:pCylinder6
+    100026: overband:polySurface2
+    100028: pCylinder6
+    100030: polySurface2
+    100032: separateur
+    400000: barres
+    400002: base
+    400004: cam_derriere
+    400006: cam_devant
+    400008: convoyeur
+    400010: convoyeur_trioptique
+    400012: group1
+    400014: group2
+    400016: mur_derriere
+    400018: mur_devant
+    400020: mur_fond
+    400022: //RootNode
+    400024: overband:pCylinder6
+    400026: overband:polySurface2
+    400028: pCylinder6
+    400030: polySurface2
+    400032: separateur
+    2300000: base
+    2300002: cam_derriere
+    2300004: cam_devant
+    2300006: convoyeur
+    2300008: convoyeur_trioptique
+    2300010: mur_derriere
+    2300012: mur_devant
+    2300014: overband:pCylinder6
+    2300016: overband:polySurface2
+    2300018: pCylinder6
+    2300020: polySurface2
+    2300022: separateur
+    3300000: base
+    3300002: cam_derriere
+    3300004: cam_devant
+    3300006: convoyeur
+    3300008: convoyeur_trioptique
+    3300010: mur_derriere
+    3300012: mur_devant
+    3300014: overband:pCylinder6
+    3300016: overband:polySurface2
+    3300018: pCylinder6
+    3300020: polySurface2
+    3300022: separateur
+    4300000: convoyeur
+    4300002: overband:polySurface2
+    4300004: overband:pCylinder6
+    4300006: base
+    4300008: separateur
+    4300010: mur_devant
+    4300012: mur_derriere
+    4300014: convoyeur_trioptique
+    4300016: polySurface2
+    4300018: pCylinder6
+    4300020: cam_devant
+    4300022: cam_derriere
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 133
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: barres
+        weight: 1
+      - path: barres/group1
+        weight: 1
+      - path: barres/group2
+        weight: 1
+      - path: base
+        weight: 1
+      - path: cam_derriere
+        weight: 1
+      - path: cam_devant
+        weight: 1
+      - path: convoyeur
+        weight: 1
+      - path: convoyeur/overband:pCylinder6
+        weight: 1
+      - path: convoyeur/overband:polySurface2
+        weight: 1
+      - path: convoyeur_trioptique
+        weight: 1
+      - path: convoyeur_trioptique/pCylinder6
+        weight: 1
+      - path: convoyeur_trioptique/polySurface2
+        weight: 1
+      - path: mur_fond
+        weight: 1
+      - path: mur_fond/mur_derriere
+        weight: 1
+      - path: mur_fond/mur_devant
+        weight: 1
+      - path: separateur
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
