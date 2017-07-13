@@ -14,7 +14,7 @@ public class MediaPlayer : OSCControllable {
     private void Awake()
     {
         instance = this;
-        player = GetComponentInChildren<VideoPlayer>();
+        player = GetComponent<VideoPlayer>();
         player.loopPointReached += loopPointReached;
         hide();
     }
@@ -34,7 +34,7 @@ public class MediaPlayer : OSCControllable {
         }
 
         instance.player.url = mediaPath;
-        instance.player.gameObject.SetActive(true);
+        instance.player.renderMode = VideoRenderMode.CameraNearPlane;
         instance.player.Play();
 
         currentListener = listener;
@@ -74,7 +74,7 @@ public class MediaPlayer : OSCControllable {
 
         // FAIS TOUT CRASHER !!
         //instance.player.gameObject.SetActive(false);
-        instance.player.Stop();
+        instance.player.renderMode = VideoRenderMode.APIOnly;
         //instance.player.enabled = false;
     }
 
@@ -104,6 +104,6 @@ public class MediaPlayer : OSCControllable {
 
     public bool mediaIsPlaying()
     {
-        return instance.player.isActiveAndEnabled;
+        return instance.player.renderMode == VideoRenderMode.CameraNearPlane;
     }
 }
