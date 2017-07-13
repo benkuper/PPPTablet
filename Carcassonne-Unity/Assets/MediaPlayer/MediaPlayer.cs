@@ -14,7 +14,7 @@ public class MediaPlayer : OSCControllable {
     private void Awake()
     {
         instance = this;
-        player = GetComponent<VideoPlayer>();
+        player = GetComponentInChildren<VideoPlayer>();
         player.loopPointReached += loopPointReached;
         hide();
     }
@@ -34,8 +34,8 @@ public class MediaPlayer : OSCControllable {
         }
 
         instance.player.url = mediaPath;
+        instance.player.gameObject.SetActive(true);
         instance.player.Play();
-        instance.player.enabled = true;
 
         currentListener = listener;
         currentVideoID = videoId;
@@ -70,8 +70,12 @@ public class MediaPlayer : OSCControllable {
 
     public static void hide()
     {
+        if (instance == null) return;
+
+        // FAIS TOUT CRASHER !!
+        //instance.player.gameObject.SetActive(false);
         instance.player.Stop();
-        instance.player.enabled = false;
+        //instance.player.enabled = false;
     }
 
 	// Use this for initialization
@@ -87,6 +91,7 @@ public class MediaPlayer : OSCControllable {
 
     void loopPointReached(VideoPlayer source)
     {
+
         Debug.Log("Media player finish");
         stop();
 
@@ -99,6 +104,6 @@ public class MediaPlayer : OSCControllable {
 
     public bool mediaIsPlaying()
     {
-        return instance.player.enabled;
+        return instance.player.isActiveAndEnabled;
     }
 }

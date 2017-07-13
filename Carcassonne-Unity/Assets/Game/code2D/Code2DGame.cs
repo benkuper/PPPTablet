@@ -43,6 +43,7 @@ public class Code2DGame : Game
 
     int currentSymbol;
     bool symbolIsOutside;
+    int lastValidatedSymbol;
 
     public override void Awake()
     {
@@ -103,7 +104,7 @@ public class Code2DGame : Game
         
         countDown.text = StringUtil.timeToCountdownString(timeLeft);
 
-        if (currentSymbol > -1)
+        if (currentSymbol > -1 && currentSymbol != lastValidatedSymbol)
         {
 
             if (symbolIsOutside) circle.fillAmount = 0;
@@ -118,17 +119,8 @@ public class Code2DGame : Game
     public void codeDetected(Symbol s)
     {
         Debug.Log("Detected : " + s.id + " /" + s.center);
-
-        AudioPlayer.instance.play("bip.mp3");
-
         circle.rectTransform.DOAnchorPos(getPosForSymbol(s), .01f);
 
-        circle.color = selectColor;
-        
-        circle.enabled = true;
-        circle.fillAmount = 0;
-
-        currentSymbol = s.id;
         //DOTween.To(() => circle.fillAmount, x => circle.fillAmount = x, 1, tempsSelection).SetEase(Ease.Linear).SetId("circle").OnComplete(() => selectId(s.id));
     }
 
@@ -136,9 +128,7 @@ public class Code2DGame : Game
     {
         Debug.Log("Undetected : " + s.id);
         //DOTween.Kill("circle");
-        circle.fillAmount = -.1f;
-        circle.enabled = false;
-        currentSymbol = -1;
+        unfocusSymbol(s);
     }
 
     public void codeUpdated(Symbol s)
@@ -146,10 +136,46 @@ public class Code2DGame : Game
         Vector2 targetPos = getPosForSymbol(s);
 
         float dist = Vector2.Distance(targetPos, new Vector2(camImage.rectTransform.rect.width/2, camImage.rectTransform.rect.height/2));
-        Debug.Log(dist);
         symbolIsOutside = dist > maxDetectionDistance;
 
+        if (!symbolIsOutside)
+        {
+            if (currentSymbol != s.id && lastValidatedSymbol != s.id) //Identify here
+            {
+                focusSymbol(s);
+            }
+        }
+        else
+        {
+            if (currentSymbol == s.id)
+            {
+                unfocusSymbol(s);
+            }
+        }
+
         circle.rectTransform.DOAnchorPos(targetPos, .3f);
+    }
+
+    public void focusSymbol(Symbol s)
+    {
+        Debug.Log("SYMBOL FOCUS");
+        AudioPlayer.instance.play("bip.mp3");
+
+        circle.color = selectColor;
+
+        circle.enabled = true;
+        circle.fillAmount = 0;
+
+        currentSymbol = s.id;
+    }
+
+    public void unfocusSymbol(Symbol s)
+    {
+        Debug.Log("Symbol UNFOCUS");
+        circle.fillAmount = -.1f;
+        circle.enabled = false;
+        currentSymbol = -1;
+        lastValidatedSymbol = -1;
     }
 
     public Vector2 getPosForSymbol(Symbol s)
@@ -188,8 +214,9 @@ public class Code2DGame : Game
 
         Invoke("resetCode", tempsAffichageReponse);
 
+        lastValidatedSymbol = currentSymbol;
         currentSymbol = -1;
-
+        
         triggerAnswer(id.ToString(), isGood);
     }
 

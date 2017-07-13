@@ -271,6 +271,7 @@ public class QuizzGame :
 
     void IMediaListener.mediaFinished(string id)
     {
+        Debug.Log("MEDIA FINISHED");
         if (id == "intro")
         {
             loadCurrentQuestion(true);

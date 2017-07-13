@@ -134,8 +134,9 @@ public class Machines : Game {
         if(activeMachine != null)
         {
             activeMachine.gameObject.SetActive(true);
+            activeMachine.animate();
             activeMachine.setDechets(dechetsActive.isOn);
-            //activeMachine.setOutside(outside.isOn);
+            //activeMachine.setOutside(dechetsActive.isOn || outside.isOn);
         }
     }
 
@@ -157,7 +158,7 @@ public class Machines : Game {
     public void updateMatColor()
     {
         Color tc = Color.black;
-        if(!outside.isOn)
+        if(!outside.isOn || dechetsActive.isOn)
         {
             if (dechetsActive.isOn) tc = dechetsColor;
             else tc = insideColor;            
