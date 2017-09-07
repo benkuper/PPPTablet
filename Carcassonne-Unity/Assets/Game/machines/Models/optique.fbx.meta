@@ -3,7 +3,7 @@ guid: 81aa744843fc36041853e33fc7bee710
 timeCreated: 1496314767
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: barres
     100002: base
@@ -34,6 +34,13 @@ ModelImporter:
     100052: pCube7
     100054: pCube8
     100056: pCube9
+    100058: flash
+    100060: souffle1
+    100062: souffle2
+    100064: souffle3
+    100066: souffle4
+    100068: souffle5
+    100070: souffles
     400000: barres
     400002: base
     400004: cam_derriere
@@ -63,6 +70,13 @@ ModelImporter:
     400052: pCube7
     400054: pCube8
     400056: pCube9
+    400058: flash
+    400060: souffle1
+    400062: souffle2
+    400064: souffle3
+    400066: souffle4
+    400068: souffle5
+    400070: souffles
     2300000: base
     2300002: cam_derriere
     2300004: cam_devant
@@ -86,6 +100,12 @@ ModelImporter:
     2300040: pCube7
     2300042: pCube8
     2300044: pCube9
+    2300046: flash
+    2300048: souffle1
+    2300050: souffle2
+    2300052: souffle3
+    2300054: souffle4
+    2300056: souffle5
     3300000: base
     3300002: cam_derriere
     3300004: cam_devant
@@ -109,6 +129,12 @@ ModelImporter:
     3300040: pCube7
     3300042: pCube8
     3300044: pCube9
+    3300046: flash
+    3300048: souffle1
+    3300050: souffle2
+    3300052: souffle3
+    3300054: souffle4
+    3300056: souffle5
     4300000: convoyeur
     4300002: overband:polySurface2
     4300004: overband:pCylinder6
@@ -132,6 +158,12 @@ ModelImporter:
     4300040: pCube9
     4300042: pCube10
     4300044: pCube11
+    4300046: flash
+    4300048: souffle1
+    4300050: souffle2
+    4300052: souffle3
+    4300054: souffle4
+    4300056: souffle5
     7400000: Take 001
     9500000: //RootNode
   materials:
@@ -156,6 +188,7 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Take 001
@@ -249,7 +282,10 @@ ModelImporter:
     globalScale: 0.8
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -265,6 +301,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

@@ -84,7 +84,7 @@ public class ScoreManager : OSCControllable {
 
         //resetScores();
 
-
+        loadScores();
         setView(ScoreView.NONE);
     }
 
@@ -98,6 +98,9 @@ public class ScoreManager : OSCControllable {
             scoreSaveData.scores[i] = -1000;
         }
         saveToFile();
+
+        loadScores();
+        showScore();
     }
 
     [OSCMethod("resetGame")]

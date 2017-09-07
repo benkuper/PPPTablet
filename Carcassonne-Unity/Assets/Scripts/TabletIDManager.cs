@@ -30,13 +30,24 @@ public class TabletIDManager : MonoBehaviour {
         idSlider.value = tabletID;
 	}
 	
+
+    bool checkPos1(Vector2 pos)
+    {
+        return pos.x > Screen.width - 100 && pos.y > Screen.height - 100;
+    }
+
+    bool checkPos2(Vector2 pos)
+    {
+        return pos.x > Screen.width - 100 && pos.y < 100;
+    }
+
 	// Update is called once per frame
 	void Update () {
 
+#if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(Input.mousePosition+"/"+Screen.width);
-            if (Input.mousePosition.x > Screen.width - 100 && Input.mousePosition.y > Screen.height - 100)
+            if (checkPos1(Input.mousePosition))
             {
                 downTime = Time.time;
                 isDown = true;
@@ -46,8 +57,34 @@ public class TabletIDManager : MonoBehaviour {
         {
             isDown = false;
         }
+#endif
+        if(Input.touchCount >= 2)
+        {
+            
+            Vector2 t0 = Input.GetTouch(0).position;
+            Vector2 t1 = Input.GetTouch(1).position;
+            
+            if ((checkPos1(t0) && checkPos2(t1)) || (checkPos1(t1) && checkPos2(t0)))
+            {
+                if(!isDown) 
+                {
+                    Debug.Log("DOWN DOUBLE !");
+                    downTime = Time.time;
+                    isDown = true;
+                }
+            }
+            else
+            {
+                Debug.Log("Not valid :\n"+t0 + "\n" + t1);
+                isDown = false;
+            }
+        }
+        else
+        {
+            isDown = false;
+        }
 
-        if (isDown && Time.time > downTime + 3) //3 seconds to enter admin
+        if (isDown && Time.time > downTime + 2) //3 seconds to enter admin
         {
             show();
         }

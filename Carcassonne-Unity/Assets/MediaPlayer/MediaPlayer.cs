@@ -34,7 +34,8 @@ public class MediaPlayer : OSCControllable {
         }
 
         instance.player.url = mediaPath;
-        instance.player.renderMode = VideoRenderMode.CameraNearPlane;
+        //instance.player.renderMode = VideoRenderMode.CameraNearPlane;
+        instance.player.enabled = true;
         instance.player.Play();
 
         currentListener = listener;
@@ -74,8 +75,9 @@ public class MediaPlayer : OSCControllable {
 
         // FAIS TOUT CRASHER !!
         //instance.player.gameObject.SetActive(false);
-        instance.player.renderMode = VideoRenderMode.APIOnly;
-        //instance.player.enabled = false;
+        //instance.player.renderMode = VideoRenderMode.APIOnly;
+        instance.player.Stop();
+        instance.player.enabled = false;
     }
 
 	// Use this for initialization
@@ -104,6 +106,6 @@ public class MediaPlayer : OSCControllable {
 
     public bool mediaIsPlaying()
     {
-        return instance.player.renderMode == VideoRenderMode.CameraNearPlane;
+        return instance.player.enabled;
     }
 }

@@ -23,7 +23,7 @@ public class AssetManager : MonoBehaviour {
 #if UNITY_EDITOR
         basePath = Directory.GetCurrentDirectory().Replace('\\','/') + "/../Sync/";
 #else
-        basePath = "/storage/emulated/0/PPP/"; //Android sync folder
+        basePath = "storage/emulated/0/PPP/"; //Android sync folder
         
 #endif
         Debug.Log("Base Path :" + basePath + ": exists ? " + Directory.Exists(basePath));
@@ -83,6 +83,8 @@ public class AssetManager : MonoBehaviour {
     {
         if (!isInit) init();
         string path = basePath + "jeux/" + gameID + "/" + assetPath;
+        Debug.Log("Load game texture : " + path);
+
         WWW www = null;
         if (File.Exists(path)) www = new WWW("file:///" + path);
         else
@@ -100,6 +102,8 @@ public class AssetManager : MonoBehaviour {
     {
         if (!isInit) init();
         string path = basePath + assetPath;
+        Debug.Log("Load texture : " + path);
+
         WWW www = null;
         if (File.Exists(path)) www = new WWW("file:///" + path);
         else
@@ -115,9 +119,9 @@ public class AssetManager : MonoBehaviour {
 
     public static IEnumerator loadAudio(string audioFile, string audioID, IAudioReceiver receiver)
     {
-        Debug.Log("Audio file : " + audioFile);
         if (!isInit) init();
         string path = getAudioPath(audioFile);
+        Debug.Log("Load audio : "+path);
 
         WWW www = null;
         if (File.Exists(path)) www = new WWW("file:///" + path);
