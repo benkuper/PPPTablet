@@ -23,6 +23,7 @@ public class Machines : Game {
 
     public float tempsJeu;
 
+    public float safeDeactivationTime = 2;
     float timeAtLaunch = 0;
     BarcodeManager bm;
 
@@ -89,6 +90,11 @@ public class Machines : Game {
 
         if (!isPlaying) return;
 
+        if (Input.GetKeyDown(KeyCode.A)) setActiveMachine(machinePrefabs[0]);
+        if (Input.GetKeyDown(KeyCode.Z)) setActiveMachine(machinePrefabs[1]);
+        if (Input.GetKeyDown(KeyCode.E)) setActiveMachine(machinePrefabs[2]);
+        if (Input.GetKeyDown(KeyCode.R)) setActiveMachine(machinePrefabs[3]);
+
         float timeLeft = timeAtLaunch + tempsJeu - Time.time;
 
         //float relTime = timeLeft / tempsJeu;
@@ -104,11 +110,17 @@ public class Machines : Game {
         int targetID = s.id % machinePrefabs.Length;
         Debug.Log("Id");
         setActiveMachine(machinePrefabs[targetID]);
+        CancelInvoke("deactivateMachine");
     }
 
     public void codeUndetected(Symbol s)
     {
         Debug.Log("Undetected : " + s.id);
+        Invoke("deactivateMachine", safeDeactivationTime);
+    }
+
+    public void deactivateMachine()
+    {
         setActiveMachine(null);
     }
 
@@ -124,6 +136,8 @@ public class Machines : Game {
 
     public void setActiveMachine(Machine m)
     {
+        if (activeMachine == m) return;
+
         if(activeMachine != null)
         {
             activeMachine.gameObject.SetActive(false);
@@ -131,12 +145,13 @@ public class Machines : Game {
 
         activeMachine = m;
 
-        if(activeMachine != null)
+        outside.isOn = true;
+
+        if (activeMachine != null)
         {
             activeMachine.gameObject.SetActive(true);
             activeMachine.animate();
             activeMachine.setDechets(dechetsActive.isOn);
-            //activeMachine.setOutside(dechetsActive.isOn || outside.isOn);
         }
     }
 

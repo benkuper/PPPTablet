@@ -7,7 +7,7 @@ public class Machine : MonoBehaviour
 {
     public Transform[] dechets;
 
-    Transform textTransform;
+    //Transform textTransform;
 
     Transform transformer;
 
@@ -19,15 +19,15 @@ public class Machine : MonoBehaviour
 
     public void animate()
     {
-        textTransform.localScale = Vector3.zero;
-        textTransform.DOScale(1, 2).SetEase(Ease.OutElastic);
+        //textTransform.localScale = Vector3.zero;
+        //textTransform.DOScale(1, 2).SetEase(Ease.OutElastic);
     }
 
     public void loadMachineSettings(MachineData data)
     {
         
         transformer = transform.Find("transformer");
-        textTransform = transformer.Find("MachineText");
+        //textTransform = transformer.Find("MachineText");
 
         Debug.Log("Transformer " + (transformer != null) + "/" + (data != null));
         Debug.Log(" > " +data.nom);
@@ -41,6 +41,7 @@ public class Machine : MonoBehaviour
     {
         foreach(Transform d in dechets)
         {
+            if (d == null) continue;
             d.gameObject.SetActive(value);
         }
     }
