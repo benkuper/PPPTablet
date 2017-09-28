@@ -199,7 +199,7 @@ public class DechetCrush : Game, ITextureReceiver,
             {
                 showMessage("ressources/0", 2);
                 ressourceAt0 = true;
-                AudioPlayer.instance.play("wrong.mp3");
+                AudioPlayer.instance.play("wrong");
             }
         }
         else
@@ -211,7 +211,7 @@ public class DechetCrush : Game, ITextureReceiver,
                 {
                     showMessage("ressources/20", 2);
                     ressourceUnder20 = true;
-                    AudioPlayer.instance.play("wrong.mp3");
+                    AudioPlayer.instance.play("wrong");
 
                 }
             }
@@ -415,7 +415,7 @@ public class DechetCrush : Game, ITextureReceiver,
             score++;
             scoreText.text = score.ToString();
             setAssociation(tid, 0);
-            AudioPlayer.instance.play("yes.mp3");
+            AudioPlayer.instance.play("yes");
 
         }
         else
@@ -426,7 +426,7 @@ public class DechetCrush : Game, ITextureReceiver,
 
             setAssociation(tid, associations[tid] + 1);
 
-            AudioPlayer.instance.play("bip.mp3");
+            AudioPlayer.instance.play("bip");
 
         }
 

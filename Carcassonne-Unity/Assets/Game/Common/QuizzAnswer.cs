@@ -50,7 +50,7 @@ public class QuizzAnswer : MonoBehaviour
     public void setSelected(bool value)
     {
         isSelected = value;
-        if(isSelected) AudioPlayer.instance.play("bip.mp3");
+        if(isSelected) AudioPlayer.instance.play("bip");
 
         foreach (Image ai in answerImages) ai.DOColor(isSelected ? selectColor : Color.white, .3f);
     }
@@ -65,6 +65,7 @@ public class QuizzAnswer : MonoBehaviour
 
     public bool showAnswer()
     {
+        //Debug.Log("Show answer #" + answerID + " > " + isGood + "/" + isSelected);
         if (isGood || isSelected) foreach (Image ai in answerImages) ai.DOColor(isGood ? goodColor : badColor, .3f);
         if (isGood) transform.DOScale(1.2f, 1).SetEase(Ease.OutElastic);
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, isGood? .1f : 0);

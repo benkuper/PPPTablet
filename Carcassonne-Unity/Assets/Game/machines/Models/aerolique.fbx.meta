@@ -3,7 +3,7 @@ guid: 5aeee3713cd001f41b37d689ba3b86c0
 timeCreated: 1496331709
 licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: _Documents_Pro_Projects_PPP_PPPTablet_Resources_197cb3f971587b74324b26c711d3ce64_stl
     100002: //RootNode
@@ -43,6 +43,8 @@ ModelImporter:
     100070: pasted__pCube8
     100072: pasted__pCube9
     100074: cubes
+    100076: pCylinder15
+    100078: turbine
     400000: _Documents_Pro_Projects_PPP_PPPTablet_Resources_197cb3f971587b74324b26c711d3ce64_stl
     400002: //RootNode
     400004: boite_derriere
@@ -81,6 +83,8 @@ ModelImporter:
     400070: pasted__pCube8
     400072: pasted__pCube9
     400074: cubes
+    400076: pCylinder15
+    400078: turbine
     2300000: boite_derriere
     2300002: boite_devant
     2300004: convoyeur1
@@ -113,6 +117,8 @@ ModelImporter:
     2300058: pasted__pCube7
     2300060: pasted__pCube8
     2300062: pasted__pCube9
+    2300064: pCylinder15
+    2300066: turbine
     3300000: boite_derriere
     3300002: boite_devant
     3300004: convoyeur1
@@ -145,6 +151,8 @@ ModelImporter:
     3300058: pasted__pCube7
     3300060: pasted__pCube8
     3300062: pasted__pCube9
+    3300064: pCylinder15
+    3300066: turbine
     4300000: convoyeur1
     4300002: polySurface2
     4300004: pCylinder6
@@ -177,6 +185,8 @@ ModelImporter:
     4300058: pasted__pCube22
     4300060: pasted__pCube23
     4300062: pasted__pCube24
+    4300064: pCylinder15
+    4300066: turbine
     7400000: Take 001
     9500000: //RootNode
   materials:
@@ -201,6 +211,7 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Take 001
@@ -228,8 +239,6 @@ ModelImporter:
       events: []
       transformMask:
       - path: 
-        weight: 1
-      - path: _Documents_Pro_Projects_PPP_PPPTablet_Resources_197cb3f971587b74324b26c711d3ce64_stl
         weight: 1
       - path: back
         weight: 1
@@ -299,7 +308,9 @@ ModelImporter:
         weight: 1
       - path: tube3
         weight: 1
-      maskType: 3
+      - path: turbine
+        weight: 1
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1
@@ -308,7 +319,10 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -324,6 +338,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

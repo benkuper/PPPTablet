@@ -60,7 +60,7 @@ public class Code2DConsignes : Code2DGame
     [OSCMethod("switch")]
     public void switchPoubelles()
     {
-        AudioPlayer.instance.play("turn.mp3");
+        AudioPlayer.instance.play("turn");
 
         poubelleOffset = (poubelleOffset + 1) % 3;
         for(int i=0;i<3;i++)

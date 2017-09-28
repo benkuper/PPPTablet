@@ -80,7 +80,7 @@ public class Game : OSCControllable {
             }
         }
 
-        AudioPlayer.instance.play("end.mp3");
+        AudioPlayer.instance.play("end");
 
         Invoke("dispatchEnd", 1f);
     }
@@ -106,7 +106,7 @@ public class Game : OSCControllable {
 
     public void triggerAnswer(string answerID, bool isGood)
     {
-        string file = isGood ? "yes.mp3" : "wrong.mp3";
+        string file = isGood ? "yes" : "wrong";
         AudioPlayer.instance.play(file);
 
         UnityOSC.OSCMessage m = new UnityOSC.OSCMessage(OSCMaster.getBaseAddress()+id+"/"+(isGood?"yes":"wrong"));

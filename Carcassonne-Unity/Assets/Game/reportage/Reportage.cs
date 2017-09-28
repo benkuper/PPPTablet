@@ -84,7 +84,7 @@ public class Reportage : Game {
         //Instructions.text = textePreparation;
 
         titreText.text = textePreparation;
-        AudioPlayer.instance.play("wait.mp3",AudioPlayer.SourceType.BG);
+        AudioPlayer.instance.play("wait",AudioPlayer.SourceType.BG);
 
         //init cam without showing
         camTex = new WebCamTexture(device.name);

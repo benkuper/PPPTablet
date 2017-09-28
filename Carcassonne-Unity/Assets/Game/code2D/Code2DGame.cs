@@ -159,7 +159,7 @@ public class Code2DGame : Game
     public void focusSymbol(Symbol s)
     {
         Debug.Log("SYMBOL FOCUS");
-        AudioPlayer.instance.play("bip.mp3");
+        AudioPlayer.instance.play("bip");
 
         circle.color = selectColor;
 

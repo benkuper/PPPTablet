@@ -12,6 +12,7 @@ public class QuizzGame :
 {
     public float tempsReponse;
     public float tempsExplication;
+    public int pointsParQuestion;
     public List<TextQuestion> questions;
 
     protected float timeAtQuestionLaunch;
@@ -143,7 +144,7 @@ public class QuizzGame :
     {
 
         if (currentQuestion == null) return;
-
+        
 
         int qNum = questions.IndexOf(currentQuestion) + 1;
 
@@ -162,6 +163,10 @@ public class QuizzGame :
 
         for (int i = 0; i < answers.Length; i++)
         {
+            //init answer to avoid false positives
+            answers[i].setSelected(false);
+            answers[i].isGood = false;
+
             if (i >= currentQuestion.reponses.Length)
             {
                 answers[i].gameObject.SetActive(false);
@@ -179,7 +184,7 @@ public class QuizzGame :
         questionImage.color = Color.black;
         StartCoroutine(AssetManager.loadGameTexture(id, "question" + qNum + ".jpg", "questionImage", this));
 
-        AudioPlayer.instance.play("wait.mp3", AudioPlayer.SourceType.BG);
+        AudioPlayer.instance.play("wait", AudioPlayer.SourceType.BG);
     }
 
     void showAnswer()
@@ -193,7 +198,7 @@ public class QuizzGame :
         {
             if (a.showAnswer()) isGood = true;
         }
-        if (isGood) score++;
+        if (isGood) score += pointsParQuestion;
 
         string tid = currentAnswer != null ? currentAnswer.answerID.ToString() : "none";
         triggerAnswer(tid, isGood);

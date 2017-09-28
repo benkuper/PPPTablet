@@ -12,6 +12,8 @@ public class AudioPlayer : MonoBehaviour, IAudioReceiver {
     AudioSource bgSource;
     
     public enum SourceType { FX, BG, ALL};
+
+    public string extension;
     
     private void Awake()
     {
@@ -35,7 +37,7 @@ public class AudioPlayer : MonoBehaviour, IAudioReceiver {
     {
         //string mediaPath = AssetManager.getMediaPath(fileName);
 
-        StartCoroutine(AssetManager.loadAudio(fileName, type == SourceType.FX?"fx":"bg", this));
+        StartCoroutine(AssetManager.loadAudio(fileName+"."+extension, type == SourceType.FX?"fx":"bg", this));
     }
 
     public void stop(SourceType type = SourceType.ALL)
@@ -52,6 +54,7 @@ public class AudioPlayer : MonoBehaviour, IAudioReceiver {
 
         if(clip != null)
         {
+            //Debug.Log("Audio ready : play");
             AudioSource source = audioID == "fx" ? fxSource : bgSource;
             source.clip = clip;
             source.Play();

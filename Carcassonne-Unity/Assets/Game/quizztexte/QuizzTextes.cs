@@ -44,8 +44,8 @@ public class QuizzTextes :
     public void selectAnswerFromLaser(int laserID)
     {
         Debug.Log("Laser select ! " + laserID);
-        int groupID = (int)Mathf.Floor(laserID / 3);
-        int modTabletID = (TabletIDManager.getTabletID() - 1) % 3;
+        int groupID = (int)Mathf.Floor(laserID / 3); // 3 lasers par groupe
+        int modTabletID = (TabletIDManager.getTabletID() - 1) % 4; //4 groupes
 
         Debug.Log("Laser select : " + laserID + " / groupID = " + groupID + " / modTabletID = " + modTabletID);
 

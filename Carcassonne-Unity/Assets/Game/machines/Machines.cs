@@ -33,6 +33,9 @@ public class Machines : Game {
     public Machine[] machinePrefabs;
     public MachineData[] machines;
 
+    public Transform transformTarget;
+    public float smoothing;
+
     Machine activeMachine;
 
     public Toggle outside;
@@ -42,6 +45,8 @@ public class Machines : Game {
     public Material metalMat;
     public Color insideColor;
     public Color dechetsColor;
+    
+
 
     public override void Awake()
     {
@@ -106,7 +111,7 @@ public class Machines : Game {
 
     public void codeDetected(Symbol s)
     {
-        AudioPlayer.instance.play("bip.mp3");
+        AudioPlayer.instance.play("bip");
         int targetID = s.id % machinePrefabs.Length;
         Debug.Log("Id");
         setActiveMachine(machinePrefabs[targetID]);
@@ -129,8 +134,10 @@ public class Machines : Game {
         int targetID = s.id % machinePrefabs.Length;
         if (machinePrefabs[targetID] == activeMachine)
         {
-            s.ApplyTransformMatrixTo(activeMachine.transform);
-            //activeMachine.loadMachineSettings();
+          
+            s.ApplyTransformMatrixTo(transformTarget);
+            activeMachine.transform.DOMove(transformTarget.position, smoothing);
+            activeMachine.transform.DORotate(transformTarget.rotation.eulerAngles, smoothing);
         }
     }
 
