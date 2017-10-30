@@ -19,7 +19,12 @@ public class SouffleControl : MonoBehaviour {
     {
         if (colliders.IndexOf(c) == -1) return;
         Debug.Log("trigger");
-        transform.position = new Vector3(transform.position.x, transform.position.y, c.transform.position.z);
+
+        //Vector3 posInParent = transform.parent.InverseTransformPoint(transform.position);
+
+        //Vector3 colPosInParent = transform.parent.InverseTransformPoint(c.transform.position);
+        //Vector3 tPos = transform.InverseTransformPoint(transform.parent.TransformPoint(posInParent.x, posInParent.y, colPosInParent.z));
+        //transform.localPosition = posInParent;
         trigger();
     }
 

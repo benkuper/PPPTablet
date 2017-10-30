@@ -58,6 +58,7 @@ public class DechetCrush : Game, ITextureReceiver,
 
     public bool animating;
 
+
     public bool messageIsLocked;
     public string[] associationMessageImages;
 
@@ -91,6 +92,7 @@ public class DechetCrush : Game, ITextureReceiver,
 
         ressourceCurrentValue = 1;
         timeAtLaunch = Time.time;
+        associationsScore = 0;
 
         numItems = tailleGrille * tailleGrille;
         numDechets = dechets.Count;
@@ -408,7 +410,9 @@ public class DechetCrush : Game, ITextureReceiver,
         float targetVal = Mathf.Min(ressourceCurrentValue + pourcentGagneParAssociation / 100, 1);
         DOTween.To(() => ressourceCurrentValue, x => ressourceCurrentValue = x, targetVal, .3f);
 
-        
+        associationsScore++;
+        associationsText.text = associationsScore.ToString();
+
         if (associations[tid]+1 == maxAssociationParDechet)
         {
             showMessage("recyclage/" + tid);
@@ -438,13 +442,7 @@ public class DechetCrush : Game, ITextureReceiver,
         associations[id] = value;
         //animate
 
-        associationsScore = 0;
-        for(int i=0;i<numDechets;i++)
-        {
-            associationsScore += associations[dechets[i].id]; 
-        }
 
-        associationsText.text = associationsScore.ToString();
         float p = value * 1f / (maxAssociationParDechet-1); //-1 pour aller jusqu'en haut à l'avant derniere association
 
         RectTransform parentRect = associationBars[id].transform.parent.GetComponent<RectTransform>();
