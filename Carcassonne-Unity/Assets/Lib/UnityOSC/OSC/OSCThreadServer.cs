@@ -23,6 +23,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace UnityOSC
 {
@@ -167,6 +168,8 @@ namespace UnityOSC
 
 				if(bytes != null && bytes.Length > 0)
 				{
+                    Debug.Log("From udp :" + BitConverter.ToString(bytes));
+
                     OSCPacket packet = OSCPacket.Unpack(bytes);
 					lock(_lastReceivedPacket)
                     {

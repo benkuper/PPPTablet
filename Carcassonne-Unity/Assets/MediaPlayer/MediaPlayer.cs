@@ -11,11 +11,15 @@ public class MediaPlayer : OSCControllable {
     public static IMediaListener currentListener;
     public static string currentVideoID;
 
+    public bool useIntegratedMedias;
+
     private void Awake()
     {
         instance = this;
         player = GetComponent<VideoPlayer>();
         player.loopPointReached += loopPointReached;
+        player.source = useIntegratedMedias ? VideoSource.VideoClip : VideoSource.Url;
+
         hide();
     }
 
@@ -24,8 +28,9 @@ public class MediaPlayer : OSCControllable {
         if(exclusive)
         {
             GameMaster.instance.setCurrentGame(null);
-            ScoreManager.instance.hideScore();
         }
+
+        ScoreManager.instance.hideScore();
 
         if (mediaPath == "")
         {
@@ -46,6 +51,7 @@ public class MediaPlayer : OSCControllable {
     [OSCMethod("go")]
     public void playMedia(string mediaFile)
     {
+        if (debugOSC) Debug.Log("Receive GO :" + mediaFile);
         currentListener = null;
         currentVideoID = "";
         play(AssetManager.getMediaPath(mediaFile), true);

@@ -55,6 +55,7 @@ public class OSCControllable : MonoBehaviour {
     {
         if (oscProperties == null || oscMethods == null) init();
 
+        Debug.Log("Set prop " + property + " > " + values.Count + " args");
         FieldInfo info = getPropInfoForAddress(property);
         if (info != null)
         {

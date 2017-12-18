@@ -36,6 +36,8 @@ public class QuizzGame :
     protected Vector2 initExplicationsPos;
     protected Quaternion initExplicationsRot;
 
+    public bool readyToAnswer;
+
     override public void Awake()
     {
         base.Awake();
@@ -99,6 +101,7 @@ public class QuizzGame :
 
     public void nextQuestion(bool videoAlreadyPlayed)
     {
+        readyToAnswer = false;
         if (currentQuestion == null) setQuestion(0);
         else
         {
@@ -144,7 +147,8 @@ public class QuizzGame :
     {
 
         if (currentQuestion == null) return;
-        
+
+        readyToAnswer = false;
 
         int qNum = questions.IndexOf(currentQuestion) + 1;
 
@@ -180,15 +184,22 @@ public class QuizzGame :
         currentAnswer = null;
         timeAtQuestionLaunch = Time.time + .001f;//force if Time.time == 0 here
 
-
         questionImage.color = Color.black;
         StartCoroutine(AssetManager.loadGameTexture(id, "question" + qNum + ".jpg", "questionImage", this));
 
+        Invoke("setReadyToAnswer", .5f);
         AudioPlayer.instance.play("wait", AudioPlayer.SourceType.BG);
+    }
+
+    public void setReadyToAnswer()
+    {
+        readyToAnswer = true;
     }
 
     void showAnswer()
     {
+        readyToAnswer = false;
+
         countDownText.text = "Fini !";
 
         AudioPlayer.instance.stop();
@@ -219,7 +230,7 @@ public class QuizzGame :
     [OSCMethod("selectReponse")]
     public void selectAnswer(int answerIndex)
     {
-        answerSelected(answers[answerIndex]);
+        if(readyToAnswer) answerSelected(answers[answerIndex]);
     }
 
     public void answerSelected(QuizzAnswer a)

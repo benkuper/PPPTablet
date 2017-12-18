@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityOSC;
 using System.Net;
+using System;
 
 public class OSCMaster : MonoBehaviour {
 
@@ -19,7 +20,11 @@ public class OSCMaster : MonoBehaviour {
     public bool debugMessage;
 
     OSCControllable[] controllables;
-    
+
+    public bool useTCP;
+    public bool tcpConnected;
+    public int tcpRemotePort = 6201;
+    public OSCTCPClient tcpClient;
     
 	// Use this for initialization
 	void Awake () {
@@ -53,6 +58,14 @@ public class OSCMaster : MonoBehaviour {
             broadcastClient = new OSCClient(ip, port);
             scoreClient = new OSCClient(ip, scorePort);
 
+            if (useTCP)
+            {
+                tcpClient = new OSCTCPClient(ip, tcpRemotePort);
+                tcpClient.onConnected += tcpClientConnected;
+                tcpClient.onDisconnected += tcpClientDisconnected;
+                tcpClient.packetReceived += packetReceived;
+            }
+
             client.Connect();
             broadcastClient.Connect();
             scoreClient.Connect();
@@ -60,6 +73,17 @@ public class OSCMaster : MonoBehaviour {
             Debug.Log("OSCMaster is now sending to : " + client.ClientIPAddress + ":" + client.Port);
 
         }
+    }
+
+    private void tcpClientConnected(OSCTCPClient client)
+    {
+        tcpConnected = true;
+        sendMessage(new OSCMessage("/super"));
+    }
+
+    private void tcpClientDisconnected(OSCTCPClient client)
+    {
+        tcpConnected = false;
     }
 
     void packetReceived(OSCPacket p)
@@ -143,17 +167,25 @@ public class OSCMaster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         server.Update();
-	}
+        if (useTCP) tcpClient.Update();
+
+        if (Input.GetKeyDown(KeyCode.K)) sendMessage(new OSCMessage("/all"));
+;	}
 
 
     void OnDestroy()
     {
         server.Close();
+        if (useTCP) tcpClient.Close();
     }
 
     public static void sendMessage(OSCMessage m)
     {
-        instance.client.Send(m);
+        //Still use UDP for sending
+
+        //Debug.Log("Send message " + m.Address);
+        //if (instance.useTCP) instance.tcpClient.Send(m);
+       instance.client.Send(m);
     }
 
     public static void sendMessageToOtherTablets(OSCMessage m)

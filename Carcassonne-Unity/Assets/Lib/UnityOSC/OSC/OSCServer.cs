@@ -152,6 +152,7 @@ namespace UnityOSC
 
 				if(bytes != null && bytes.Length > 0)
 				{
+
                     OSCPacket packet = OSCPacket.Unpack(bytes);
 
                     _lastReceivedPacket = packet;

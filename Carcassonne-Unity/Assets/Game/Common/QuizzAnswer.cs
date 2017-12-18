@@ -52,7 +52,11 @@ public class QuizzAnswer : MonoBehaviour
         isSelected = value;
         if(isSelected) AudioPlayer.instance.play("bip");
 
-        foreach (Image ai in answerImages) ai.DOColor(isSelected ? selectColor : Color.white, .3f);
+        foreach (Image ai in answerImages)
+        {
+            ai.DOKill(true);
+            ai.DOColor(isSelected ? selectColor : Color.white, .3f);
+        } 
     }
 
     public virtual void setData(string gameID, int questionID, string answer, bool isGood)
@@ -60,14 +64,26 @@ public class QuizzAnswer : MonoBehaviour
         setSelected(false);
         this.isGood = isGood;
         canBeClicked = true;
+        GetComponent<RectTransform>().DOKill(true);
         GetComponent<RectTransform>().DOAnchorPos(initPos, .3f);
     }
 
     public bool showAnswer()
     {
         //Debug.Log("Show answer #" + answerID + " > " + isGood + "/" + isSelected);
-        if (isGood || isSelected) foreach (Image ai in answerImages) ai.DOColor(isGood ? goodColor : badColor, .3f);
-        if (isGood) transform.DOScale(1.2f, 1).SetEase(Ease.OutElastic);
+        if (isGood || isSelected)
+        {
+            foreach (Image ai in answerImages) 
+            {
+                    ai.DOKill(true);
+                    ai.DOColor(isGood ? goodColor : badColor, .3f);    
+            }
+        } 
+
+        if (isGood)
+        {
+            transform.DOScale(1.2f, 1).SetEase(Ease.OutElastic);
+        }
         transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, isGood? .1f : 0);
 
         canBeClicked = false;

@@ -104,7 +104,8 @@ public class GameMaster : OSCControllable {
     {
         if(g == currentGameInstance)
         {
-            ScoreManager.instance.showScore(g.id);
+            setCurrentGame(null);
+            //ScoreManager.instance.showScore(g.id);
         }
     }
 

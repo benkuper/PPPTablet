@@ -1,0 +1,513 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"GEtCom",
+				"GetComponent<T>()\tT"
+			],
+			[
+				"Unity",
+				"UnityEngine\tUnityEngine"
+			],
+			[
+				"Sy",
+				"System\tSystem"
+			],
+			[
+				"back",
+				"background-attachment"
+			],
+			[
+				"il",
+				"inline-block"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"backg",
+				"background-size"
+			],
+			[
+				"cen",
+				"centered"
+			],
+			[
+				"touchpad",
+				"touchpadPos"
+			],
+			[
+				"axisU",
+				"axisUpdateInternal"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/quizzimages_economie/config.json",
+			"settings":
+			{
+				"buffer_size": 4414,
+				"encoding": "UTF-16 LE with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/quizztextes_poubelles/config.json",
+			"settings":
+			{
+				"buffer_size": 2174,
+				"encoding": "UTF-16 LE with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/quizztextes_process/config.json",
+			"settings":
+			{
+				"buffer_size": 2059,
+				"encoding": "UTF-16 LE with BOM",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ft",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"ftp",
+				"SFTP: Browse Remote…"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"up",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"setup",
+				"FTPSync: Setup FTPSync in this folder"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game/Common",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Lib",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Lib/UnityOSC",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Lib/UnityOSC/OSC"
+	],
+	"file_history":
+	[
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/code2D_consignes/config.json",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/laserquizz/config.json",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Lib/OSCMaster/OSCMaster.cs",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DIa0.557/README.txt",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/config.json",
+		"/C/Users/Ben/Desktop/Windows-universal-samples-master/Samples/DeviceEnumerationAndPairing/cpp/Scenario8_PairDevice.xaml.cpp",
+		"/C/Users/Ben/Desktop/Windows-universal-samples-master/Samples/DeviceEnumerationAndPairing/cpp/Scenario3_BackgroundDeviceWatcher.xaml.cpp",
+		"/C/Users/Ben/Desktop/Windows-universal-samples-master/Samples/DeviceEnumerationAndPairing/cpp/Scenario2_DeviceWatcher.xaml.cpp",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Lib/UnityOSC/OSC/OSCTCPClient.cs",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Carcassonne-Unity.sublime-project",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game/Common/QuizzGame.cs",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Scripts/MainConfig.cs",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/ConsoleUtil.cs",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/config_safe.json",
+		"/D/Downloads/Bittorent/Red Giant Complete Suite Nov.2018 For Windows - [CrackzSoft]/Red.Giant.Complete.Suite-crackzsoft/Readme.txt",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DIa0.756/Readme.txt",
+		"/D/Documents/Pro/Projects/ClairObscur/AEli/Resources/MagicienDoz/Session1 Fred-Vincent.txt",
+		"/D/Downloads/Bittorent/Red Giant Complete Suite 02.2017 (Win 64)/Red Giant Magic Bullet Suite 13.0.3/MBSuite_Win_Full_13.0.3/Magic Bullet Suite SN.txt",
+		"/D/Downloads/Bittorent/Red Giant Complete Suite 02.2017 (Win 64)/Red Giant Magic Bullet Suite 13.0.3/MBSuite_Win_Full_13.0.3/Read please, IMPORTANT.txt",
+		"/C/Windows/System32/drivers/etc/lmhosts.sam",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Documents/Pro/Projects/ClairObscur/AEli/Resources/MagicienDoz/Session1 Fred-Vincent",
+		"/D/Documents/Pro/Projects/Deo/site/sftp-config.json",
+		"/D/Documents/OSCMorph/test.morph",
+		"/D/Documents/Pro/Projects/Theoriz/Mixed Reality/MrTracker/Source/OSCOutput.cpp",
+		"/D/Documents/Pro/Projects/Theoriz/Augmenta/SimSim/Source/OSCOutput.cpp",
+		"/D/Documents/Pro/Projects/Theoriz/Mixed Reality/MrTracker/Source/OSCOutput.h",
+		"/D/Documents/Pro/Projects/ClairObscur/AEli/Resources/EmotionConfig.txt",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DIa0.936/main.c",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DIa0.970/jc_voronoi.h",
+		"/D/Documents/Pro/Projects/Theoriz/Augmenta/SimSim/Source/OutputManagerUI.cpp",
+		"/C/Users/Ben/Desktop/vvvv_45beta34.2_x64/license.txt",
+		"/D/Documents/Pro/Projects/TheCamp/Hive/Interlude.txt",
+		"/C/Program Files (x86)/Spout2/SPOUTCAM/readme.txt",
+		"/D/Documents/Perso/Projects/OpenStripSpatializer_OF/bin/data/default.xml",
+		"/C/Users/Ben/Desktop/noise.txt",
+		"/D/Softwares/FFGL/ShaderLoader/installation.txt",
+		"/C/Users/Ben/Desktop/circles.txt",
+		"/C/Users/Ben/Desktop/circle2",
+		"/D/Documents/Processing/Hive/Capsule/data/config.json",
+		"/D/Softwares/FFGL/ShaderLoader/Shaders/disco.txt",
+		"/C/Users/Ben/Desktop/ocean.txt",
+		"/D/Downloads/Internet/Simplex_3D_Perlin_Noise.json",
+		"/C/Users/Ben/Desktop/circle2.txt",
+		"/D/Downloads/Internet/Simplex_3D_Perlin_Noise (1).json",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DIa0.493/install face detection.txt",
+		"/C/Users/Ben/Desktop/Conf",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/SpheresCurieuses/SphereCurieuses-Unity/Assets/Lib/OSC/OSCMaster/OSCMaster.cs",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/SpheresCurieuses/SphereCurieuses-Unity/Assets/Lib/OSC/OSCMaster/OSCControllable.cs",
+		"/C/Users/Ben/Desktop/get-pip..py",
+		"/C/Users/Ben/Desktop/opencv-3.3.1/build/ALL_BUILD.vcxproj",
+		"/C/Users/Ben/Desktop/opencv-3.3.1/build/modules/core/opencv_core.vcxproj",
+		"/C/Program Files (x86)/SVS-VISTEK GmbH/SVS GigE SDK/SVCam_GigE_FAQ.txt",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/languages.yaml",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/03._workshops/portfolio.en.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/css/layout.css",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/02._spectacles/testimonials.en.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/modular/portfolio.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/modular/testimonials.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/partials/header.html.twig",
+		"/D/Downloads/Internet/opencv/LICENSE.txt",
+		"/D/Downloads/Internet/opencv/README.md.txt",
+		"/D/Documents/Pro/Projects/Deo/site/user/languages/en.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/languages/fr.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/config/system.yaml",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/02._spectacles/testimonials.fr.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/03._workshops/portfolio.fr.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/04._contact/form.fr.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/04._contact/form.en.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/partials/language-selector.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/01._about/about.en.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/02._spectacles/testimonials.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/modular/form.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/modular/about.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/partials/base.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/js/jquery.flexslider.js",
+		"/D/Documents/Perso/Projects/OctoBarFest/data/sessions_esp32/visite1.json",
+		"/D/Documents/Pro/Projects/Deo/site/user/plugins/featherlight/featherlight.init2.js",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/01._about/about.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/plugins/featherlight/css/featherlight.min.css",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/js/init.js",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/css/default.css",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/04.spectacles/default.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/blueprints.yaml",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/blueprints.yaml",
+		"/D/Documents/Pro/Projects/Deo/site/user/config/site.yaml",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/templates/modular/call.html.twig",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/_about/about.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/pages/01.home/_contact/form.md",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/images/underline.png",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/images/facebook.pxr",
+		"/C/Users/Ben/AppData/Roaming/Sublime Text 3/Packages/User/sftp_servers/bach",
+		"/C/Users/Ben/Desktop/MyriadPro-Bold/styles.css",
+		"/C/Users/Ben/Desktop/MyriadPro-Light/styles.css",
+		"/C/Users/Ben/AppData/Local/Temp/Rar$DRa0.796/styles.css",
+		"/D/Documents/Pro/Projects/Deo/site/user/themes/ceevee/css/fonts.css",
+		"/D/Documents/Pro/Projects/Deo/site/cache/compiled/config/master-compagniedeo.com.php",
+		"/D/Documents/Pro/Projects/Deo/site/bach.sftpconfig",
+		"/C/Users/Ben/Desktop/MyriadPro-Regular/styles.css",
+		"/D/Documents/Perso/Projects/OctoBarFest/data/visite1.json",
+		"/C/Users/Ben/Desktop/DrinkMixDrawer.cs",
+		"/D/Downloads/Bittorent/Autodesk Maya 2018 [Win]/AutoDesk 2018 Universal Keygen (X32-X64) V3 by X-Force/Install.txt",
+		"/D/Documents/Perso/Projects/Chataigne/site/user/pages/01.home/_download/download.md",
+		"/D/Documents/Perso/Projects/Chataigne/site/releases/update.json",
+		"/D/Documents/Perso/Projects/Chataigne/site/help/help.json",
+		"/C/Users/Ben/AppData/Roaming/help.json",
+		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Scripts/ScoreManager.cs",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/.gitignore",
+		"/C/Users/Ben/Desktop/places vendredi.txt",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/SphereCurieuses-Unity/.gitignore",
+		"/D/Documents/Pro/Projects/Organic Orchestra/OwnCloud/Projets/Aidem/Projets/tessellations_hypnotiques/tessellations_hypnotiques_content.json",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/Resources/DroneList",
+		"/C/Users/Ben/Desktop/crash.log",
+		"/D/Documents/Pro/Projects/Organic Orchestra/Dev/Projets/Aidem/src/ofClient/aidem/src/ProjectFiche.cpp",
+		"/D/Documents/Perso/Projects/Chataigne/site/user/themes/ceevee/templates/modular/download.html.twig",
+		"/D/Documents/Pro/Projects/Organic Orchestra/OwnCloud/Projets/Aidem/Projets/the maze/the maze_content.json",
+		"/D/Documents/Pro/Projects/Organic Orchestra/OwnCloud/Projets/Aidem/Projets/casque lumineux/casque lumineux_content.json",
+		"/C/Users/Ben/Desktop/logParams.txt",
+		"/D/Documents/Chataigne/modules/Spektr/Spektr.js",
+		"/D/Documents/Chataigne/modules/Spektr/module.json",
+		"/C/Users/Ben/Desktop/logVariables.txt",
+		"/C/Users/Ben/Google Drive/Perso/Assurance Maladie/Sécurité sociale.txt",
+		"/C/Users/Ben/Desktop/places vendredi (2).txt",
+		"/C/Users/Ben/Desktop/places vendredi",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/crazyflie-osc/requirements.txt",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/Crazyflie-Unity/crazyflie-osc-unity/Assets/Lib/MrTracker/Scripts/ViveControllerObject.cs",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/Crazyflie-Unity/crazyflie-osc-unity/Assets/Lib/MrTracker/Scripts/ViveControllerTrackable.cs",
+		"/D/Documents/Pro/Projects/Cirque Inacheve/Spheres Curieuses/crazyflie-osc/src/server_osc_modules/CrazyflieModule.py"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 113.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"useT"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/quizzimages_economie/config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4414,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/quizztextes_poubelles/config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/jeux/quizztextes_process/config.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2059,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 43.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 120.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 225.0
+	},
+	"output.variable_get":
+	{
+		"height": 120.0
+	},
+	"pinned_build_system": "",
+	"project": "Carcassonne-Unity.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

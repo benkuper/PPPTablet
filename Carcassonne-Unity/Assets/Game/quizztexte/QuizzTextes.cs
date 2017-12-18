@@ -11,24 +11,29 @@ public class QuizzTextes :
 {
     public override void showExplications()
     {
-        int index = 0;
-        foreach (QuizzAnswer a in answers)
+        
+        if(tempsExplication > 0)
         {
-            if (a.isGood)
+            int index = 0;
+            foreach (QuizzAnswer a in answers)
             {
-                a.GetComponent<RectTransform>().DOAnchorPosY(answerPos.y, .3f).SetDelay(1);
+                if (a.isGood)
+                {
+                    a.GetComponent<RectTransform>().DOAnchorPosY(answerPos.y, .3f).SetDelay(1);
+                }
+                else
+                {
+                    a.GetComponent<RectTransform>().DOAnchorPosX(400, .3f).SetDelay(index * .05f);
+                }
+                index++;
             }
-            else
-            {
-                a.GetComponent<RectTransform>().DOAnchorPosX(400, .3f).SetDelay(index * .1f);
-            }
-            index++;
         }
-
+       
         RectTransform r = explicationsPanel.GetComponent<RectTransform>();
         explicationsPanel.SetActive(true);
         explicationsText.text = currentQuestion.explication;
 
+        r.DOKill(true);
         r.SetPositionAndRotation(new Vector3(explicationsPanel.transform.position.x, initExplicationsPos.y - 800, 0), Quaternion.identity);
 
         r.DOAnchorPosY(initExplicationsPos.y, .3f).SetDelay(1);

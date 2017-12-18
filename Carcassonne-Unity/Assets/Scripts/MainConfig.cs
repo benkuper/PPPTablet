@@ -19,6 +19,12 @@ public class MainConfig : OSCControllable {
         if (OSCMaster.instance != null) OSCMaster.instance.setupClient();
     }
     
+    [OSCMethod("quit")]
+    public void quitApp()
+    {
+        Debug.Log("Quit app !");
+        Application.Quit();
+    }
 
     [OSCMethod("show")]
     public void showConfig()
