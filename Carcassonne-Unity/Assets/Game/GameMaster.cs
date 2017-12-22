@@ -73,7 +73,7 @@ public class GameMaster : OSCControllable {
         if(currentGameData != null)
         {
             currentGameInstance.gameEndEvent -= gameEnded;
-            currentGameInstance.killGame();
+            currentGameInstance.killGame(); //kill or end ?
             Destroy(currentGameInstance.gameObject);
         }
 

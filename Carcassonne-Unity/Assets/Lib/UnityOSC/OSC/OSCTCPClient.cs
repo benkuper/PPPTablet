@@ -41,11 +41,16 @@ namespace UnityOSC
         public delegate void TCPPacketReceivedEvent(OSCPacket packet);
         public TCPPacketReceivedEvent packetReceived;
 
+        List<byte> buffer;
+
         #region Constructors
         public OSCTCPClient (IPAddress address, int port)
 		{
 			_ipAddress = address;
 			_port = port;
+            buffer = new List<byte>();
+
+            Connect();
 		}
 		#endregion
 		
@@ -60,7 +65,7 @@ namespace UnityOSC
 
         Thread connectThread;
 
-        float checkTime = 2;
+        float checkTime = 5;
         float lastCheck;
 
 		#region Properties
@@ -100,7 +105,8 @@ namespace UnityOSC
 
             // Set the timeout for synchronous receive methods to 
             // 1 second (1000 milliseconds.)
-            _tcpClient.ReceiveTimeout = 1000; 
+            _tcpClient.ReceiveTimeout = 2000; 
+
 			try
 			{
 				_tcpClient.Connect(_ipAddress, _port);
@@ -180,26 +186,54 @@ namespace UnityOSC
                 byte[] bytes = new byte[_tcpClient.Available];
                 _tcpClient.Client.Receive(bytes);
 
+                buffer.AddRange(bytes);
 
-                bool trimmed = false;
-                if(bytes[0] == 0 && bytes[1] == 0 && bytes[2] == 0)
-                {
-                    List<byte> trimBytes = new List<byte>(bytes);
-                    trimBytes.RemoveRange(0, 4);
-                    bytes = trimBytes.ToArray();
-                    trimmed = true;
+                unpackAll();
 
-                }
-                OSCPacket packet = OSCPacket.Unpack(bytes);
-
-                ConsoleUtil.log("Received "+bytes.Length+" "+(trimmed?"trimmed":"bytes")+", packet address : "+packet.Address);
-
-                packetReceived(packet);
             }
             catch(Exception e)
             {
-                throw new Exception(String.Format("Receive error : {0}",e.Message));
+                throw new Exception(String.Format("Receive error : {0}\n{1}",e.Message,e.StackTrace));
             }
+        }
+
+        void unpackAll()
+        {
+            while(buffer.Count > 0)
+            {
+                byte[] bytes = buffer.ToArray();
+
+                int start = 0;
+                OSCMessage packet = OSCMessage.Unpack(bytes, ref start);
+                //Debug.Log("First pack start = " + start + " / " + packet != null);
+
+                bool trimmed = false;
+                if (packet == null)
+                {
+                    String s = BitConverter.ToString(bytes, 0, 4);
+                    //Debug.Log("Trim : " + s);
+                    start = 4; // 4 bytes
+                    packet = OSCMessage.Unpack(bytes, ref start);
+                    trimmed = true;
+                }
+
+                buffer.RemoveRange(0, start);
+
+                if (packet != null)
+                {
+
+                    //Debug.Log("First pack start = " + start + " / " + packet.Address + " / " + bytes.Length);
+                    ConsoleUtil.log("Received " + bytes.Length + " " + (trimmed ? "trimmed" : "bytes") + ", packet address : " + packet.Address);
+
+                    packetReceived(packet);
+                }
+                else
+                {
+                    Debug.Log("Packet null after trim test, adding to buffer");
+                }
+
+            }
+
         }
 
         /// <summary>

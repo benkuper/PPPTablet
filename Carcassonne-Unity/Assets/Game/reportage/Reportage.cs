@@ -85,13 +85,10 @@ public class Reportage : Game {
 
         titreText.text = textePreparation;
         AudioPlayer.instance.play("wait",AudioPlayer.SourceType.BG);
+        MediaPlayer.hide();
 
-        //init cam without showing
-        camTex = new WebCamTexture(device.name);
-        camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
-        camImage.color = Color.black;
-        camImage.DOColor(Color.white, 1f);
-        camPlaneMat.mainTexture = camTex;
+        //init cam without showing, delayed for sanity if coming after a media player
+        StartCoroutine(initCam());
 
         prepaCountDown = tempsPreparation;
 
@@ -101,6 +98,24 @@ public class Reportage : Game {
         Debug.Log("prepa countdown : " + prepaCountDown);
 
         DOTween.To(() => prepaCountDown, x => prepaCountDown = x, 0, prepaCountDown).SetEase(Ease.Linear).OnComplete(startCapture);//.OnUpdate(updatePrepaText);
+    }
+
+
+    public IEnumerator initCam()
+    {
+        Debug.Log("Init cam");
+        yield return new WaitForSeconds(prepaCountDown/2.0f);
+
+        camTex = new WebCamTexture(device.name);
+        camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
+        camImage.color = Color.black;
+        camImage.DOColor(Color.white, 1f);
+
+
+        yield return new WaitForSeconds(.5f);
+        camPlaneMat.mainTexture = camTex;
+
+
     }
 
     /*
@@ -143,10 +158,6 @@ public class Reportage : Game {
 
     public void stopCapture()
     {
-
-        Debug.Log("Stop Capturing");
-        camFeedback.GetComponent<Renderer>().enabled = false;
-
         camCap.StopCapturing();
         camTex.Stop();
 
@@ -154,6 +165,12 @@ public class Reportage : Game {
 
         //Delayed ?
         endGame();
+
+        Debug.Log("Stop Capturing");
+        if (camFeedback != null && camFeedback.GetComponent<Renderer>() != null)
+        {
+            camFeedback.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     public override void endGame()

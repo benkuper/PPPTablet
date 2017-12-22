@@ -197,10 +197,11 @@ public class ScoreManager : OSCControllable {
                 scoreTexts[i].text = "-";
                 hasFinishedAllGames = false;
             }
-            globalScore += scores[i].score;
+            globalScore += Mathf.Max(scores[i].score,0);
         }
 
-        totalText.text = hasFinishedAllGames ? globalScore.ToString() : "-";
+        //totalText.text = hasFinishedAllGames ? globalScore.ToString() : "-";
+        totalText.text = globalScore.ToString();
 
         for (int i=0;i< canvasEquipe.transform.childCount; i++)
         {
@@ -260,9 +261,10 @@ public class ScoreManager : OSCControllable {
     {
         if (TabletIDManager.getTabletID() > NUM_PLAYERS) return;
 
-        int scoreModule1 = scores[0].score + scores[1].score + scores[2].score + scores[3].score;
-        int scoreModule2 = scores[4].score + scores[5].score;
-        int scoreModule3 = scores[6].score + scores[7].score + scores[8].score + scores[9].score + scores[10].score;
+        int scoreModule1 = Mathf.Max(scores[0].score, 0) + Mathf.Max(scores[1].score, 0) + Mathf.Max(scores[2].score, 0) + Mathf.Max(scores[3].score, 0);
+        int scoreModule2 = Mathf.Max(scores[4].score, 0) + Mathf.Max(scores[5].score, 0);
+        int scoreModule3 = Mathf.Max(scores[6].score, 0) + Mathf.Max(scores[7].score, 0) + Mathf.Max(scores[8].score, 0) + Mathf.Max(scores[9].score, 0) + Mathf.Max(scores[10].score, 0);
+
 
         OSCMessage m = new OSCMessage("/score");
         m.Append(TabletIDManager.getTabletID());

@@ -80,6 +80,7 @@ public class Game : OSCControllable {
             }
         }
 
+        AudioPlayer.instance.stop();
         AudioPlayer.instance.play("end");
 
         Invoke("dispatchEnd", 1f);
@@ -93,7 +94,6 @@ public class Game : OSCControllable {
     public virtual void killGame()
     {
         AudioPlayer.instance.stop();
-
         gameObject.SetActive(false);
     }
     

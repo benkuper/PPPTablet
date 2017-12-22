@@ -22,6 +22,7 @@ public class AssetManager : MonoBehaviour {
 	public static void init () {
 #if UNITY_EDITOR
         basePath = Directory.GetCurrentDirectory().Replace('\\','/') + "/../Sync/";
+        basePath = Path.GetFullPath(basePath).Replace('\\', '/');
 #else
         basePath = "storage/emulated/0/PPP/"; //Android sync folder
         
@@ -131,7 +132,7 @@ public class AssetManager : MonoBehaviour {
         }
         yield return www;
 
-        if (www != null) receiver.audioReady(audioID, WWWAudioExtensions.GetAudioClip(www));
+        if (www != null) receiver.audioReady(audioID, www.GetAudioClip());
         else receiver.audioReady(audioID, null);
 
     }
@@ -153,7 +154,11 @@ public class AssetManager : MonoBehaviour {
     {
         if (!isInit) init();
         if (!File.Exists(basePath + "medias/" + mediaFile)) return "";
+#if UNITY_EDITOR
+        return basePath + "medias/" + mediaFile;
+#else
         return "file:///" + basePath + "medias/" + mediaFile;
+#endif
     }
 
     public static string getAudioPath(string mediaFile)

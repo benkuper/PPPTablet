@@ -41,6 +41,7 @@ public class MediaPlayer : OSCControllable {
         instance.player.url = mediaPath;
         //instance.player.renderMode = VideoRenderMode.CameraNearPlane;
         instance.player.enabled = true;
+        instance.player.skipOnDrop = false;
         instance.player.Play();
 
         currentListener = listener;

@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using UnityEngine;
 
 namespace UnityOSC
 {
@@ -107,7 +108,18 @@ namespace UnityOSC
 		/// </returns>
 		public static OSCMessage Unpack(byte[] data, ref int start)
 		{
+
+			int initStart = start;
+			
 			string address = OSCPacket.UnpackValue<string>(data, ref start);
+
+            //Debug.Log("Unpack " + data.Length + " bytes, start after address : " + start + " / address : " + address);
+			if(address == "")
+			{
+				start = initStart;
+				return null;
+			}
+			
 			OSCMessage message = new OSCMessage(address);
 
 			char[] tags = OSCPacket.UnpackValue<string>(data, ref start).ToCharArray();
