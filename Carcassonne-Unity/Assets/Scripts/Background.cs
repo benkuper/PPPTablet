@@ -24,7 +24,7 @@ public class Background : MonoBehaviour, ITextureReceiver {
 	
 	// Update is called once per frame
 	void Update () {
-        infosText.text = "ID tablette : "+TabletIDManager.getTabletID()+"\nApp version : "+Application.version+"\n"+(OSCMaster.instance.tcpConnected?"Connexion OK":"En attente de connexion...");
+        infosText.text = "ID tablette : "+TabletIDManager.getTabletID()+"\nApp version : "+Application.version+"\n"+(OSCMaster.instance.tcpConnected?(OSCMaster.instance.tcpRegistered?"Connexion OK":"En attente d'enregistrement..."):"En attente de connexion...");
         setEnabled(!GameMaster.instance.gameIsPlaying() && !ScoreManager.instance.isShowing() && !MediaPlayer.instance.mediaIsPlaying());
 	}
 

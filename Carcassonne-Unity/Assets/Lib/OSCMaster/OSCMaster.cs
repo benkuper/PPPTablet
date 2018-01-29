@@ -10,12 +10,13 @@ public class OSCMaster : MonoBehaviour {
 
     OSCThreadServer server;
     OSCClient client;
-    OSCClient broadcastClient;
     OSCClient scoreClient;
+    OSCClient routerClient;
 
     public int port = 6000;
     public int remotePort = 6001;
     public int scorePort = 6950;
+    public int routerPort = 6000;
 
     public bool debugMessage;
 
@@ -23,6 +24,7 @@ public class OSCMaster : MonoBehaviour {
 
     public bool useTCP;
     public bool tcpConnected;
+    public bool tcpRegistered;
     public int tcpRemotePort = 6201;
     public OSCTCPClient tcpClient;
     
@@ -55,19 +57,21 @@ public class OSCMaster : MonoBehaviour {
 #endif
 
             client = new OSCClient(ip, remotePort);
-            broadcastClient = new OSCClient(ip, port);
             scoreClient = new OSCClient(ip, scorePort);
+            routerClient = new OSCClient(ip, routerPort);
 
             if (useTCP)
             {
                 tcpClient = new OSCTCPClient(ip, tcpRemotePort);
                 tcpClient.onConnected += tcpClientConnected;
                 tcpClient.onDisconnected += tcpClientDisconnected;
+                tcpClient.onRegistered += tcpClientRegistered;
                 tcpClient.packetReceived += packetReceived;
+                
             }
 
             client.Connect();
-            broadcastClient.Connect();
+            routerClient.Connect();
             scoreClient.Connect();
 
             Debug.Log("OSCMaster is now sending to : " + client.ClientIPAddress + ":" + client.Port);
@@ -78,12 +82,18 @@ public class OSCMaster : MonoBehaviour {
     private void tcpClientConnected(OSCTCPClient client)
     {
         tcpConnected = true;
-        sendMessage(new OSCMessage("/super"));
     }
 
     private void tcpClientDisconnected(OSCTCPClient client)
     {
         tcpConnected = false;
+        tcpRegistered = false;
+    }
+
+    private void tcpClientRegistered(OSCTCPClient client)
+    {
+        if (debugMessage) Debug.Log("Client registered !");
+        tcpRegistered = true;
     }
 
     void packetReceived(OSCPacket p)
@@ -100,7 +110,8 @@ public class OSCMaster : MonoBehaviour {
 
         string[] addSplit = m.Address.Split(new char[] { '/' });
 
-        if (addSplit.Length < 4) return;
+
+        if (addSplit.Length < 3) return;
 
         string tabIDString = addSplit[1].ToLower();
 
@@ -124,9 +135,19 @@ public class OSCMaster : MonoBehaviour {
         }
 
         string target = addSplit[2];
-        string property = addSplit[3];
 
-        if(debugMessage) Debug.Log("Message received for Target : " + target + ", property = " + property);
+
+
+        if (target == "registered")
+        {
+            tcpClient.isRegistered = true;
+            return;
+        }
+
+        if (addSplit.Length < 4) return;
+        string property = addSplit[3];
+        if (debugMessage) Debug.Log("Message received for Target : " + target + ", property = " + property);
+
 
         OSCControllable c = getControllableForID(target);
 
@@ -188,10 +209,11 @@ public class OSCMaster : MonoBehaviour {
        instance.client.Send(m);
     }
 
-    public static void sendMessageToOtherTablets(OSCMessage m)
+    public static void sendMessageToRouter(OSCMessage m)
     {
-        instance.broadcastClient.Send(m);
+        instance.routerClient.Send(m);
     }
+
 
     public static void sendScoreMessage(OSCMessage m)
     {

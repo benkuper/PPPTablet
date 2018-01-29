@@ -57,6 +57,6 @@ public class MainConfig : OSCControllable {
     public void sendScoreVisite()
     {
         OSCMessage m = new OSCMessage("/all/score/showVisite");
-        OSCMaster.sendMessageToOtherTablets(m);
+        OSCMaster.sendMessageToRouter(m);
     }
 }

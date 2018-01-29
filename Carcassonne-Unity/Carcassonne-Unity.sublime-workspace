@@ -68,13 +68,12 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/Ben/Desktop/compagnie du fardeau",
+			"file": "Assets/Game/quizzimages/ImageAnswer.cs",
 			"settings":
 			{
-				"buffer_size": 50,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "compagnie du fardeau"
+				"buffer_size": 1974,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -148,7 +147,6 @@
 	[
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game",
-		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game/Common",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game/quizzimages",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Game/quizztexte",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Carcassonne-Unity/Assets/Lib",
@@ -158,6 +156,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Ben/Desktop/compagnie du fardeau",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/scores/score_tab-1.json",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/scores/score_tab2.json",
 		"/D/Documents/Pro/Projects/PPP/PPPTablet/Sync/scores/score_tab3.json",
@@ -284,8 +283,7 @@
 		"/D/Documents/Pro/Projects/Deo/site/cache/compiled/config/master-compagniedeo.com.php",
 		"/D/Documents/Pro/Projects/Deo/site/bach.sftpconfig",
 		"/C/Users/Ben/Desktop/MyriadPro-Regular/styles.css",
-		"/D/Documents/Perso/Projects/OctoBarFest/data/visite1.json",
-		"/C/Users/Ben/Desktop/DrinkMixDrawer.cs"
+		"/D/Documents/Perso/Projects/OctoBarFest/data/visite1.json"
 	],
 	"find":
 	{
@@ -335,29 +333,32 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/Ben/Desktop/compagnie du fardeau",
-					"semi_transient": false,
+					"file": "Assets/Game/quizzimages/ImageAnswer.cs",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 50,
+						"buffer_size": 1974,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								50,
-								50
+								260,
+								260
 							]
 						],
 						"settings":
 						{
-							"auto_name": "compagnie du fardeau",
 							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

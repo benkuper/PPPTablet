@@ -24,6 +24,7 @@ using System.Net.Sockets;
 using UnityEngine;
 using System.Threading;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace UnityOSC
 {
@@ -34,10 +35,10 @@ namespace UnityOSC
 	public class OSCTCPClient
 	{
 
-        public delegate void TCPClientConnectedEvent(OSCTCPClient client);
-        public TCPClientConnectedEvent onConnected;
-        public delegate void TCPClientDisconnectedEvent(OSCTCPClient client);
-        public TCPClientDisconnectedEvent onDisconnected;
+        public delegate void TCPClientEvent(OSCTCPClient client);
+        public TCPClientEvent onConnected;
+        public TCPClientEvent onRegistered;
+        public TCPClientEvent onDisconnected;
         public delegate void TCPPacketReceivedEvent(OSCPacket packet);
         public TCPPacketReceivedEvent packetReceived;
 
@@ -62,6 +63,8 @@ namespace UnityOSC
 
         bool isConnected;
         bool lastConnected;
+        public bool isRegistered;
+        bool lastRegistered;
 
         Thread connectThread;
 
@@ -111,6 +114,8 @@ namespace UnityOSC
 			{
 				_tcpClient.Connect(_ipAddress, _port);
                 isConnected = true;
+
+                
 			}
 			catch(Exception e)
 			{
@@ -120,6 +125,30 @@ namespace UnityOSC
 
 		}
 
+        public String getLocalIP()
+        {
+            String result = "";
+            /*
+            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+                {
+                    Console.WriteLine(ni.Name);
+                    foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
+                    {
+                        if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                        {
+                            Console.WriteLine(ip.Address.ToString());
+                            if (ip.Address.ToString().StartsWith("192.168.")) return ip.Address.ToString();
+                        }
+                    }
+                }
+            }
+            */
+            if (result == "") result = Network.player.ipAddress;
+            return result;
+        }
+
         public void Update()
         {
             if (_tcpClient != null)
@@ -128,10 +157,27 @@ namespace UnityOSC
                 if (isConnected != lastConnected)
                 {
                     lastConnected = _tcpClient.Connected;
-                    if (isConnected) onConnected(this);
-                    else onDisconnected(this);
+                    if (isConnected)
+                    {
+                        onConnected(this);
+                        register();
+                    }
+                    else
+                    {
+                        isRegistered = false;
+                        onDisconnected(this);
+                    }
                 }
+            }
+            else
+            {
+                isRegistered = false;
+            }
 
+            if(isRegistered != lastRegistered)
+            {
+                lastRegistered = isRegistered;
+                if (isRegistered) onRegistered(this);
             }
 
             if (_tcpClient != null && isConnected)
@@ -155,24 +201,39 @@ namespace UnityOSC
 
         }
 
+        private void register()
+        {
+            Debug.Log("Register : " + TabletIDManager.getTabletID() + " > " + getLocalIP());
+            OSCMessage m = new OSCMessage("/register");
+            m.Append(TabletIDManager.getTabletID());
+            m.Append(getLocalIP());
+            OSCMaster.sendMessageToRouter(m);
+        }
+
         private void CheckStillConnected()
         {
+           // Debug.Log("Check Still connected");
             try
             {
-                if (_tcpClient.Client.Poll(0, SelectMode.SelectRead))
+                if(_tcpClient != null)
                 {
-                    byte[] buff = new byte[1];
-                    if (_tcpClient.Client.Receive(buff, SocketFlags.Peek) == 0)
+                    if (_tcpClient.Client.Poll(0, SelectMode.SelectRead))
                     {
-                        // Client disconnected
-                        isConnected = false;
+                        byte[] buff = new byte[1];
+                        if (_tcpClient.Client.Receive(buff, SocketFlags.Peek) == 0)
+                        {
+                            // Client disconnected
+                            isConnected = false;
+                        }
                     }
                 }
+               
             }catch(Exception e)
             {
                 isConnected = false;
             }
           
+            if(isConnected && !isRegistered) register();
         }
 
         private void Receive()
