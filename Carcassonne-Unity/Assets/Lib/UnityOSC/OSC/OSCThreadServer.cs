@@ -168,7 +168,7 @@ namespace UnityOSC
 
 				if(bytes != null && bytes.Length > 0)
 				{
-                    Debug.Log("From udp :" + BitConverter.ToString(bytes));
+                    //Debug.Log("From udp :" + BitConverter.ToString(bytes));
 
                     OSCPacket packet = OSCPacket.Unpack(bytes);
 					lock(_lastReceivedPacket)

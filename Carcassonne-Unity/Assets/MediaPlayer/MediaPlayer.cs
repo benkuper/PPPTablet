@@ -38,6 +38,7 @@ public class MediaPlayer : OSCControllable {
             return;
         }
 
+
         instance.player.url = mediaPath;
         //instance.player.renderMode = VideoRenderMode.CameraNearPlane;
         instance.player.enabled = true;
@@ -85,6 +86,8 @@ public class MediaPlayer : OSCControllable {
         //instance.player.renderMode = VideoRenderMode.APIOnly;
         instance.player.Stop();
         instance.player.enabled = false;
+
+        System.GC.Collect();
     }
 
 	// Use this for initialization

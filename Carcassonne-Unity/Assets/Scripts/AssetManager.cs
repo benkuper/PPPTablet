@@ -95,8 +95,9 @@ public class AssetManager : MonoBehaviour {
         yield return www;
 
         if (www != null) receiver.textureReady(texID, www.texture);
-        else receiver.textureReady(texID, instance.noTex); 
-       
+        else receiver.textureReady(texID, instance.noTex);
+
+        System.GC.Collect();
     }
 
     public static IEnumerator loadTexture(string assetPath, string texID, ITextureReceiver receiver)
@@ -115,6 +116,8 @@ public class AssetManager : MonoBehaviour {
 
         if (www != null) receiver.textureReady(texID, www.texture);
         else receiver.textureReady(texID, instance.noTex);
+
+        System.GC.Collect();
 
     }
 
@@ -135,6 +138,7 @@ public class AssetManager : MonoBehaviour {
         if (www != null) receiver.audioReady(audioID, www.GetAudioClip());
         else receiver.audioReady(audioID, null);
 
+        System.GC.Collect();
     }
 
 

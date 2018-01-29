@@ -35,15 +35,22 @@ public class Reportage : Game {
     Text titreText;
     //Text Instructions;
 
+    public bool debug1;
+    public bool debug2;
+    public bool debug3;
+    public bool debug4;
+
     public override void Awake()
     {
         base.Awake();
 
         camImage = transform.Find("Canvas/Rec/CamFeedback").GetComponent<RawImage>();
 
+        
         prepaPanel = _canvas.transform.Find("Prepa").gameObject;
         recPanel = _canvas.transform.Find("Rec").gameObject;
-        
+       
+
         //prepaText = prepaPanel.transform.Find("Countdown").GetComponent<Text>();
         recText = recPanel.transform.Find("Countdown").GetComponent<Text>();
 
@@ -53,7 +60,7 @@ public class Reportage : Game {
         //prepaText.text = tempsPreparation.ToString();
         recText.text = tempsEnregistrement.ToString();
 
-        foreach(WebCamDevice d in WebCamTexture.devices)
+        foreach (WebCamDevice d in WebCamTexture.devices)
         {
 #if UNITY_EDITOR
             device = d;
@@ -67,7 +74,7 @@ public class Reportage : Game {
 #endif
         }
 
-      
+
         camCap = GetComponentInChildren<CamCapture>();
         camCap.videoDir = AssetManager.getFolderPath("reportages/tab" + TabletIDManager.getTabletID()+"/");
 
@@ -78,6 +85,10 @@ public class Reportage : Game {
     {
         base.launchGame();
 
+        if (prepaPanel == null) return;
+
+        if (!debug1) return;
+
         prepaPanel.SetActive(true);
         recPanel.SetActive(false);
 
@@ -85,7 +96,7 @@ public class Reportage : Game {
 
         titreText.text = textePreparation;
         AudioPlayer.instance.play("wait",AudioPlayer.SourceType.BG);
-        MediaPlayer.hide();
+        MediaPlayer.hide(); 
 
         //init cam without showing, delayed for sanity if coming after a media player
         StartCoroutine(initCam());
@@ -95,27 +106,30 @@ public class Reportage : Game {
         prepaPanel.SetActive(true);
         recPanel.SetActive(false);
 
-        Debug.Log("prepa countdown : " + prepaCountDown);
+        //Debug.Log("prepa countdown : " + prepaCountDown);
 
-        DOTween.To(() => prepaCountDown, x => prepaCountDown = x, 0, prepaCountDown).SetEase(Ease.Linear).OnComplete(startCapture);//.OnUpdate(updatePrepaText);
+        DOTween.Kill("cd2");
+        DOTween.To(() => prepaCountDown, x => prepaCountDown = x, 0, prepaCountDown).SetId("cd2").SetEase(Ease.Linear).OnComplete(startCapture);//.OnUpdate(updatePrepaText);
     }
 
 
     public IEnumerator initCam()
     {
         Debug.Log("Init cam");
-        yield return new WaitForSeconds(prepaCountDown/2.0f);
+        if (!debug2) yield return null;
+        else
+        {
+            yield return new WaitForSeconds(prepaCountDown / 2.0f);
 
-        camTex = new WebCamTexture(device.name);
-        camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
-        camImage.color = Color.black;
-        camImage.DOColor(Color.white, 1f);
+            camTex = new WebCamTexture(device.name);
+            camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
+            camImage.color = Color.black;
+            camImage.DOColor(Color.white, 1f);
 
 
-        yield return new WaitForSeconds(.5f);
-        camPlaneMat.mainTexture = camTex;
-
-
+            yield return new WaitForSeconds(.5f);
+            camPlaneMat.mainTexture = camTex;
+        }        
     }
 
     /*
@@ -127,6 +141,7 @@ public class Reportage : Game {
 
     public void updateRecText()
     {
+        if (recText == null) return;
         recText.text = StringUtil.timeToCountdownString(Mathf.Min(recCountDown + 1, tempsEnregistrement));
     }
 
@@ -135,6 +150,8 @@ public class Reportage : Game {
         Debug.Log("Start Capturing");
 
         if (prepaPanel == null) return;
+
+        if (!debug3) return;
 
         prepaPanel.SetActive(false);
         recPanel.SetActive(true);
@@ -145,19 +162,20 @@ public class Reportage : Game {
 
         recCountDown = tempsEnregistrement;
 
-        prepaPanel.SetActive(false);
-        recPanel.SetActive(true);
 
         camImage.texture = camTex;
         camTex.Play();
+       
         camCap.StartCapturing();
         isCapturing = true;
 
-        DOTween.To(() => recCountDown, x => recCountDown = x, 0, recCountDown).SetEase(Ease.Linear).OnUpdate(updateRecText).OnComplete(stopCapture);
+        DOTween.Kill("countdown", false); 
+        DOTween.To(() => recCountDown, x => recCountDown = x, 0, recCountDown).SetId("countdown").SetEase(Ease.Linear).OnUpdate(updateRecText).OnComplete(stopCapture);
     }
 
     public void stopCapture()
     {
+        if (debug4) return;
         camCap.StopCapturing();
         camTex.Stop();
 
@@ -185,7 +203,15 @@ public class Reportage : Game {
         {
             stopCapture();
         }
-        camTex.Stop();
+        if (camTex != null)
+        {
+
+            camTex.Stop();
+        }
+        else
+        {
+            Debug.LogWarning("CamTex null !");
+        }
     }
 
     // Use this for initialization

@@ -6,6 +6,8 @@ using System;
 [RequireComponent(typeof(Camera))]
 public class CamCapture : MonoBehaviour
 {
+    public bool enableCapture;
+
     public int videoWidth = 720;
     public int videoHeight = 1094;
     public int videoFrameRate = 15;
@@ -29,10 +31,17 @@ public class CamCapture : MonoBehaviour
 
     private static IntPtr getDirectoryDCIMMethodID = IntPtr.Zero;
 
+    GameObject plane;
 
+    private void Awake()
+    {
+        plane = transform.Find("Plane").gameObject;
+        plane.SetActive(false);
+       
+    }
     void Start()
     {
-        if (!Application.isEditor)
+        if (!Application.isEditor && enableCapture)
         {
             // First, obtain the current activity context
             using (AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
@@ -107,6 +116,8 @@ public class CamCapture : MonoBehaviour
 
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
+        if (!enableCapture) return;
+
         Graphics.Blit(src, dest);
         if (isRunning)
         {
@@ -121,8 +132,12 @@ public class CamCapture : MonoBehaviour
 
     public void StartCapturing()
     {
+        plane.SetActive(true);
+
         if (capturingObject == IntPtr.Zero)
             return;
+
+        if (!enableCapture) return;
 
         jvalue[] videoParameters = new jvalue[4];
         videoParameters[0].i = videoWidth;
@@ -147,6 +162,8 @@ public class CamCapture : MonoBehaviour
         if (capturingObject == IntPtr.Zero)
             return;
 
+        if (!enableCapture) return;
+
         jvalue[] args = new jvalue[1];
         args[0].i = textureID;
         AndroidJNI.CallVoidMethod(capturingObject, captureFrameMethodID, args);
@@ -154,10 +171,15 @@ public class CamCapture : MonoBehaviour
 
     public void StopCapturing()
     {
+        plane.SetActive(false);
+
         isRunning = false;
+
 
         if (capturingObject == IntPtr.Zero)
             return;
+
+        if (!enableCapture) return;
 
         jvalue[] args = new jvalue[0];
         AndroidJNI.CallVoidMethod(capturingObject, stopCapturingMethodID, args);

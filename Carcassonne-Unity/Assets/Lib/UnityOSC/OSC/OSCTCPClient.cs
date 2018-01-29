@@ -247,6 +247,8 @@ namespace UnityOSC
                 byte[] bytes = new byte[_tcpClient.Available];
                 _tcpClient.Client.Receive(bytes);
 
+                //Debug.Log("Buffer size : " + buffer.Count);
+
                 buffer.AddRange(bytes);
 
                 unpackAll();
@@ -274,7 +276,7 @@ namespace UnityOSC
                     String s = BitConverter.ToString(bytes, 0, 4);
                     //Debug.Log("Trim : " + s);
                     start = 4; // 4 bytes
-                    packet = OSCMessage.Unpack(bytes, ref start);
+                    if(start < bytes.Length) packet = OSCMessage.Unpack(bytes, ref start);
                     trimmed = true;
                 }
 
