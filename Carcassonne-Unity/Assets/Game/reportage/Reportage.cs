@@ -35,10 +35,6 @@ public class Reportage : Game {
     Text titreText;
     //Text Instructions;
 
-    public bool debug1;
-    public bool debug2;
-    public bool debug3;
-    public bool debug4;
 
     public override void Awake()
     {
@@ -87,8 +83,6 @@ public class Reportage : Game {
 
         if (prepaPanel == null) return;
 
-        if (!debug1) return;
-
         prepaPanel.SetActive(true);
         recPanel.SetActive(false);
 
@@ -116,20 +110,16 @@ public class Reportage : Game {
     public IEnumerator initCam()
     {
         Debug.Log("Init cam");
-        if (!debug2) yield return null;
-        else
-        {
-            yield return new WaitForSeconds(prepaCountDown / 2.0f);
+        yield return new WaitForSeconds(prepaCountDown / 2.0f);
 
-            camTex = new WebCamTexture(device.name);
-            camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
-            camImage.color = Color.black;
-            camImage.DOColor(Color.white, 1f);
+        camTex = new WebCamTexture(device.name);
+        camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
+        camImage.color = Color.black;
+        camImage.DOColor(Color.white, 1f);
 
 
-            yield return new WaitForSeconds(.5f);
-            camPlaneMat.mainTexture = camTex;
-        }        
+        yield return new WaitForSeconds(.5f);
+        camPlaneMat.mainTexture = camTex;
     }
 
     /*
@@ -151,7 +141,6 @@ public class Reportage : Game {
 
         if (prepaPanel == null) return;
 
-        if (!debug3) return;
 
         prepaPanel.SetActive(false);
         recPanel.SetActive(true);
@@ -175,7 +164,6 @@ public class Reportage : Game {
 
     public void stopCapture()
     {
-        if (debug4) return;
         camCap.StopCapturing();
         camTex.Stop();
 
