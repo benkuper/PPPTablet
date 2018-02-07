@@ -6,8 +6,9 @@ using System;
 [RequireComponent(typeof(Camera))]
 public class CamCapture : MonoBehaviour
 {
-    public bool enableCapture;
+    public bool enableCapture = true;
 
+    public RenderTexture rt;
     public int videoWidth = 720;
     public int videoHeight = 1094;
     public int videoFrameRate = 15;
@@ -37,7 +38,9 @@ public class CamCapture : MonoBehaviour
     {
         plane = transform.Find("Plane").gameObject;
         plane.SetActive(false);
-       
+
+        rt = new RenderTexture(videoWidth, videoHeight, 1);
+        GetComponent<Camera>().targetTexture = rt;
     }
     void Start()
     {
@@ -109,6 +112,7 @@ public class CamCapture : MonoBehaviour
 
             AndroidJNI.DeleteLocalRef(classID);
         }
+
         isRunning = false;
         Debug.Log("--- videoFrameRate = " + videoFrameRate);
         Debug.Log("--- 1.0f / videoFrameRate = " + 1.0f / videoFrameRate);
@@ -116,6 +120,7 @@ public class CamCapture : MonoBehaviour
 
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
+        /*
         if (!enableCapture) return;
 
         Graphics.Blit(src, dest);
@@ -124,7 +129,23 @@ public class CamCapture : MonoBehaviour
             float elapsedTime = Time.time - startTime;
             if (elapsedTime >= nextCaptureTime)
             {
-                CaptureFrame(src.GetNativeTexturePtr().ToInt32());
+                CaptureFrame(rt.GetNativeTexturePtr().ToInt32());// src.GetNativeTexturePtr().ToInt32());
+                nextCaptureTime += 1.0f / videoFrameRate;
+            }
+        }
+        */
+    }
+
+    void OnPostRender()
+    {
+        if (!enableCapture) return;
+
+        if (isRunning)
+        {
+            float elapsedTime = Time.time - startTime;
+            if (elapsedTime >= nextCaptureTime)
+            {
+                CaptureFrame(rt.GetNativeTexturePtr().ToInt32());// src.GetNativeTexturePtr().ToInt32());
                 nextCaptureTime += 1.0f / videoFrameRate;
             }
         }
@@ -133,6 +154,8 @@ public class CamCapture : MonoBehaviour
     public void StartCapturing()
     {
         plane.SetActive(true);
+
+        Debug.Log("Start capturing");
 
         if (capturingObject == IntPtr.Zero)
             return;
@@ -146,10 +169,11 @@ public class CamCapture : MonoBehaviour
         videoParameters[3].i = videoBitRate;
         AndroidJNI.CallVoidMethod(capturingObject, initCapturingMethodID, videoParameters);
         DateTime date = DateTime.Now;
-        string fullFileName = fileName + date.ToString("ddMMyy-hhmmss.fff") + ".mp4";
+        string fullFileName = fileName + date.ToString("ddMMyy-HHmmss.fff") + ".mp4";
         jvalue[] args = new jvalue[1];
         args[0].l = AndroidJNI.NewStringUTF(videoDir + fullFileName);
         AndroidJNI.CallVoidMethod(capturingObject, startCapturingMethodID, args);
+
         Debug.Log("CamCapture :: Capture to file : "+videoDir+fullFileName);
 
         startTime = Time.time;
@@ -180,6 +204,8 @@ public class CamCapture : MonoBehaviour
             return;
 
         if (!enableCapture) return;
+
+        Debug.Log("CamCapture Stop Capturing");
 
         jvalue[] args = new jvalue[0];
         AndroidJNI.CallVoidMethod(capturingObject, stopCapturingMethodID, args);

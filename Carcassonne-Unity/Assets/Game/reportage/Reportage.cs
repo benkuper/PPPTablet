@@ -119,6 +119,7 @@ public class Reportage : Game {
 
 
         yield return new WaitForSeconds(.5f);
+        camTex.Play();
         camPlaneMat.mainTexture = camTex;
     }
 
@@ -153,7 +154,6 @@ public class Reportage : Game {
 
 
         camImage.texture = camTex;
-        camTex.Play();
        
         camCap.StartCapturing();
         isCapturing = true;
