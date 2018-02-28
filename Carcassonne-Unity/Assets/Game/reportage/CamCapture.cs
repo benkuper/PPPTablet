@@ -150,7 +150,7 @@ public class CamCapture : MonoBehaviour
             }
         }
     }
-
+    
     public void StartCapturing()
     {
         plane.SetActive(true);

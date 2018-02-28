@@ -3,8 +3,17 @@ Carcassonne-Unity/Library/ShaderCache/d/d1f986c6ef0c11e90b137383f6dfa8c0.bin
 Carcassonne-Unity/Library/
 Carcassonne-Unity/Temp/
 Carcassonne-Unity/Assets/Lib/Arcolib/
+Carcassonne-Unity/Assets/NatCorder/
 Sync/
 Carcassonne-Unity/Export/
 Resources/
 
 Carcassonne-Unity/\.vs/Carcassonne-Unity/v15/
+
+Carcassonne-Unity/Assets/CameraShot/
+
+*.meta
+
+Carcassonne-Unity/Assets/FFMpegCamRecorder\.cs
+
+Carcassonne-Unity/Assets/Lib/FFmpeg/

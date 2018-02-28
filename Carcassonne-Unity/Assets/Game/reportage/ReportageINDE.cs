@@ -3,23 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System;
-//using CameraShot;
-using System.IO;
 
-using NatCorderU.Core;
-public class Reportage : Game {
+public class ReportageINDE : Game {
 
     WebCamTexture camTex;
     Texture2D feedbackTex;
 
     WebCamDevice device;
-    //FFMpegCamRecorder camCap;
+    CamCapture camCap;
 
     RawImage camImage;
     public Material camPlaneMat;
     bool isCapturing;
-    public Camera camFeedback;
+    public GameObject camFeedback;
 
     public int tempsPreparation;
     public int tempsEnregistrement;
@@ -39,9 +35,6 @@ public class Reportage : Game {
     Text titreText;
     //Text Instructions;
 
-    public string videoPath;
-
-    AudioSource source;
 
     public override void Awake()
     {
@@ -78,7 +71,9 @@ public class Reportage : Game {
         }
 
 
-        //camCap = FindObjectOfType<FFMpegCamRecorder>();
+        camCap = GetComponentInChildren<CamCapture>();
+        camCap.videoDir = AssetManager.getFolderPath("reportages/tab" + TabletIDManager.getTabletID()+"/");
+
     }
 
 
@@ -107,7 +102,6 @@ public class Reportage : Game {
 
         //Debug.Log("prepa countdown : " + prepaCountDown);
 
-
         DOTween.Kill("cd2");
         DOTween.To(() => prepaCountDown, x => prepaCountDown = x, 0, prepaCountDown).SetId("cd2").SetEase(Ease.Linear).OnComplete(startCapture);//.OnUpdate(updatePrepaText);
     }
@@ -119,6 +113,7 @@ public class Reportage : Game {
         yield return new WaitForSeconds(prepaCountDown / 2.0f);
 
         camTex = new WebCamTexture(device.name);
+        camCap.fileName = TabletIDManager.getTabletID() + "-" + id + "_";
         camImage.color = Color.black;
         camImage.DOColor(Color.white, 1f);
 
@@ -157,74 +152,19 @@ public class Reportage : Game {
 
         recCountDown = tempsEnregistrement;
 
-        source = AudioPlayer.instance.GetComponents<AudioSource>()[2];
-        source.clip = Microphone.Start(Microphone.devices[0], true, tempsEnregistrement, 44100);
-        source.Play();
-
 
         camImage.texture = camTex;
-
-        #if UNITY_ANDROID
-        try
-        {
-
-            Replay.StartRecording(camFeedback, Configuration.Default, replayCallback,source,true);
-           // AndroidCameraShot.LaunchCameraForVideoCapture(tempsEnregistrement - 1);
-        }catch(Exception e)
-        {
-            Debug.LogError("Error launching camera capture : " + e.Message);
-        }
-        #endif
-
-        //camCap.startCapturing();
+       
+        camCap.StartCapturing();
         isCapturing = true;
 
         DOTween.Kill("countdown", false); 
         DOTween.To(() => recCountDown, x => recCountDown = x, 0, recCountDown).SetId("countdown").SetEase(Ease.Linear).OnUpdate(updateRecText).OnComplete(stopCapture);
     }
 
-    /*
-    void OnEnable()
-    {
-
-        CameraShotEventListener.onVideoSaved += OnVideoSaved;
-        CameraShotEventListener.onError += OnError;
-        CameraShotEventListener.onCancel += OnCancel;
-    }
-
-    void OnDisable()
-    {
-        CameraShotEventListener.onVideoSaved -= OnVideoSaved;
-        CameraShotEventListener.onError -= OnError;
-        CameraShotEventListener.onCancel -= OnCancel;
-    }
-
-    void OnVideoSaved(string path)
-    {
-        Debug.Log("Video Saved at path : " + path);
-        DateTime date = DateTime.Now;
-        videoPath = AssetManager.getFolderPath("reportages/tab" + TabletIDManager.getTabletID() + "/") + TabletIDManager.getTabletID() + "-" + id + "_" + date.ToString("ddMMyy-HHmmss.fff") + ".mp4";
-        File.Copy(path, videoPath);
-    }
-    */
-
-    void OnError(string errorMsg)
-    {
-        Debug.LogError("Error : " + errorMsg);
-    }
-
-    void OnCancel()
-    {
-        Debug.LogWarning("OnCancel");
-    }
-
     public void stopCapture()
     {
-        //videoPath = AssetManager.getFolderPath("reportages/tab" + TabletIDManager.getTabletID() + "/") + TabletIDManager.getTabletID() + "-" + id + "_" + date.ToString("ddMMyy-HHmmss.fff") + ".mp4";
-
-        //camCap.stopCapturing(videoPath);
-
-
+        camCap.StopCapturing();
         camTex.Stop();
 
         isCapturing = false;
@@ -232,32 +172,19 @@ public class Reportage : Game {
         //Delayed ?
         endGame();
 
-        Debug.Log("Stop Capturing Replay");
-        Replay.StopRecording();
-        source.Stop();
-        source.clip = null;
-
+        Debug.Log("Stop Capturing");
         if (camFeedback != null && camFeedback.GetComponent<Renderer>() != null)
         {
             camFeedback.GetComponent<Renderer>().enabled = false;
         }
     }
 
-    public void replayCallback(string path)
-    {
-        DateTime date = DateTime.Now;
-        string targetPath = AssetManager.getFolderPath("reportages/tab" + TabletIDManager.getTabletID() + "/") + TabletIDManager.getTabletID() + "-" + id + "_" + date.ToString("ddMMyy-HHmmss.fff") + ".mp4";
-        Debug.Log("Replay callback  " + path + " > copy to : " + targetPath);
-        File.Move(path, targetPath);
-    }
-
     public override void endGame()
     {
         camImage.DOColor(Color.black, 1);
-
         base.endGame();
     }
-    
+
     private void OnDestroy()
     {
         if (isCapturing)
@@ -273,8 +200,6 @@ public class Reportage : Game {
         {
             Debug.LogWarning("CamTex null !");
         }
-
-
     }
 
     // Use this for initialization
