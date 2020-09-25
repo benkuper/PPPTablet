@@ -24,7 +24,7 @@ using System.Net.Sockets;
 using UnityEngine;
 using System.Threading;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
+using UnityEngine.Networking;
 
 namespace UnityOSC
 {
@@ -145,7 +145,8 @@ namespace UnityOSC
                 }
             }
             */
-            if (result == "") result = Network.player.ipAddress;
+
+            if (result == "") result = NetworkManager.singleton.networkAddress;
             return result;
         }
 
